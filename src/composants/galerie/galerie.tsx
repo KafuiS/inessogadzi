@@ -831,7 +831,7 @@ function ProjectModal({
       <div className="project-modal-content">
         <div className="project-modal-header">
           <img
-            src="/projects/IS.png"
+            src={`${BASE_PATH}/projects/IS.png`}
             alt="Logo"
             className="project-modal-logo"
           />
@@ -868,7 +868,7 @@ function ProjectModal({
                 <span>Visit site</span>
 
                 <img
-                  src="/projects/carre-fleche.png"
+                  src={`${BASE_PATH}/projects/carre-fleche.png`}
                   alt=""
                   className="project-visit-icon"
                 />

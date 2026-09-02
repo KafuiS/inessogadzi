@@ -372,7 +372,7 @@ export default function CV(): React.JSX.Element {
 
               <div className="photo-wrapper">
                 <Image
-                  src="/projects/photo-ines.jpg"
+                  src={`${BASE_PATH}/projects/photo-ines.jpg`}
                   alt="Inès SOGADZI"
                   fill
                   priority
