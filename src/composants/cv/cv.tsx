@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import { Space_Grotesk } from "next/font/google";
 import { useEffect, useRef, useState } from "react";
@@ -9,6 +10,8 @@ const spaceGrotesk = Space_Grotesk({
   weight: ["400", "500", "600", "700"],
   display: "swap",
 });
+
+const BASE_PATH = "/inessogadzi";
 
 /* ============================================================
    CURSEUR
@@ -118,7 +121,6 @@ function GrainOverlay(): React.JSX.Element {
       const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
 
       canvas.width = Math.max(1, Math.floor(width * pixelRatio));
-
       canvas.height = Math.max(1, Math.floor(height * pixelRatio));
 
       canvas.style.width = `${width}px`;
@@ -202,8 +204,6 @@ function GrainOverlay(): React.JSX.Element {
 
 /* ============================================================
    MISE À L'ÉCHELLE DE LA CARTE CV
-   (garde la structure identique, réduit juste proportionnellement
-   sur mobile/tablette au lieu de réorganiser la mise en page)
 ============================================================ */
 
 const CV_DESIGN_WIDTH = 1180;
@@ -253,7 +253,9 @@ function ScaledCvPaper({
     <div
       ref={outerRef}
       className="cv-scale-outer"
-      style={{ height: paperHeight > 0 ? paperHeight * scale : undefined }}
+      style={{
+        height: paperHeight > 0 ? paperHeight * scale : undefined,
+      }}
     >
       <div
         ref={paperRef}
@@ -283,6 +285,7 @@ function MailIcon(): React.JSX.Element {
         stroke="currentColor"
         strokeWidth="1.8"
       />
+
       <path
         d="M4 7l8 6 8-6"
         fill="none"
@@ -302,6 +305,7 @@ function LocationIcon(): React.JSX.Element {
         stroke="currentColor"
         strokeWidth="1.8"
       />
+
       <circle
         cx="12"
         cy="10"
@@ -327,6 +331,7 @@ function PhoneIcon(): React.JSX.Element {
         stroke="currentColor"
         strokeWidth="1.8"
       />
+
       <circle cx="12" cy="17.5" r="0.8" fill="currentColor" />
     </svg>
   );
@@ -340,13 +345,10 @@ export default function CV(): React.JSX.Element {
   return (
     <>
       <Header textColor="#111111" />
+
       <CursorTrail />
 
       <main className={`${spaceGrotesk.className} cv-page`}>
-        {/* ====================================================
-            HEADER
-        ==================================================== */}
-
         {/* ====================================================
             FORMES DÉCORATIVES
         ==================================================== */}
@@ -535,7 +537,7 @@ export default function CV(): React.JSX.Element {
                   </p>
 
                   <p>
-                    Dans un monde qui s'uniformise, Relais & Châteaux défend
+                    Dans un monde qui s'uniformise, Relais &amp; Châteaux défend
                     quelque chose de rare : le savoir-faire, l'excellence,
                     l'exclusivité, des valeurs que mon expérience dans la
                     valorisation de voyages sur-mesure m'a appris à incarner.
@@ -784,7 +786,7 @@ export default function CV(): React.JSX.Element {
 
           <div className="download-zone">
             <a
-              href="/projects/cv.pdf"
+              href={`${BASE_PATH}/projects/cv.pdf`}
               download="cv-ines-sogadzi.pdf"
               className="download-button"
             >
@@ -1043,8 +1045,8 @@ export default function CV(): React.JSX.Element {
         }
 
         /* =====================================================
-   PHOTO
-===================================================== */
+           PHOTO
+        ===================================================== */
 
         .photo-wrapper {
           position: relative;
@@ -1402,9 +1404,6 @@ export default function CV(): React.JSX.Element {
 
         /* =====================================================
            TABLETTE / MOBILE
-           (aucune restructuration : uniquement l'espace autour
-           de la carte qui s'adapte, la carte elle-même est mise
-           à l'échelle via .cv-paper transform: scale())
         ===================================================== */
 
         @media (max-width: 900px) {

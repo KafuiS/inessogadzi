@@ -12,26 +12,32 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 /* ============================================================
+   BASE PATH — GITHUB PAGES
+============================================================ */
+
+const BASE_PATH = "/inessogadzi";
+
+/* ============================================================
    PROJETS
 ============================================================ */
 
 const PROJECTS = [
-  "/projects/project-1.jpg",
-  "/projects/project-2.jpg",
-  "/projects/project-3.jpg",
-  "/projects/project-4.jpg",
-  "/projects/project-5.jpg",
-  "/projects/project-6.jpg",
-  "/projects/project-7.jpg",
-  "/projects/project-8.jpg",
-  "/projects/project-9.jpg",
-  "/projects/project-10.jpg",
-  "/projects/project-11.jpg",
-  "/projects/project-12.jpg",
-  "/projects/project-13.jpg",
-  "/projects/project-14.jpg",
-  "/projects/project-15.jpg",
-  "/projects/project-16.jpg",
+  `${BASE_PATH}/projects/project-1.jpg`,
+  `${BASE_PATH}/projects/project-2.jpg`,
+  `${BASE_PATH}/projects/project-3.jpg`,
+  `${BASE_PATH}/projects/project-4.jpg`,
+  `${BASE_PATH}/projects/project-5.jpg`,
+  `${BASE_PATH}/projects/project-6.jpg`,
+  `${BASE_PATH}/projects/project-7.jpg`,
+  `${BASE_PATH}/projects/project-8.jpg`,
+  `${BASE_PATH}/projects/project-9.jpg`,
+  `${BASE_PATH}/projects/project-10.jpg`,
+  `${BASE_PATH}/projects/project-11.jpg`,
+  `${BASE_PATH}/projects/project-12.jpg`,
+  `${BASE_PATH}/projects/project-13.jpg`,
+  `${BASE_PATH}/projects/project-14.jpg`,
+  `${BASE_PATH}/projects/project-15.jpg`,
+  `${BASE_PATH}/projects/project-16.jpg`,
 ];
 
 /* ============================================================
@@ -214,15 +220,6 @@ function GrainOverlay(): React.JSX.Element | null {
       return;
     }
 
-    /*
-     * IMPORTANT :
-     *
-     * Le canvas du grain est sorti du stacking context
-     * de la page et ajouté directement au <body>.
-     *
-     * Il se trouve donc réellement au-dessus du canvas WebGL.
-     */
-
     const body = document.body;
 
     if (canvas.parentElement !== body) {
@@ -259,9 +256,6 @@ function GrainOverlay(): React.JSX.Element | null {
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
 
-      /*
-       * Le canvas travaille directement en pixels natifs.
-       */
       ctx.setTransform(1, 0, 0, 1, 0, 0);
 
       ctx.imageSmoothingEnabled = false;
@@ -279,17 +273,6 @@ function GrainOverlay(): React.JSX.Element | null {
       const grainImage = ctx.createImageData(canvas.width, canvas.height);
 
       const pixels = grainImage.data;
-
-      /*
-       * Même logique de génération que le grain
-       * utilisé sur la galerie.
-       *
-       * Mais contrairement à la version précédente,
-       * le grain est généré directement avec une alpha
-       * contrôlée pixel par pixel.
-       *
-       * Le canvas lui-même reste donc transparent.
-       */
 
       for (let i = 0; i < pixels.length; i += 4) {
         let value = 0;
@@ -310,13 +293,6 @@ function GrainOverlay(): React.JSX.Element | null {
         pixels[i] = luminance;
         pixels[i + 1] = luminance;
         pixels[i + 2] = luminance;
-
-        /*
-         * Transparence réelle du pixel.
-         *
-         * Cela évite de dépendre uniquement de
-         * mix-blend-mode pour rendre le grain visible.
-         */
         pixels[i + 3] = Math.round(GRAIN_OPACITY * 255);
       }
 
@@ -337,9 +313,6 @@ function GrainOverlay(): React.JSX.Element | null {
       animationFrame = window.requestAnimationFrame(animate);
     };
 
-    /*
-     * Initialisation immédiate.
-     */
     resize();
 
     generateGrain();
@@ -355,23 +328,12 @@ function GrainOverlay(): React.JSX.Element | null {
 
       window.removeEventListener("resize", resize);
 
-      /*
-       * On retire proprement le canvas du body.
-       */
       if (canvas.parentElement === body) {
         body.removeChild(canvas);
       }
     };
   }, []);
 
-  /*
-   * Le canvas est créé avec un style inline afin que
-   * son z-index ne dépende absolument pas de styled-jsx.
-   *
-   * 2147483640 = suffisamment haut pour passer au-dessus
-   * du canvas Three.js, du contenu et des stacking contexts
-   * ordinaires de la page.
-   */
   return (
     <canvas
       ref={grainCanvasRef}
@@ -532,9 +494,7 @@ function getSpherePoint(
 
   return new THREE.Vector3(
     radius * cosLatitude * Math.sin(longitude),
-
     radius * Math.sin(latitude),
-
     -radius * cosLatitude * Math.cos(longitude),
   );
 }
@@ -590,15 +550,11 @@ function createCurvedGeometry(
   for (let y = 0; y < SEGMENTS_Y; y += 1) {
     for (let x = 0; x < SEGMENTS_X; x += 1) {
       const a = y * rowSize + x;
-
       const b = a + 1;
-
       const c = a + rowSize;
-
       const d = c + 1;
 
       indices.push(a, b, c);
-
       indices.push(b, d, c);
     }
   }
@@ -647,15 +603,11 @@ function createFlatGeometry(): THREE.BufferGeometry {
   for (let y = 0; y < SEGMENTS_Y; y += 1) {
     for (let x = 0; x < SEGMENTS_X; x += 1) {
       const a = y * rowSize + x;
-
       const b = a + 1;
-
       const c = a + rowSize;
-
       const d = c + 1;
 
       indices.push(a, b, c);
-
       indices.push(b, d, c);
     }
   }
@@ -687,17 +639,11 @@ function loadTexture(
       src,
       (texture) => {
         texture.colorSpace = THREE.SRGBColorSpace;
-
         texture.minFilter = THREE.LinearFilter;
-
         texture.magFilter = THREE.LinearFilter;
-
         texture.wrapS = THREE.ClampToEdgeWrapping;
-
         texture.wrapT = THREE.ClampToEdgeWrapping;
-
         texture.flipY = false;
-
         texture.needsUpdate = true;
 
         resolve(texture);
@@ -717,17 +663,13 @@ function loadTexture(
 ============================================================ */
 
 const LOCAL_ROTATION_X = THREE.MathUtils.degToRad(4);
-
 const LOCAL_ROTATION_Y = THREE.MathUtils.degToRad(4);
-
 const LOCAL_ROTATION_Z = THREE.MathUtils.degToRad(6);
 
 function getLocalRotation(index: number): THREE.Euler {
   return new THREE.Euler(
     Math.sin(index * 1.731) * LOCAL_ROTATION_X,
-
     Math.cos(index * 2.193) * LOCAL_ROTATION_Y,
-
     Math.sin(index * 2.871 + 1.2) * LOCAL_ROTATION_Z,
   );
 }
@@ -894,11 +836,9 @@ function getGalleryScreenPosition(
   let y = height / 2 + cell.row * STEP_Y;
 
   const centerX = width / 2;
-
   const centerY = height / 2;
 
   const dx = x - centerX;
-
   const dy = y - centerY;
 
   x += dx * Math.abs(dx) * GALLERY_CURVE_HORIZONTAL;
@@ -981,13 +921,9 @@ export default function About(): React.JSX.Element {
     const textureLoader = new THREE.TextureLoader();
 
     const geometries: THREE.BufferGeometry[] = [];
-
     const flatGeometries: THREE.BufferGeometry[] = [];
-
     const materials: THREE.MeshBasicMaterial[] = [];
-
     const textures: THREE.Texture[] = [];
-
     const meshes: THREE.Mesh[] = [];
 
     let disposed = false;
@@ -1040,7 +976,6 @@ export default function About(): React.JSX.Element {
         const flatGeometry = createFlatGeometry();
 
         geometries.push(geometry);
-
         flatGeometries.push(flatGeometry);
 
         const material = new THREE.MeshBasicMaterial({
@@ -1371,7 +1306,7 @@ export default function About(): React.JSX.Element {
           navigationStarted = true;
 
           window.setTimeout(() => {
-            window.location.href = "/galerie";
+            window.location.href = `${BASE_PATH}/galerie`;
           }, 80);
         }
       }
@@ -1489,9 +1424,9 @@ export default function About(): React.JSX.Element {
             CONTENU
         ================================================== */}
 
-        <a href="/" className="logo" aria-label="Accueil">
+        <a href={BASE_PATH} className="logo" aria-label="Accueil">
           <Image
-            src="/projects/IS.png"
+            src={`${BASE_PATH}/projects/IS.png`}
             alt="Logo"
             width={42}
             height={42}
@@ -1533,11 +1468,6 @@ export default function About(): React.JSX.Element {
 
         {/* ==================================================
             GRAIN
-           
-            IMPORTANT :
-            GrainOverlay n'est PAS rendu dans le stacking
-            context du main. Le composant déplace son canvas
-            directement dans document.body.
         ================================================== */}
 
         <GrainOverlay />
