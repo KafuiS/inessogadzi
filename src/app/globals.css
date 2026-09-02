@@ -1,0 +1,179 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap"); /* ========================================================= RESET ========================================================= */
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #050505;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #050505;
+  color: #ffffff;
+  overscroll-behavior: none;
+} /* ========================================================= PAGE ========================================================= */
+.portfolio-page {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #050505;
+} /* ========================================================= GALERIE ========================================================= */
+.portfolio-gallery {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+  background: #050505;
+}
+.portfolio-gallery > div {
+  width: 100%;
+  height: 100%;
+} /* ========================================================= CANVAS ========================================================= */
+.gallery {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #050505;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.gallery:active {
+  cursor: grabbing;
+}
+.gallery canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  outline: none;
+  touch-action: none;
+  z-index: 0;
+} /* ========================================================= HEADER ========================================================= */
+.portfolio-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  pointer-events: none;
+}
+.portfolio-header * {
+  pointer-events: auto;
+} /* ========================================================= GRAIN ========================================================= */
+.gallery-grain {
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  z-index: 20;
+  pointer-events: none;
+  opacity: 0.18;
+  background-repeat: repeat;
+  background-size: 180px 180px;
+  mix-blend-mode: soft-light;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+} /* ========================================================= VIGNETTE CIRO STYLE ========================================================= Le principe est volontairement différent d'un simple radial-gradient classique. Le centre reste relativement clair. Les bords commencent progressivement à disparaître. Les coins sont nettement plus noirs. Cela donne l'impression que la galerie est éclairée au centre et plongée dans le noir autour. ========================================================= */
+.gallery-vignette {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 21;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 62% 60% at 50% 50%,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 35%,
+    rgba(0, 0, 0, 0.025) 45%,
+    rgba(0, 0, 0, 0.09) 55%,
+    rgba(0, 0, 0, 0.2) 65%,
+    rgba(0, 0, 0, 0.38) 75%,
+    rgba(0, 0, 0, 0.6) 85%,
+    rgba(0, 0, 0, 0.82) 94%,
+    rgba(0, 0, 0, 0.97) 100%
+  );
+} /* ========================================================= VIGNETTE SUPPLÉMENTAIRE — COINS ========================================================= Cette seconde couche donne le côté très sombre caractéristique des coins sans assombrir excessivement le centre. ========================================================= */
+.gallery-vignette::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 105% 95% at 50% 50%,
+    transparent 45%,
+    rgba(0, 0, 0, 0.04) 58%,
+    rgba(0, 0, 0, 0.12) 70%,
+    rgba(0, 0, 0, 0.28) 82%,
+    rgba(0, 0, 0, 0.55) 94%,
+    rgba(0, 0, 0, 0.82) 100%
+  );
+} /* ========================================================= BORDS NOIRS ========================================================= Très léger assombrissement horizontal. ========================================================= */
+.gallery-vignette::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.42) 0%,
+    rgba(0, 0, 0, 0.1) 12%,
+    transparent 25%,
+    transparent 75%,
+    rgba(0, 0, 0, 0.1) 88%,
+    rgba(0, 0, 0, 0.42) 100%
+  );
+} /* ========================================================= MOBILE ========================================================= */
+@media (max-width: 700px) {
+  .gallery-vignette {
+    background: radial-gradient(
+      ellipse 72% 65% at 50% 50%,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0) 34%,
+      rgba(0, 0, 0, 0.04) 45%,
+      rgba(0, 0, 0, 0.12) 57%,
+      rgba(0, 0, 0, 0.26) 68%,
+      rgba(0, 0, 0, 0.48) 80%,
+      rgba(0, 0, 0, 0.72) 91%,
+      rgba(0, 0, 0, 0.94) 100%
+    );
+  }
+  .gallery-vignette::after {
+    background: radial-gradient(
+      ellipse 110% 100% at 50% 50%,
+      transparent 42%,
+      rgba(0, 0, 0, 0.06) 58%,
+      rgba(0, 0, 0, 0.18) 72%,
+      rgba(0, 0, 0, 0.42) 87%,
+      rgba(0, 0, 0, 0.78) 100%
+    );
+  }
+  .gallery-vignette::before {
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.12) 15%,
+      transparent 28%,
+      transparent 72%,
+      rgba(0, 0, 0, 0.12) 85%,
+      rgba(0, 0, 0, 0.5) 100%
+    );
+  }
+  .gallery-grain {
+    opacity: 0.15;
+  }
+}
