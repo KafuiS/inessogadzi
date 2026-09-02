@@ -32,7 +32,7 @@ const PROJECTS = [
   `${BASE_PATH}/projects/project-8.jpg`,
   `${BASE_PATH}/projects/project-9.jpg`,
   `${BASE_PATH}/projects/project-10.jpg`,
-  `${BASE_PATH}/projects/project-11.jpg`,
+  `${BASE_PATH}/projects/project-11-1.mp4`,
 ];
 
 /* ============================================================
