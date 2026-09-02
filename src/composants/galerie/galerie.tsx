@@ -1010,7 +1010,7 @@ function ProjectModal({
                 <span>Visit site</span>
 
                 <img
-                  src="/projects/carre-fleche.png"
+                  src={`${BASE_PATH}/projects/carre-fleche.png`}
                   alt=""
                   className="project-visit-icon"
                 />

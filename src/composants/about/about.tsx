@@ -33,11 +33,6 @@ const PROJECTS = [
   `${BASE_PATH}/projects/project-9.jpg`,
   `${BASE_PATH}/projects/project-10.jpg`,
   `${BASE_PATH}/projects/project-11.jpg`,
-  `${BASE_PATH}/projects/project-12.jpg`,
-  `${BASE_PATH}/projects/project-13.jpg`,
-  `${BASE_PATH}/projects/project-14.jpg`,
-  `${BASE_PATH}/projects/project-15.jpg`,
-  `${BASE_PATH}/projects/project-16.jpg`,
 ];
 
 /* ============================================================
