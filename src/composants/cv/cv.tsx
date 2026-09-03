@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Space_Grotesk } from "next/font/google";
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import Header from "@/composants/header/header";
 
 const spaceGrotesk = Space_Grotesk({
@@ -296,28 +297,6 @@ function MailIcon(): React.JSX.Element {
   );
 }
 
-function LocationIcon(): React.JSX.Element {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className="contact-icon">
-      <path
-        d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-      />
-
-      <circle
-        cx="12"
-        cy="10"
-        r="2.2"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-      />
-    </svg>
-  );
-}
-
 function PhoneIcon(): React.JSX.Element {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" className="contact-icon">
@@ -342,6 +321,10 @@ function PhoneIcon(): React.JSX.Element {
 ============================================================ */
 
 export default function CV(): React.JSX.Element {
+  const pathname = usePathname();
+
+  const isEnglish = pathname.startsWith(`${BASE_PATH}/en`);
+
   return (
     <>
       <Header textColor="#111111" />
@@ -401,51 +384,105 @@ export default function CV(): React.JSX.Element {
               {/* COMPÉTENCES */}
 
               <section className="sidebar-section">
-                <h2>COMPÉTENCES</h2>
+                <h2>{isEnglish ? "SKILLS" : "COMPÉTENCES"}</h2>
 
                 <ul className="bullet-list">
-                  <li>Marketing digital 360°</li>
+                  {isEnglish ? (
+                    <>
+                      <li>360° digital marketing</li>
 
-                  <li>Communication digitale</li>
+                      <li>Digital communication</li>
 
-                  <li>
-                    Création de contenus
-                    <br />
-                    (photo, vidéo, montage){" "}
-                  </li>
+                      <li>
+                        Content creation
+                        <br />
+                        (photo, video, editing)
+                      </li>
 
-                  <li>Community management</li>
+                      <li>Community management</li>
 
-                  <li>Direction artistique</li>
+                      <li>Art direction</li>
 
-                  <li>Gestion de projet</li>
+                      <li>Project management</li>
 
-                  <li>
-                    Référencement naturel <br /> (SEO)
-                  </li>
-                  <li>Campagnes d'acquisition</li>
-                  <li>
-                    Email marketing
-                    <br />
-                    &amp; newsletter
-                  </li>
+                      <li>
+                        Search Engine Optimization
+                        <br />
+                        (SEO)
+                      </li>
 
-                  <li>
-                    Analyse des
-                    <br />
-                    performances (KPIs)
-                  </li>
-                  <li>
-                    Veille stratégique et <br />
-                    concurrentielle{" "}
-                  </li>
+                      <li>Acquisition campaigns</li>
+
+                      <li>
+                        Email marketing
+                        <br />
+                        &amp; newsletters
+                      </li>
+
+                      <li>
+                        Performance analysis
+                        <br />
+                        (KPIs)
+                      </li>
+
+                      <li>
+                        Strategic and
+                        <br />
+                        competitive monitoring
+                      </li>
+                    </>
+                  ) : (
+                    <>
+                      <li>Marketing digital 360°</li>
+
+                      <li>Communication digitale</li>
+
+                      <li>
+                        Création de contenus
+                        <br />
+                        (photo, vidéo, montage)
+                      </li>
+
+                      <li>Community management</li>
+
+                      <li>Direction artistique</li>
+
+                      <li>Gestion de projet</li>
+
+                      <li>
+                        Référencement naturel
+                        <br />
+                        (SEO)
+                      </li>
+
+                      <li>Campagnes d'acquisition</li>
+
+                      <li>
+                        Email marketing
+                        <br />
+                        &amp; newsletter
+                      </li>
+
+                      <li>
+                        Analyse des
+                        <br />
+                        performances (KPIs)
+                      </li>
+
+                      <li>
+                        Veille stratégique et
+                        <br />
+                        concurrentielle
+                      </li>
+                    </>
+                  )}
                 </ul>
               </section>
 
               {/* INFORMATIQUE */}
 
               <section className="sidebar-section computer-section">
-                <h2>INFORMATIQUE</h2>
+                <h2>{isEnglish ? "SOFTWARE" : "INFORMATIQUE"}</h2>
 
                 <div className="small-text">
                   <p>
@@ -453,24 +490,28 @@ export default function CV(): React.JSX.Element {
                   </p>
 
                   <p>
-                    <strong>Gestion de projet :</strong>
+                    <strong>
+                      {isEnglish ? "Project management" : "Gestion de projet"} :
+                    </strong>
                     <br />
                     Google Marketing Platform (Analytics, Ads), Trello, Miro,
                     Zapier
                   </p>
 
                   <p>
-                    <strong>PAO :</strong> Photoshop, Illustrator, InDesign,
+                    <strong>DESIGN :</strong> Photoshop, Illustrator, InDesign,
                     After Effects, Premiere Pro, Figma, Canva
                   </p>
 
                   <p>
-                    <strong>Pack Office :</strong> Excel, PowerPoint, Word
+                    <strong>Office Suite :</strong> Excel, PowerPoint, Word
                   </p>
 
                   <p>
-                    <strong>Programmation :</strong> HTML, CSS, JavaScript,
-                    MySQL, PHP
+                    <strong>
+                      {isEnglish ? "Programming" : "Programmation"} :
+                    </strong>{" "}
+                    HTML, CSS, JavaScript, MySQL, PHP
                   </p>
 
                   <p>
@@ -482,32 +523,47 @@ export default function CV(): React.JSX.Element {
               {/* ATOUTS */}
 
               <section className="sidebar-section">
-                <h2>ATOUTS</h2>
+                <h2>{isEnglish ? "STRENGTHS" : "ATOUTS"}</h2>
 
                 <ul className="strengths">
-                  <li>Sens du détail</li>
-                  <li>Autonomie</li>
-                  <li>Adaptabilité</li>
-                  <li>Rigueur</li>
-                  <li>Proactivité</li>
-                  <li>Créativité</li>
+                  {isEnglish ? (
+                    <>
+                      <li>Attention to detail</li>
+                      <li>Autonomy</li>
+                      <li>Adaptability</li>
+                      <li>Rigour</li>
+                      <li>Proactivity</li>
+                      <li>Creativity</li>
+                    </>
+                  ) : (
+                    <>
+                      <li>Sens du détail</li>
+                      <li>Autonomie</li>
+                      <li>Adaptabilité</li>
+                      <li>Rigueur</li>
+                      <li>Proactivité</li>
+                      <li>Créativité</li>
+                    </>
+                  )}
                 </ul>
               </section>
 
               {/* LANGUES */}
 
               <section className="sidebar-section languages">
-                <h2>LANGUES</h2>
+                <h2>{isEnglish ? "LANGUAGES" : "LANGUES"}</h2>
+
                 <div className="small-text">
                   <p>
-                    <strong>Français</strong>
+                    <strong>{isEnglish ? "French" : "Français"}</strong>
                     <br />
-                    Langue maternelle
+                    {isEnglish ? "Native language" : "Langue maternelle"}
                   </p>
+
                   <p>
-                    <strong>Anglais</strong>
+                    <strong>{isEnglish ? "English" : "Anglais"}</strong>
                     <br />
-                    Courant
+                    {isEnglish ? "Fluent" : "Courant"}
                   </p>
                 </div>
               </section>
@@ -526,7 +582,9 @@ export default function CV(): React.JSX.Element {
                 <h1>Inès SOGADZI</h1>
 
                 <div className="job-title">
-                  MARKETING DIGITAL | COMMUNICATION | GESTION DE PROJET
+                  {isEnglish
+                    ? "DIGITAL MARKETING | COMMUNICATION | PROJECT MANAGEMENT"
+                    : "MARKETING DIGITAL | COMMUNICATION | GESTION DE PROJET"}
                 </div>
               </section>
 
@@ -535,7 +593,11 @@ export default function CV(): React.JSX.Element {
               ============================================ */}
 
               <section className="cv-section">
-                <h2 className="section-title">EXPÉRIENCES PROFESSIONNELLES</h2>
+                <h2 className="section-title">
+                  {isEnglish
+                    ? "PROFESSIONAL EXPERIENCE"
+                    : "EXPÉRIENCES PROFESSIONNELLES"}
+                </h2>
 
                 <div className="timeline">
                   {/* EXPERIENCE 1 */}
@@ -544,80 +606,151 @@ export default function CV(): React.JSX.Element {
                     <div className="timeline-dot" />
 
                     <div className="experience">
-                      <h3>Erasmus + | Assistante Marketing</h3>
+                      <h3>
+                        {isEnglish
+                          ? "Erasmus+ | Marketing Assistant"
+                          : "Erasmus + | Assistante Marketing"}
+                      </h3>
 
                       <div className="meta">
-                        <span>De jan. 2026 à juin 2026</span>
+                        <span>
+                          {isEnglish
+                            ? "Jan. 2026 to June 2026"
+                            : "De jan. 2026 à juin 2026"}
+                        </span>
 
                         <strong>Atlantic Centre of Education</strong>
 
                         <span>Galway, Ireland</span>
+
                         <p>
                           <em>
-                            Gestion de la communication et du marketing digital
-                            de deux entités : une école d'anglais (Atlantic
-                            Centre of Education) et quatre complexes de
-                            résidences en location saisonnière (Galway Lakeside
-                            Apartments) accueillant respectivement une clientèle
-                            internationale .{" "}
+                            {isEnglish
+                              ? "Management of the communication and digital marketing of two entities: an English language school (Atlantic Centre of Education) and four seasonal rental residence complexes (Galway Lakeside Apartments), serving an international clientele."
+                              : "Gestion de la communication et du marketing digital de deux entités : une école d'anglais (Atlantic Centre of Education) et quatre complexes de résidences en location saisonnière (Galway Lakeside Apartments) accueillant une clientèle internationale."}
                           </em>
                         </p>
                       </div>
 
                       <ul className="experience-list">
-                        <li>
-                          Pilotage de la <strong>présence digitale</strong> des
-                          deux marques (sites web, réseaux sociaux et
-                          e-réputation), incluant les mises à jour de contenu,
-                          les améliorations UX et les audits de sites
-                        </li>
+                        {isEnglish ? (
+                          <>
+                            <li>
+                              Management of the{" "}
+                              <strong>digital presence</strong> of both brands
+                              (websites, social media and e-reputation),
+                              including content updates, UX improvements and
+                              website audits
+                            </li>
 
-                        <li>
-                          Conception et déploiement des{" "}
-                          <strong>campagnes Meta Ads et Google Ads</strong>{" "}
-                          destinées à promouvoir les formations et les offres
-                          d'hébergement : Spring Courses, Summer Courses,
-                          campagne LinkedIn, Summer Sales des résidences.
-                        </li>
+                            <li>
+                              Design and deployment of{" "}
+                              <strong>Meta Ads and Google Ads campaigns</strong>{" "}
+                              promoting courses and accommodation offers: Spring
+                              Courses, Summer Courses, LinkedIn campaign and
+                              Summer Sales for the residences.
+                            </li>
 
-                        <li>
-                          Création et publication de{" "}
-                          <strong>80 contenus</strong> sur les réseaux sociaux
-                          (40 pour l'école, 40 pour les résidences).
-                        </li>
+                            <li>
+                              Creation and publication of{" "}
+                              <strong>80 social media posts</strong> (40 for the
+                              school, 40 for the residences).
+                            </li>
 
-                        <li>
-                          Réalisation de{" "}
-                          <strong>shootings photo hebdomadaires</strong> afin
-                          d'alimenter les supports de communication et
-                          production de <strong>6 interviews vidéo</strong>{" "}
-                          mettant en avant les étudiants et l'établissement.
-                        </li>
+                            <li>
+                              Weekly <strong>photo shoots</strong> to provide
+                              communication materials and production of{" "}
+                              <strong>6 video interviews</strong> highlighting
+                              students and the institution.
+                            </li>
 
-                        <li>
-                          Rédaction, conception et envoi des{" "}
-                          <strong>newsletters et campagnes emailing</strong> via
-                          HubSpot et Mailchimp{" "}
-                        </li>
+                            <li>
+                              Writing, designing and sending{" "}
+                              <strong>newsletters and email campaigns</strong>{" "}
+                              via HubSpot and Mailchimp.
+                            </li>
 
-                        <li>
-                          Développement de{" "}
-                          <strong>5 partenariats stratégiques</strong> (3 pour
-                          l'école, 2 pour les résidences).
-                        </li>
+                            <li>
+                              Development of{" "}
+                              <strong>5 strategic partnerships</strong> (3 for
+                              the school, 2 for the residences).
+                            </li>
 
-                        <li>
-                          Élaboration de <strong>reportings mensuels</strong> et
-                          suivi des performances marketing (Google Analytics,
-                          KPIs).
-                        </li>
-                        <li>
-                          Réalisation d'une{" "}
-                          <strong>veille stratégique et concurrentielle</strong>{" "}
-                          afin d'identifier les tendances du marché et
-                          d'accompagner les décisions en matière de
-                          communication digitale et d'expérience utilisateur.
-                        </li>
+                            <li>
+                              Preparation of <strong>monthly reports</strong>{" "}
+                              and monitoring of marketing performance (Google
+                              Analytics, KPIs).
+                            </li>
+
+                            <li>
+                              Strategic and competitive monitoring to identify
+                              market trends and support decisions regarding
+                              digital communication and user experience.
+                            </li>
+                          </>
+                        ) : (
+                          <>
+                            <li>
+                              Pilotage de la <strong>présence digitale</strong>{" "}
+                              des deux marques (sites web, réseaux sociaux et
+                              e-réputation), incluant les mises à jour de
+                              contenu, les améliorations UX et les audits de
+                              sites
+                            </li>
+
+                            <li>
+                              Conception et déploiement des{" "}
+                              <strong>campagnes Meta Ads et Google Ads</strong>{" "}
+                              destinées à promouvoir les formations et les
+                              offres d'hébergement : Spring Courses, Summer
+                              Courses, campagne LinkedIn, Summer Sales des
+                              résidences.
+                            </li>
+
+                            <li>
+                              Création et publication de{" "}
+                              <strong>80 contenus</strong> sur les réseaux
+                              sociaux (40 pour l'école, 40 pour les résidences).
+                            </li>
+
+                            <li>
+                              Réalisation de{" "}
+                              <strong>shootings photo hebdomadaires</strong>{" "}
+                              afin d'alimenter les supports de communication et
+                              production de <strong>6 interviews vidéo</strong>{" "}
+                              mettant en avant les étudiants et l'établissement.
+                            </li>
+
+                            <li>
+                              Rédaction, conception et envoi des{" "}
+                              <strong>newsletters et campagnes emailing</strong>{" "}
+                              via HubSpot et Mailchimp.
+                            </li>
+
+                            <li>
+                              Développement de{" "}
+                              <strong>5 partenariats stratégiques</strong> (3
+                              pour l'école, 2 pour les résidences).
+                            </li>
+
+                            <li>
+                              Élaboration de{" "}
+                              <strong>reportings mensuels</strong> et suivi des
+                              performances marketing (Google Analytics, KPIs).
+                            </li>
+
+                            <li>
+                              Réalisation d'une{" "}
+                              <strong>
+                                veille stratégique et concurrentielle
+                              </strong>{" "}
+                              afin d'identifier les tendances du marché et
+                              d'accompagner les décisions en matière de
+                              communication digitale et d'expérience
+                              utilisateur.
+                            </li>
+                          </>
+                        )}
                       </ul>
                     </div>
                   </article>
@@ -628,85 +761,158 @@ export default function CV(): React.JSX.Element {
                     <div className="timeline-dot" />
 
                     <div className="experience">
-                      <h3>Cheffe de Projet Digital</h3>
+                      <h3>
+                        {isEnglish
+                          ? "Digital Project Manager"
+                          : "Cheffe de Projet Digital"}
+                      </h3>
 
                       <div className="meta">
-                        <span>De sept. 2023 à août 2025</span>
+                        <span>
+                          {isEnglish
+                            ? "Sept. 2023 to Aug. 2025"
+                            : "De sept. 2023 à août 2025"}
+                        </span>
 
                         <strong>Meltour</strong>
 
                         <span>Saint-Maur-des-Fossés</span>
+
                         <p>
                           <em>
-                            Contrat d'apprentissage : Gestion de la stratégie
-                            digitale et de la visibilité en ligne d'une agence
-                            spécialisée dans les voyages sur mesure haut de
-                            gamme
+                            {isEnglish
+                              ? "Apprenticeship: management of the digital strategy and online visibility of an agency specializing in high-end tailor-made travel."
+                              : "Contrat d'apprentissage : Gestion de la stratégie digitale et de la visibilité en ligne d'une agence spécialisée dans les voyages sur mesure haut de gamme"}
                           </em>
                         </p>
                       </div>
 
                       <ul className="experience-list">
-                        <li>
-                          Gestion du site web WordPress, incluant l'
-                          <strong>
-                            optimisation de l'expérience utilisateur
-                          </strong>{" "}
-                          (UX), la <strong>gestion des contenus</strong> et le{" "}
-                          <strong>suivi de la maintenance évolutive</strong>{" "}
-                          (TMA) avec un prestataire externe.{" "}
-                        </li>
+                        {isEnglish ? (
+                          <>
+                            <li>
+                              Management of the WordPress website, including{" "}
+                              <strong>user experience optimization</strong>{" "}
+                              (UX), <strong>content management</strong> and
+                              monitoring of ongoing maintenance (TMA) with an
+                              external provider.
+                            </li>
 
-                        <li>
-                          <strong>
-                            Développement du référencement naturel (SEO)
-                          </strong>{" "}
-                          grâce à la rédaction de{" "}
-                          <strong>38 circuits de voyage</strong>, de{" "}
-                          <strong>22 articles optimisés</strong> et à la
-                          création de <strong>2 nouvelles rubriques</strong>, de
-                          la recherche de mots-clés jusqu'à la mise en ligne,
-                          <strong>
-                            contribuant à une augmentation de 50 % du taux de
-                            conversion et de 30 % du taux de clics.
-                          </strong>{" "}
-                        </li>
+                            <li>
+                              <strong>
+                                Development of organic search visibility (SEO)
+                              </strong>{" "}
+                              through the writing of{" "}
+                              <strong>38 travel itineraries</strong>,{" "}
+                              <strong>22 optimized articles</strong> and the
+                              creation of <strong>2 new sections</strong>, from
+                              keyword research to publication,{" "}
+                              <strong>
+                                contributing to a 50% increase in conversion
+                                rate and a 30% increase in click-through rate.
+                              </strong>
+                            </li>
 
-                        <li>
-                          Rédaction, conception et diffusion de{" "}
-                          <strong>25 newsletters</strong>
-                          ainsi que de <strong>185 publications</strong> sur
-                          Instagram et Facebook, incluant l'élaboration du
-                          calendrier éditorial, la rédaction des contenus et la
-                          conception des visuels, contribuant à une{" "}
-                          <strong>
-                            croissance de 50 % de la communauté Instagram.
-                          </strong>{" "}
-                        </li>
+                            <li>
+                              Writing, designing and distributing{" "}
+                              <strong>25 newsletters</strong> and{" "}
+                              <strong>185 publications</strong> on Instagram and
+                              Facebook, including editorial calendar planning,
+                              content writing and visual design, contributing to
+                              a{" "}
+                              <strong>
+                                50% growth in the Instagram community.
+                              </strong>
+                            </li>
 
-                        <li>
-                          Gestion des <strong>campagnes Google Ads</strong>, en
-                          collaboration avec les consultants Google, afin
-                          d'optimiser la visibilité et les performances des
-                          campagnes.{" "}
-                        </li>
+                            <li>
+                              Management of{" "}
+                              <strong>Google Ads campaigns</strong>, in
+                              collaboration with Google consultants, to optimize
+                              campaign visibility and performance.
+                            </li>
 
-                        <li>
-                          <strong>
-                            Suivi, analyse et reporting hebdomadaires et
-                            mensuels des KPIs
-                          </strong>{" "}
-                          via Google Analytics afin d'évaluer les performances
-                          des actions digitales et d'identifier les axes
-                          d'optimisation.{" "}
-                        </li>
+                            <li>
+                              <strong>
+                                Weekly and monthly monitoring, analysis and
+                                reporting of KPIs
+                              </strong>{" "}
+                              via Google Analytics to evaluate digital
+                              performance and identify optimization
+                              opportunities.
+                            </li>
 
-                        <li>
-                          Réalisation de{" "}
-                          <strong>veilles concurrentielles</strong> afin
-                          d'identifier les tendances du secteur et de soutenir
-                          l'évolution de la stratégie digitale.{" "}
-                        </li>
+                            <li>
+                              Competitive monitoring to identify industry trends
+                              and support the evolution of the digital strategy.
+                            </li>
+                          </>
+                        ) : (
+                          <>
+                            <li>
+                              Gestion du site web WordPress, incluant l'
+                              <strong>
+                                optimisation de l'expérience utilisateur
+                              </strong>{" "}
+                              (UX), la <strong>gestion des contenus</strong> et
+                              le{" "}
+                              <strong>suivi de la maintenance évolutive</strong>{" "}
+                              (TMA) avec un prestataire externe.
+                            </li>
+
+                            <li>
+                              <strong>
+                                Développement du référencement naturel (SEO)
+                              </strong>{" "}
+                              grâce à la rédaction de{" "}
+                              <strong>38 circuits de voyage</strong>, de{" "}
+                              <strong>22 articles optimisés</strong> et à la
+                              création de <strong>2 nouvelles rubriques</strong>
+                              , de la recherche de mots-clés jusqu'à la mise en
+                              ligne,{" "}
+                              <strong>
+                                contribuant à une augmentation de 50 % du taux
+                                de conversion et de 30 % du taux de clics.
+                              </strong>
+                            </li>
+
+                            <li>
+                              Rédaction, conception et diffusion de{" "}
+                              <strong>25 newsletters</strong> ainsi que de{" "}
+                              <strong>185 publications</strong> sur Instagram et
+                              Facebook, incluant l'élaboration du calendrier
+                              éditorial, la rédaction des contenus et la
+                              conception des visuels, contribuant à une{" "}
+                              <strong>
+                                croissance de 50 % de la communauté Instagram.
+                              </strong>
+                            </li>
+
+                            <li>
+                              Gestion des <strong>campagnes Google Ads</strong>,
+                              en collaboration avec les consultants Google, afin
+                              d'optimiser la visibilité et les performances des
+                              campagnes.
+                            </li>
+
+                            <li>
+                              <strong>
+                                Suivi, analyse et reporting hebdomadaires et
+                                mensuels des KPIs
+                              </strong>{" "}
+                              via Google Analytics afin d'évaluer les
+                              performances des actions digitales et d'identifier
+                              les axes d'optimisation.
+                            </li>
+
+                            <li>
+                              Réalisation de{" "}
+                              <strong>veilles concurrentielles</strong> afin
+                              d'identifier les tendances du secteur et de
+                              soutenir l'évolution de la stratégie digitale.
+                            </li>
+                          </>
+                        )}
                       </ul>
                     </div>
                   </article>
@@ -718,7 +924,11 @@ export default function CV(): React.JSX.Element {
               ============================================ */}
 
               <section className="cv-section education-section">
-                <h2 className="section-title">DIPLÔMES ET FORMATIONS</h2>
+                <h2 className="section-title">
+                  {isEnglish
+                    ? "EDUCATION & TRAINING"
+                    : "DIPLÔMES ET FORMATIONS"}
+                </h2>
 
                 <div className="timeline">
                   {/* MASTER */}
@@ -727,10 +937,18 @@ export default function CV(): React.JSX.Element {
                     <div className="timeline-dot" />
 
                     <div className="education">
-                      <h3>Master Cultures et Métiers du Web</h3>
+                      <h3>
+                        {isEnglish
+                          ? "Master's Degree in Web Cultures and Professions"
+                          : "Master Cultures et Métiers du Web"}
+                      </h3>
 
                       <div className="meta">
-                        <span>De sept. 2023 à août 2025</span>
+                        <span>
+                          {isEnglish
+                            ? "Sept. 2023 to Aug. 2025"
+                            : "De sept. 2023 à août 2025"}
+                        </span>
 
                         <strong>Université Gustave Eiffel</strong>
 
@@ -738,49 +956,92 @@ export default function CV(): React.JSX.Element {
                       </div>
 
                       <ul className="experience-list">
-                        <li>
-                          Projets et Création (documentaire interactif, web
-                          design, projet web)
-                        </li>
+                        {isEnglish ? (
+                          <>
+                            <li>
+                              Projects and Creation (interactive documentary,
+                              web design, web project)
+                            </li>
 
-                        <li>Sciences sociales et numérique</li>
+                            <li>Social sciences and digital technologies</li>
 
-                        <li>
-                          Cultures visuelles (photographie, néo-géographie)
-                        </li>
+                            <li>
+                              Visual cultures (photography, neo-geography)
+                            </li>
 
-                        <li>
-                          Codage (base de données, HTML/CSS, PHP/SQL, CMS,
-                          JAVASCRIPT)
-                        </li>
+                            <li>
+                              Coding (databases, HTML/CSS, PHP/SQL, CMS,
+                              JAVASCRIPT)
+                            </li>
+                          </>
+                        ) : (
+                          <>
+                            <li>
+                              Projets et Création (documentaire interactif, web
+                              design, projet web)
+                            </li>
+
+                            <li>Sciences sociales et numérique</li>
+
+                            <li>
+                              Cultures visuelles (photographie, néo-géographie)
+                            </li>
+
+                            <li>
+                              Codage (base de données, HTML/CSS, PHP/SQL, CMS,
+                              JAVASCRIPT)
+                            </li>
+                          </>
+                        )}
                       </ul>
 
                       <div className="education-details">
                         <p>
-                          <strong>Mention :</strong> Bien
+                          <strong>{isEnglish ? "Grade:" : "Mention :"}</strong>{" "}
+                          {isEnglish ? "Good" : "Bien"}
                         </p>
+
                         <p>
-                          <strong>Spécialisation:</strong> Réalisation du
-                          documentaire interactif{" "}
+                          <strong>
+                            {isEnglish ? "Specialization:" : "Spécialisation:"}
+                          </strong>{" "}
+                          {isEnglish
+                            ? "Creation of the interactive documentary"
+                            : "Réalisation du documentaire interactif"}{" "}
                           <em>Le Trot : les voix d'hier échos d'aujourd'hui</em>
                         </p>
 
                         <p>
-                          Responsable image et Directrice artistique sur le set
-                          <strong>| réalisé en Corée du Sud</strong>{" "}
-                        </p>
-
-                        <p>
-                          <strong>Option :</strong> Gestion de projet et
-                          lancement du site web <em>Sevran en mouvement</em>
-                        </p>
-
-                        <p>
-                          Designer UX/UI et Développeuse web{" "}
+                          {isEnglish
+                            ? "Image Manager and Art Director on set"
+                            : "Responsable image et Directrice artistique sur le set"}{" "}
                           <strong>
-                            | projet soutenu auprès de Stéphane Blanchet{" "}
+                            {isEnglish
+                              ? "| produced in South Korea"
+                              : "| réalisé en Corée du Sud"}
+                          </strong>
+                        </p>
+
+                        <p>
+                          <strong>{isEnglish ? "Option:" : "Option :"}</strong>{" "}
+                          {isEnglish
+                            ? "Project management and launch of the Sevran en mouvement website"
+                            : "Gestion de projet et lancement du site web"}{" "}
+                          <em>Sevran en mouvement</em>
+                        </p>
+
+                        <p>
+                          {isEnglish
+                            ? "UX/UI Designer and Web Developer"
+                            : "Designer UX/UI et Développeuse web"}{" "}
+                          <strong>
+                            {isEnglish
+                              ? "| project presented to Stéphane Blanchet"
+                              : "| projet soutenu auprès de Stéphane Blanchet"}
                           </strong>{" "}
-                          (Maire de Sevran)
+                          {isEnglish
+                            ? "(Mayor of Sevran)"
+                            : "(Maire de Sevran)"}
                         </p>
                       </div>
                     </div>
@@ -793,12 +1054,17 @@ export default function CV(): React.JSX.Element {
 
                     <div className="education">
                       <h3>
-                        Licence d'Arts - études visuelles, médias et arts
-                        numériques
+                        {isEnglish
+                          ? "Bachelor's Degree in Arts – Visual Studies, Media and Digital Arts"
+                          : "Licence d'Arts - études visuelles, médias et arts numériques"}
                       </h3>
 
                       <div className="meta">
-                        <span>De sept. 2020 à mai 2023</span>
+                        <span>
+                          {isEnglish
+                            ? "Sept. 2020 to May 2023"
+                            : "De sept. 2020 à mai 2023"}
+                        </span>
 
                         <strong>Université Gustave Eiffel</strong>
 
@@ -807,17 +1073,22 @@ export default function CV(): React.JSX.Element {
 
                       <div className="education-details">
                         <p>
-                          <strong>Option :</strong> arts visuels et sonores
+                          <strong>{isEnglish ? "Option:" : "Option :"}</strong>{" "}
+                          {isEnglish
+                            ? "Visual and sound arts"
+                            : "arts visuels et sonores"}
                         </p>
                       </div>
                     </div>
                   </article>
                 </div>
               </section>
+
               {/* REFERENCES */}
 
               <section className="sidebar-section languages">
-                <h2>RÉFÉRENCES</h2>
+                <h2>{isEnglish ? "REFERENCES" : "RÉFÉRENCES"}</h2>
+
                 <div className="small-text">
                   <p>
                     <strong>Pierre Ployart</strong>
@@ -828,21 +1099,22 @@ export default function CV(): React.JSX.Element {
                       href="https://fr.linkedin.com/in/pierre-ployart"
                       className="contact-item"
                     >
-                      {" "}
                       https://fr.linkedin.com/in/pierre-ployart
                     </a>
                   </p>
+
                   <br />
+
                   <p>
                     <strong>Shannon Kierse</strong>
                     <br />
-                    Marketing Manager, Atlantic Centre of Education <br />
+                    Marketing Manager, Atlantic Centre of Education
+                    <br />
                     <a
                       href="https://ie.linkedin.com/in/shannon-kierse-914488113"
                       className="contact-item"
                     >
-                      {" "}
-                      https://ie.linkedin.com/in/shannon-kierse-914488113{" "}
+                      https://ie.linkedin.com/in/shannon-kierse-914488113
                     </a>
                   </p>
                 </div>
@@ -856,11 +1128,13 @@ export default function CV(): React.JSX.Element {
 
           <div className="download-zone">
             <a
-              href={`${BASE_PATH}/projects/cv.pdf`}
-              download="cv-ines-sogadzi.pdf"
+              href={`${BASE_PATH}/projects/${isEnglish ? "cv_en.pdf" : "cv.pdf"}`}
+              download={
+                isEnglish ? "cv-ines-sogadzi-en.pdf" : "cv-ines-sogadzi.pdf"
+              }
               className="download-button"
             >
-              <span>TÉLÉCHARGER LE CV</span>
+              <span>{isEnglish ? "DOWNLOAD CV" : "TÉLÉCHARGER LE CV"}</span>
 
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path

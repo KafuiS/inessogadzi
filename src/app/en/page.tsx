@@ -1,5 +1,5 @@
 import About from "@/composants/about/about";
 
-export default function EnglishHome() {
+export default function Home() {
   return <About />;
 }

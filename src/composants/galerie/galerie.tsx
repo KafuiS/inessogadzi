@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { usePathname } from "next/navigation";
 import Header from "@/composants/header/header";
 
 const BASE_PATH = "/inessogadzi";
@@ -51,7 +52,7 @@ type ProjectData = {
   description: ReactNode;
 };
 
-const PROJECTS_DATA: Record<number, ProjectData> = {
+const PROJECTS_DATA_FR: Record<number, ProjectData> = {
   1: {
     title: "Arkitekt",
     type: "Typographie",
@@ -59,15 +60,17 @@ const PROJECTS_DATA: Record<number, ProjectData> = {
     date: "2023",
     description: (
       <>
-        {" "}
         Cet exercice, réalisé sur Illustrator, était consacré à
-        l’expérimentation typographique. <br /> Le champ était libre : créer une
-        typographie de toutes pièces, travailler quelques caractères ou encore
-        détourner une typographie existante. J’ai choisi de concevoir mon propre
-        alphabet, de A à Z, ainsi qu’une série de chiffres de 1 à 9.
-        <br /> <br /> J’ai travaillé sur un contraste marqué entre des
-        empattements imposants et des lignes très fines, en cherchant à trouver
-        un équilibre entre force et délicatesse.{" "}
+        l’expérimentation typographique. <br />
+        Le champ était libre : créer une typographie de toutes pièces,
+        travailler quelques caractères ou encore détourner une typographie
+        existante. J’ai choisi de concevoir mon propre alphabet, de A à Z, ainsi
+        qu’une série de chiffres de 1 à 9.
+        <br />
+        <br />
+        J’ai travaillé sur un contraste marqué entre des empattements imposants
+        et des lignes très fines, en cherchant à trouver un équilibre entre
+        force et délicatesse.
       </>
     ),
   },
@@ -79,14 +82,15 @@ const PROJECTS_DATA: Record<number, ProjectData> = {
     date: "2020 - aujourd'hui",
     description: (
       <>
-        {" "}
         J’ai eu l’occasion d’expérimenter la photographie à travers différents
         exercices et situations de prise de vue. Cette sélection rassemble des
         images aux approches variées, choisies pour leur intérêt visuel et pour
-        témoigner de ma pratique photographique. <br /> <br /> Ces photographies
-        ont été conservées dans leur état d’origine, sans retouche, afin de
-        mettre en avant le travail réalisé directement lors de la prise de
-        vue.{" "}
+        témoigner de ma pratique photographique.
+        <br />
+        <br />
+        Ces photographies ont été conservées dans leur état d’origine, sans
+        retouche, afin de mettre en avant le travail réalisé directement lors de
+        la prise de vue.
       </>
     ),
   },
@@ -98,18 +102,24 @@ const PROJECTS_DATA: Record<number, ProjectData> = {
     date: "2024",
     description: (
       <>
-        {" "}
-        Poésie. Sérénité. Apaisement. Ralentir pour mieux contempler. <br />{" "}
-        <br /> Dans une démarche romantique, nous avons choisi de nous attarder
-        sur ce qui relève du sensible : ces instants suspendus où la nature
-        invite à observer, ressentir et simplement être. <br /> <br /> Inspirées
-        par la pensée de Goethe, pour qui la nature, lorsqu’elle est traversée
-        par le regard de l’esprit, révèle ce qui ne peut être dit, nous avons
-        souhaité lui accorder une place centrale dans notre réflexion. <br />{" "}
-        <br /> Notre démarche s’est ainsi construite autour de la valorisation
-        des paysages comme espaces de contemplation, capables de susciter une
+        Poésie. Sérénité. Apaisement. Ralentir pour mieux contempler.
+        <br />
+        <br />
+        Dans une démarche romantique, nous avons choisi de nous attarder sur ce
+        qui relève du sensible : ces instants suspendus où la nature invite à
+        observer, ressentir et simplement être.
+        <br />
+        <br />
+        Inspirées par la pensée de Goethe, pour qui la nature, lorsqu’elle est
+        traversée par le regard de l’esprit, révèle ce qui ne peut être dit,
+        nous avons souhaité lui accorder une place centrale dans notre
+        réflexion.
+        <br />
+        <br />
+        Notre démarche s’est ainsi construite autour de la valorisation des
+        paysages comme espaces de contemplation, capables de susciter une
         expérience intime, presque spirituelle, et de nous reconnecter à ce qui
-        nous entoure.{" "}
+        nous entoure.
       </>
     ),
   },
@@ -121,21 +131,26 @@ const PROJECTS_DATA: Record<number, ProjectData> = {
     date: "2023",
     description: (
       <>
-        {" "}
         Dans le cadre de mon stage de fin de licence chez Interface Z, j’ai été
         chargée de promouvoir un capteur appelé « le fil résistif ». Il s’agit
         d’un simple fil qui, au contact d’un objet conducteur, permet d’exécuter
-        un code. <br /> <br /> La question qui a guidé le projet était : comment
-        faire de la cymatique numériquement ? En conservant l’idée d’une matière
-        organique, j’ai créé un objet textile inspiré des motifs formés par le
-        sable sous l’effet des vibrations sonores. Le fil résistif, cousu
-        directement dans le tissu, devient alors l’interface de l’expérience.{" "}
-        <br /> <br /> À l’aide de Max 8 et de Jitter, j’ai créé un visuel
-        génératif dont les variations simulent différentes fréquences sonores.
-        Le visuel réagit ainsi au contact avec l’objet conducteur et évolue en
-        temps réel. <br /> <br /> L’ensemble a ensuite été capturé en vidéo,
-        donnant naissance à une expérience à la frontière entre son, matière et
-        mouvement.{" "}
+        un code.
+        <br />
+        <br />
+        La question qui a guidé le projet était : comment faire de la cymatique
+        numériquement ? En conservant l’idée d’une matière organique, j’ai créé
+        un objet textile inspiré des motifs formés par le sable sous l’effet des
+        vibrations sonores. Le fil résistif, cousu directement dans le tissu,
+        devient alors l’interface de l’expérience.
+        <br />
+        <br />
+        À l’aide de Max 8 et de Jitter, j’ai créé un visuel génératif dont les
+        variations simulent différentes fréquences sonores. Le visuel réagit
+        ainsi au contact avec l’objet conducteur et évolue en temps réel.
+        <br />
+        <br />
+        L’ensemble a ensuite été capturé en vidéo, donnant naissance à une
+        expérience à la frontière entre son, matière et mouvement.
       </>
     ),
   },
@@ -147,20 +162,25 @@ const PROJECTS_DATA: Record<number, ProjectData> = {
     date: "2022",
     description: (
       <>
-        {" "}
         Tout a commencé lorsque j’ai découvert Chaos Walking, réalisé par Doug
         Liman. Dans cet univers, les pensées des hommes deviennent audibles de
-        tous. Ils appellent ce phénomène « le Bruit ». <br /> <br /> Ce qui m’a
-        intriguée est sa représentation à l’écran : une émanation brumeuse qui
-        apparaît autour des personnages lorsqu’ils pensent. Je me suis alors
-        demandé : à quoi ressemble réellement le bruit ? Et si le son pouvait
-        être rendu visible, quelle forme prendrait-il ? <br /> <br /> C’est à
-        partir de cette question que j’ai cherché à rendre visibles les ondes
-        sonores dans la matière. Cette démarche, appelée cymatique, permet de
-        révéler les vibrations acoustiques à travers différents éléments comme
-        l’eau ou le sable. <br /> <br /> De l’invisible au visible, du son à la
-        matière, Noises cherche ainsi à donner une forme à ce qui ne peut
-        habituellement pas être vu.{" "}
+        tous. Ils appellent ce phénomène « le Bruit ».
+        <br />
+        <br />
+        Ce qui m’a intriguée est sa représentation à l’écran : une émanation
+        brumeuse qui apparaît autour des personnages lorsqu’ils pensent. Je me
+        suis alors demandé : à quoi ressemble réellement le bruit ? Et si le son
+        pouvait être rendu visible, quelle forme prendrait-il ?
+        <br />
+        <br />
+        C’est à partir de cette question que j’ai cherché à rendre visibles les
+        ondes sonores dans la matière. Cette démarche, appelée cymatique, permet
+        de révéler les vibrations acoustiques à travers différents éléments
+        comme l’eau ou le sable.
+        <br />
+        <br />
+        De l’invisible au visible, du son à la matière, Noises cherche ainsi à
+        donner une forme à ce qui ne peut habituellement pas être vu.
       </>
     ),
   },
@@ -172,12 +192,13 @@ const PROJECTS_DATA: Record<number, ProjectData> = {
     date: "2022",
     description: (
       <>
-        {" "}
         La consigne était de réaliser un fanzine sur le sujet de notre choix
-        afin de développer notre maîtrise d’InDesign. <br /> <br />À cette
-        période, l’actualité était marquée par la disparition de Virgil Abloh et
-        la présentation de sa dernière collection. J’ai choisi de consacrer mon
-        fanzine à cet ultime défilé, intitulé « Virgil Was Here ».{" "}
+        afin de développer notre maîtrise d’InDesign.
+        <br />
+        <br />À cette période, l’actualité était marquée par la disparition de
+        Virgil Abloh et la présentation de sa dernière collection. J’ai choisi
+        de consacrer mon fanzine à cet ultime défilé, intitulé « Virgil Was Here
+        ».
       </>
     ),
   },
@@ -189,21 +210,18 @@ const PROJECTS_DATA: Record<number, ProjectData> = {
     date: "2024",
     description: (
       <>
-        {" "}
         La météo maritime est un univers où le vent, les vagues, les marées et
         les conditions météorologiques évoluent constamment. Pour les
         navigateurs, les plaisanciers ou les passionnés de la mer, ces
         informations sont essentielles pour comprendre l’état du littoral et
-        anticiper les conditions à venir. <br /> <br /> Dans ce contexte, il
-        m’est demandé d’imaginer l’identité visuelle et l’
-        <a href="https://www.figma.com/proto/EKIgeAA6c8yrB3hf013Pp4/Untitled?type=design&node-id=48-1877&t=SByXnYXE0HErF7nk-1&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A2">
-          {" "}
-          application{" "}
-        </a>{" "}
-        d’un service dédié aux prévisions maritimes. L’objectif est de créer un
-        univers graphique capable de traduire visuellement les différents
-        phénomènes qui rythment la mer et de rendre ces informations facilement
-        accessibles à l’utilisateur.{" "}
+        anticiper les conditions à venir.
+        <br />
+        <br />
+        Dans ce contexte, il m’est demandé d’imaginer l’identité visuelle et
+        l’application d’un service dédié aux prévisions maritimes. L’objectif
+        est de créer un univers graphique capable de traduire visuellement les
+        différents phénomènes qui rythment la mer et de rendre ces informations
+        facilement accessibles à l’utilisateur.
       </>
     ),
   },
@@ -215,19 +233,22 @@ const PROJECTS_DATA: Record<number, ProjectData> = {
     date: "2024",
     description: (
       <>
-        {" "}
         Le Ministère du Temps est une institution fictive qui apparaît dans la
         série télévisée espagnole « El Ministerio del Tiempo » (Le Ministère du
         Temps). Son rôle est de préserver l'intégrité de l'histoire et de
-        veiller à ce que les événements du passé ne soient pas modifiés. <br />{" "}
-        <br /> Le Ministère du Temps est une organisation secrète, connue
-        uniquement de quelques individus, et son existence est gardée secrète du
-        grand public. Il est composé d'une équipe hétéroclite d'agents provenant
-        de différentes époques, chacun apportant ses compétences et
-        connaissances spécifiques pour maintenir l'intégrité du continuum
-        temporel. <br /> <br /> Dans ce contexte, il m'est demandé d'imaginer la
-        nouvelle identité visuelle du Ministère du Temps en mettant en avant
-        l'idée de voyage temporel et de préservation de l'histoire.{" "}
+        veiller à ce que les événements du passé ne soient pas modifiés.
+        <br />
+        <br />
+        Le Ministère du Temps est une organisation secrète, connue uniquement de
+        quelques individus, et son existence est gardée secrète du grand public.
+        Il est composé d'une équipe hétéroclite d'agents provenant de
+        différentes époques, chacun apportant ses compétences et connaissances
+        spécifiques pour maintenir l'intégrité du continuum temporel.
+        <br />
+        <br />
+        Dans ce contexte, il m'est demandé d'imaginer la nouvelle identité
+        visuelle du Ministère du Temps en mettant en avant l'idée de voyage
+        temporel et de préservation de l'histoire.
       </>
     ),
   },
@@ -239,13 +260,14 @@ const PROJECTS_DATA: Record<number, ProjectData> = {
     date: "jan. 2025 - juin. 2025",
     description: (
       <>
-        {" "}
         Le trot coréen, genre musical populaire au niveau national durant le XXe
         siècle, est désormais perçu comme désuet et réservé aux générations plus
         âgées. Ce documentaire explore l'attachement des personnes âgées pour ce
-        genre musical en retraçant son évolution. <br /> <br /> Direction du
-        pôle image du documentaire interactif « Le Trot : les voix d'hier échos
-        d'aujourd'hui » | réalisé en Corée du Sud{" "}
+        genre musical en retraçant son évolution.
+        <br />
+        <br />
+        Direction du pôle image du documentaire interactif « Le Trot : les voix
+        d'hier échos d'aujourd'hui » | réalisé en Corée du Sud
       </>
     ),
   },
@@ -257,12 +279,13 @@ const PROJECTS_DATA: Record<number, ProjectData> = {
     date: "nov. 2024 - avr. 2025",
     description: (
       <>
-        {" "}
         Sevran en Mouvement – Ensemble, construisons le futur de Sevran ! Ce
         site est conçu pour informer, inspirer et connecter les habitants autour
-        des projets de la ville. <br /> <br /> Idéation & Développement web de
-        la page d'accueil du projet Sevran en mouvement | Carte 3D interactive
-        (HTML, CSS, JAVASCRIPT, Three.js, Vite){" "}
+        des projets de la ville.
+        <br />
+        <br />
+        Idéation & Développement web de la page d'accueil du projet Sevran en
+        mouvement | Carte 3D interactive (HTML, CSS, JAVASCRIPT, Three.js, Vite)
       </>
     ),
   },
@@ -271,6 +294,250 @@ const PROJECTS_DATA: Record<number, ProjectData> = {
     title: "Marketing & Communication",
     type: "Contenus digitaux",
     role: "Chargée de communication",
+    date: "2026",
+    description: <></>,
+  },
+};
+
+const PROJECTS_DATA_EN: Record<number, ProjectData> = {
+  1: {
+    title: "Arkitekt",
+    type: "Typography",
+    role: "Art Direction",
+    date: "2023",
+    description: (
+      <>
+        This Illustrator exercise focused on typographic experimentation.
+        <br />
+        <br />
+        The brief was open-ended: create a typeface from scratch, work on a
+        selection of characters, or reinterpret an existing typeface. I chose to
+        design my own alphabet, from A to Z, along with a series of numbers from
+        1 to 9.
+        <br />
+        <br />I worked on a strong contrast between imposing serifs and very
+        fine lines, looking for a balance between strength and delicacy.
+      </>
+    ),
+  },
+
+  2: {
+    title: "Photography",
+    type: "Photography",
+    role: "Photographer",
+    date: "2020 - present",
+    description: (
+      <>
+        I have had the opportunity to experiment with photography through
+        various exercises and shooting situations. This selection brings
+        together images with different approaches, chosen for their visual
+        interest and to showcase my photographic practice.
+        <br />
+        <br />
+        These photographs have been kept in their original state, without
+        retouching, in order to highlight the work carried out directly during
+        the shooting process.
+      </>
+    ),
+  },
+
+  3: {
+    title: "Zen",
+    type: "Video",
+    role: "Videographer",
+    date: "2024",
+    description: (
+      <>
+        Poetry. Serenity. Calm. Slowing down in order to contemplate more
+        deeply.
+        <br />
+        <br />
+        Through a romantic approach, we chose to focus on the sensitive: those
+        suspended moments when nature invites us to observe, feel and simply
+        exist.
+        <br />
+        <br />
+        Inspired by Goethe's thoughts on nature and the way the mind reveals
+        what cannot be expressed through words, we wanted to give nature a
+        central place in our reflection.
+        <br />
+        <br />
+        Our approach was therefore built around landscapes as spaces for
+        contemplation, capable of creating an intimate, almost spiritual
+        experience and reconnecting us with our surroundings.
+      </>
+    ),
+  },
+
+  4: {
+    title: "The Resistive Thread",
+    type: "Video",
+    role: "Videographer",
+    date: "2023",
+    description: (
+      <>
+        As part of my final-year internship at Interface Z, I was responsible
+        for promoting a sensor called "the resistive thread". It is a simple
+        thread that, when in contact with a conductive object, can trigger a
+        piece of code.
+        <br />
+        <br />
+        The question guiding the project was: how can cymatics be created
+        digitally? Keeping the idea of an organic material, I created a textile
+        object inspired by the patterns formed by sand under the effect of sound
+        vibrations. The resistive thread, sewn directly into the fabric, becomes
+        the interface of the experience.
+        <br />
+        <br />
+        Using Max 8 and Jitter, I created a generative visual whose variations
+        simulate different sound frequencies. The visual reacts to contact with
+        the conductive object and evolves in real time.
+        <br />
+        <br />
+        The whole experience was then captured on video, resulting in a project
+        at the intersection of sound, material and movement.
+      </>
+    ),
+  },
+
+  5: {
+    title: "Noises",
+    type: "Video",
+    role: "Videographer",
+    date: "2022",
+    description: (
+      <>
+        It all started when I discovered Chaos Walking, directed by Doug Liman.
+        In this universe, people's thoughts become audible to everyone. They
+        call this phenomenon "the Noise".
+        <br />
+        <br />
+        What intrigued me was its representation on screen: a misty emanation
+        that appears around characters when they think. I began wondering: what
+        does the Noise actually look like? And if sound could be made visible,
+        what form would it take?
+        <br />
+        <br />
+        From this question, I explored ways of making sound waves visible
+        through matter. This approach, known as cymatics, reveals acoustic
+        vibrations through different materials such as water or sand.
+        <br />
+        <br />
+        From invisible to visible, from sound to matter, Noises seeks to give
+        form to something that normally cannot be seen.
+      </>
+    ),
+  },
+
+  6: {
+    title: "Virgil Was Here",
+    type: "Fanzine",
+    role: "Graphic Designer",
+    date: "2022",
+    description: (
+      <>
+        The brief was to create a fanzine on a subject of our choice in order to
+        develop our skills in InDesign.
+        <br />
+        <br />
+        At the time, the news was marked by the passing of Virgil Abloh and the
+        presentation of his final collection. I chose to dedicate my fanzine to
+        this final fashion show, entitled "Virgil Was Here".
+      </>
+    ),
+  },
+
+  7: {
+    title: "Windmap",
+    type: "Visual Identity",
+    role: "Graphic Designer",
+    date: "2024",
+    description: (
+      <>
+        Maritime weather is an environment where wind, waves, tides and weather
+        conditions are constantly changing. For sailors, boaters and sea
+        enthusiasts, this information is essential for understanding coastal
+        conditions and anticipating what is to come.
+        <br />
+        <br />
+        In this context, I was asked to imagine the visual identity and
+        application of a service dedicated to marine forecasts. The objective
+        was to create a visual universe capable of translating the different
+        phenomena that shape the sea while making this information easily
+        accessible to users.
+      </>
+    ),
+  },
+
+  8: {
+    title: "The Ministry of Time",
+    type: "Visual Identity",
+    role: "Graphic Designer",
+    date: "2024",
+    description: (
+      <>
+        The Ministry of Time is a fictional institution appearing in the Spanish
+        television series "El Ministerio del Tiempo" (The Ministry of Time). Its
+        role is to preserve the integrity of history and ensure that past events
+        are not altered.
+        <br />
+        <br />
+        The Ministry of Time is a secret organization known only to a few
+        individuals, with its existence kept hidden from the general public. It
+        is composed of a diverse team of agents from different periods of
+        history, each bringing their own skills and knowledge to maintain the
+        integrity of the timeline.
+        <br />
+        <br />
+        In this context, I was asked to imagine a new visual identity for the
+        Ministry of Time, emphasizing the ideas of time travel and the
+        preservation of history.
+      </>
+    ),
+  },
+
+  9: {
+    title: "Le Trot: Voices of Yesterday, Echoes of Today",
+    type: "Interactive Documentary",
+    role: "Art Director",
+    date: "Jan. 2025 - June 2025",
+    description: (
+      <>
+        Korean trot, a musical genre that was nationally popular throughout the
+        20th century, is now often perceived as outdated and associated with
+        older generations. This documentary explores older people's attachment
+        to the genre by tracing its evolution.
+        <br />
+        <br />
+        Art direction for the visual department of the interactive documentary
+        "Le Trot: Voices of Yesterday, Echoes of Today" | produced in South
+        Korea
+      </>
+    ),
+  },
+
+  10: {
+    title: "Sevran en Mouvement",
+    type: "Web Project",
+    role: "UX/UI | Developer",
+    date: "Nov. 2024 - Apr. 2025",
+    description: (
+      <>
+        Sevran en Mouvement – Together, let's build the future of Sevran! This
+        website was designed to inform, inspire and connect residents around the
+        city's projects.
+        <br />
+        <br />
+        Ideation & Web development of the homepage for the Sevran en Mouvement
+        project | Interactive 3D map (HTML, CSS, JAVASCRIPT, Three.js, Vite)
+      </>
+    ),
+  },
+
+  11: {
+    title: "Marketing & Communication",
+    type: "Digital Content",
+    role: "Communications Officer",
     date: "2026",
     description: <></>,
   },
@@ -687,12 +954,17 @@ function ProjectModal({
 }: ProjectModalProps): React.JSX.Element {
   const [activeMedia, setActiveMedia] = useState(0);
 
+  const pathname = usePathname();
+  const isEnglish = pathname.startsWith(`${BASE_PATH}/en`);
+
+  const projectsData = isEnglish ? PROJECTS_DATA_EN : PROJECTS_DATA_FR;
+
   const [videoMuted, setVideoMuted] = useState<Record<string, boolean>>({
     [`${BASE_PATH}/projects/project-11-1.mp4`]: true,
     [`${BASE_PATH}/projects/project-11-2.mp4`]: true,
   });
 
-  const project = PROJECTS_DATA[projectIndex] ?? PROJECTS_DATA[1];
+  const project = projectsData[projectIndex] ?? projectsData[1];
 
   const projectUrl = PROJECT_URLS[projectIndex] ?? "#";
 
@@ -705,52 +977,90 @@ function ProjectModal({
 
   const project11Slides = [
     {
-      label: "Vidéo",
+      label: isEnglish ? "Video" : "Vidéo",
       items: media.slice(0, 2),
-      description: (
+      description: isEnglish ? (
         <>
-          {" "}
+          Create video content for social media, from the initial idea to
+          editing, working on rhythm, storytelling and visual identity. Each
+          Reel was designed to be dynamic, spontaneous and consistent with the
+          Atlantic Centre of Education's visual universe.
+          <br />
+          <br />
+          This experience allowed me to explore another way of telling a story
+          and engaging audiences.
+        </>
+      ) : (
+        <>
           Créer des contenus vidéo pour les réseaux sociaux, de l’idée au
           montage, en travaillant le rythme, le storytelling et l’identité
           visuelle. Chaque Reel était pensé pour être à la fois dynamique,
-          spontané et cohérent avec l’univers de l’Atlantic Centre of Education.{" "}
-          <br /> <br /> Cette expérience m’a permis d’explorer une autre manière
-          de raconter une histoire et d'engager les audiences.{" "}
+          spontané et cohérent avec l’univers de l’Atlantic Centre of Education.
+          <br />
+          <br />
+          Cette expérience m’a permis d’explorer une autre manière de raconter
+          une histoire et d'engager les audiences.
         </>
       ),
     },
 
     {
-      label: "Images",
+      label: isEnglish ? "Images" : "Images",
       items: media.slice(2, 4),
-      description: (
+      description: isEnglish ? (
         <>
-          {" "}
+          Create content for social media, from editorial thinking to visual
+          creation, adapting each publication to the codes and formats of the
+          platforms. Working on copywriting, tone, information hierarchy and
+          visual impact to create coherent, readable and engaging content.
+          <br />
+          <br />
+          This selection of publications created for ACE reflects my experience
+          in content creation and my ability to transform an idea into content
+          designed to attract attention, communicate a message and engage
+          audiences.
+        </>
+      ) : (
+        <>
           Concevoir des contenus pour les réseaux sociaux, de la réflexion
           éditoriale à la création visuelle, en adaptant chaque publication aux
           codes et aux formats des plateformes. Travailler le copywriting, le
           ton, la hiérarchie de l’information et l’impact visuel pour créer des
-          contenus cohérents, lisibles et engageants. <br /> <br /> Cette
-          sélection de publications réalisées pour l’ACE témoigne de mon
+          contenus cohérents, lisibles et engageants.
+          <br />
+          <br />
+          Cette sélection de publications réalisées pour l’ACE témoigne de mon
           expérience en création de contenu et de ma capacité à transformer une
           idée en contenu pensé pour attirer l’attention, transmettre un message
-          et engager les audiences.{" "}
+          et engager les audiences.
         </>
       ),
     },
 
     {
-      label: "Communication digital",
+      label: isEnglish ? "Digital Communication" : "Communication digital",
       items: media.slice(4, 7),
-      description: (
+      description: isEnglish ? (
         <>
-          {" "}
+          Create digital communication materials by working on layout,
+          information hierarchy and visual identity in order to make content
+          clear, readable and consistent.
+          <br />
+          <br />
+          This factsheet created for the Atlantic Centre of Education
+          demonstrates my ability to visually structure information and adapt it
+          to the constraints of a digital medium.
+        </>
+      ) : (
+        <>
           Concevoir des supports de communication digitale en travaillant la
           mise en page, la hiérarchie de l’information et l’identité visuelle
-          afin de rendre les contenus clairs, lisibles et cohérents. <br />{" "}
-          <br /> Ce factsheet réalisée pour l’Atlantic Centre of Education
-          illustre ma capacité à structurer visuellement une information et à
-          l’adapter aux contraintes d’un support digital.{" "}
+          afin de rendre les contenus clairs, lisibles et cohérents.
+          <br />
+          <br />
+          Ce factsheet réalisé pour l’Atlantic Centre of Education illustre ma
+          capacité à structurer visuellement une information et à l’adapter aux
+          contraintes d’un support digital.
         </>
       ),
     },
@@ -868,9 +1178,13 @@ function ProjectModal({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="project-visit-site"
-                aria-label={`Visit site — ${project.title}`}
+                aria-label={
+                  isEnglish
+                    ? `Visit site — ${project.title}`
+                    : `Visiter le site — ${project.title}`
+                }
               >
-                <span>Visit site</span>
+                <span>{isEnglish ? "Visit site" : "Visiter le site"}</span>
 
                 <img
                   src={`${BASE_PATH}/projects/carre-fleche.png`}
@@ -894,7 +1208,7 @@ function ProjectModal({
                   type="button"
                   className="project-carousel-arrow project-carousel-arrow-left"
                   onClick={goToPreviousMedia}
-                  aria-label="Média précédent"
+                  aria-label={isEnglish ? "Previous media" : "Média précédent"}
                 >
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M14.5 4.5L7 12L14.5 19.5" />
@@ -905,7 +1219,7 @@ function ProjectModal({
                   type="button"
                   className="project-carousel-arrow project-carousel-arrow-right"
                   onClick={goToNextMedia}
-                  aria-label="Média suivant"
+                  aria-label={isEnglish ? "Next media" : "Média suivant"}
                 >
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M9.5 4.5L17 12L9.5 19.5" />
@@ -946,8 +1260,12 @@ function ProjectModal({
                         }}
                         aria-label={
                           (videoMuted[item.src] ?? true)
-                            ? "Activer le son"
-                            : "Couper le son"
+                            ? isEnglish
+                              ? "Turn sound on"
+                              : "Activer le son"
+                            : isEnglish
+                              ? "Turn sound off"
+                              : "Couper le son"
                         }
                       >
                         <span className="project-11-volume-icon">
@@ -966,7 +1284,11 @@ function ProjectModal({
                   <img
                     key={`${projectIndex}-${activeMedia}`}
                     src={activeItem.src}
-                    alt={`Projet ${projectIndex} — image ${activeMedia + 1}`}
+                    alt={
+                      isEnglish
+                        ? `Project ${projectIndex} — image ${activeMedia + 1}`
+                        : `Projet ${projectIndex} — image ${activeMedia + 1}`
+                    }
                     className="project-modal-image"
                   />
                 ) : (
@@ -1010,9 +1332,13 @@ function ProjectModal({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="project-visit-site"
-                aria-label={`Visit site — ${project.title}`}
+                aria-label={
+                  isEnglish
+                    ? `Visit site — ${project.title}`
+                    : `Visiter le site — ${project.title}`
+                }
               >
-                <span>Visit site</span>
+                <span>{isEnglish ? "Visit site" : "Visiter le site"}</span>
 
                 <img
                   src={`${BASE_PATH}/projects/carre-fleche.png`}
@@ -1042,7 +1368,11 @@ function ProjectModal({
                       : "project-thumbnail"
                   }
                   onClick={() => setActiveMedia(index)}
-                  aria-label={`Afficher la slide ${index + 1} — ${slide.label}`}
+                  aria-label={
+                    isEnglish
+                      ? `Show slide ${index + 1} — ${slide.label}`
+                      : `Afficher la slide ${index + 1} — ${slide.label}`
+                  }
                 >
                   <div className="project-11-thumbnail-preview">
                     {slide.items.map((item) =>
@@ -1079,7 +1409,11 @@ function ProjectModal({
                       : "project-thumbnail"
                   }
                   onClick={() => setActiveMedia(index)}
-                  aria-label={`Afficher le média ${index + 1}`}
+                  aria-label={
+                    isEnglish
+                      ? `Show media ${index + 1}`
+                      : `Afficher le média ${index + 1}`
+                  }
                 >
                   {item.type === "image" ? (
                     <img
@@ -1104,7 +1438,7 @@ function ProjectModal({
           type="button"
           className="project-modal-close"
           onClick={onClose}
-          aria-label="Fermer le projet"
+          aria-label={isEnglish ? "Close project" : "Fermer le projet"}
         >
           <span />
           <span />
@@ -1554,9 +1888,7 @@ function ProjectModal({
           object-fit: cover;
           user-select: none;
           -webkit-user-drag: none;
-        }
-
-        /* ===================================================== TABLET ===================================================== */
+        } /* ===================================================== TABLET ===================================================== */
 
         @media (max-width: 900px) {
           .project-modal {
@@ -1695,7 +2027,7 @@ function ProjectModal({
             font-size: 9px;
           }
 
-          /* =================================================== PROJET 11 — TABLET =================================================== */
+          /* PROJET 11 TABLET */
 
           .project-modal-project-11-media {
             width: min(82vw, 720px);
@@ -1892,7 +2224,7 @@ function ProjectModal({
             height: 14px;
           }
 
-          /* =================================================== PROJET 11 — MOBILE =================================================== */
+          /* PROJET 11 MOBILE */
 
           .project-modal-project-11-media {
             width: calc(100vw - 76px);
@@ -1954,7 +2286,7 @@ function ProjectModal({
             height: 14px;
           }
 
-          /* =================================================== MINIATURES MOBILE =================================================== */
+          /* MINIATURES MOBILE */
 
           .project-thumbnails {
             left: 50%;
@@ -2035,11 +2367,16 @@ function ProjectModal({
       `}</style>
     </div>
   );
-} /* ========================================================= GALERIE ========================================================= */
+}
+
+/* ===================================================== GALERIE ===================================================== */
 
 export default function Galerie(): React.JSX.Element {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
+
+  const pathname = usePathname();
+  const isEnglish = pathname.startsWith(`${BASE_PATH}/en`);
 
   useEffect(() => {
     const canvasElement = canvasRef.current;
@@ -2061,12 +2398,10 @@ export default function Galerie(): React.JSX.Element {
     let height = window.innerHeight;
     let centerX = width / 2;
     let centerY = height / 2;
-
     let pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
 
     let targetX = 0;
     let targetY = 0;
-
     let currentX = 0;
     let currentY = 0;
 
@@ -2083,7 +2418,10 @@ export default function Galerie(): React.JSX.Element {
 
     let zoomVelocity = 0;
 
-    let hoveredCell: { column: number; row: number } | null = null;
+    let hoveredCell: {
+      column: number;
+      row: number;
+    } | null = null;
 
     let animationFrame = 0;
     let grainFrame = 0;
@@ -2095,7 +2433,6 @@ export default function Galerie(): React.JSX.Element {
         const video = document.createElement("video");
 
         video.src = `${BASE_PATH}/projects/project-11-1.mp4`;
-
         video.muted = true;
         video.defaultMuted = true;
         video.loop = true;
@@ -2122,7 +2459,6 @@ export default function Galerie(): React.JSX.Element {
         const image = new window.Image();
 
         image.src = `${BASE_PATH}/projects/project-${i}.jpg`;
-
         image.decoding = "async";
 
         images.push({
@@ -2159,11 +2495,6 @@ export default function Galerie(): React.JSX.Element {
       canvas.style.height = `${height}px`;
 
       ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-
-      grainCanvas.width = Math.max(1, Math.floor(width * 0.5));
-      grainCanvas.height = Math.max(1, Math.floor(height * 0.5));
-
-      grainCtx.imageSmoothingEnabled = false;
     }
 
     function modulo(value: number, divisor: number): number {
@@ -2171,9 +2502,12 @@ export default function Galerie(): React.JSX.Element {
     }
 
     function projectFor(column: number, row: number): GalleryProject {
-      const index = modulo(column - row * 3, PROJECTS);
+      const normalizedColumn = modulo(column, PROJECTS);
+      const normalizedRow = modulo(row, PROJECTS);
 
-      return images[index];
+      const index = modulo(normalizedColumn + normalizedRow * 3, PROJECTS) + 1;
+
+      return images[index - 1];
     }
 
     function deform(
@@ -2183,12 +2517,12 @@ export default function Galerie(): React.JSX.Element {
       x: number;
       y: number;
     } {
-      const dx = x - centerX;
-      const dy = y - centerY;
+      const distanceX = x - centerX;
+      const distanceY = y - centerY;
 
       return {
-        x: x + dx * Math.abs(dx) * CURVE_HORIZONTAL,
-        y: y + dy * Math.abs(dy) * CURVE_VERTICAL,
+        x: x + distanceX * Math.abs(distanceY) * CURVE_HORIZONTAL,
+        y: y + distanceY * Math.abs(distanceX) * CURVE_VERTICAL,
       };
     }
 
@@ -2199,330 +2533,134 @@ export default function Galerie(): React.JSX.Element {
       x: number;
       y: number;
     } {
-      const rawX = centerX + (column * STEP_X + currentX) * currentScale;
+      const baseX = centerX + column * STEP_X + currentX;
 
-      const rawY = centerY + (row * STEP_Y + currentY) * currentScale;
+      const baseY = centerY + row * STEP_Y + currentY;
 
-      return deform(rawX, rawY);
+      return deform(baseX, baseY);
     }
 
     function drawHoverText(
-      text: string,
-      x: number,
-      y: number,
-      maxWidth: number,
-      maxHeight: number,
-    ): void {
-      const words = text.trim().toUpperCase().split(/\s+/).filter(Boolean);
-
-      if (words.length === 0) {
-        return;
-      }
-
-      ctx.font = `700 ${HOVER_FONT_SIZE}px "Anton", Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Narrow", sans-serif`;
-
-      ctx.textAlign = "left";
-      ctx.textBaseline = "alphabetic";
-      ctx.fillStyle = "rgba(255, 255, 255, 0.96)";
-
-      const lines = words;
-
-      const lineHeight = HOVER_FONT_SIZE * 0.95;
-
-      const maxLines = Math.max(
-        1,
-        Math.floor((maxHeight + HOVER_FONT_SIZE * 0.1) / lineHeight),
-      );
-
-      const visibleLines = lines.slice(0, maxLines);
-
-      const lineWidths = visibleLines.map((line) => {
-        let totalWidth = 0;
-
-        for (let i = 0; i < line.length; i += 1) {
-          totalWidth += ctx.measureText(line[i]).width;
-
-          if (i < line.length - 1) {
-            totalWidth += HOVER_LETTER_SPACING;
-          }
-        }
-
-        return totalWidth;
-      });
-
-      let fontSize = HOVER_FONT_SIZE;
-
-      const widestLine = Math.max(...lineWidths);
-
-      if (widestLine > maxWidth) {
-        const ratio = maxWidth / widestLine;
-
-        fontSize = Math.max(10, HOVER_FONT_SIZE * ratio);
-
-        ctx.font = `700 ${fontSize}px "Anton", Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Narrow", sans-serif`;
-      }
-
-      const finalLineHeight = fontSize * 0.95;
-
-      const finalWidths = visibleLines.map((line) => {
-        let totalWidth = 0;
-
-        for (let i = 0; i < line.length; i += 1) {
-          totalWidth += ctx.measureText(line[i]).width;
-
-          if (i < line.length - 1) {
-            totalWidth += HOVER_LETTER_SPACING;
-          }
-        }
-
-        return totalWidth;
-      });
-
-      const totalHeight = visibleLines.length * finalLineHeight;
-
-      const startY = y - totalHeight / 2 + finalLineHeight * 0.82;
-
-      visibleLines.forEach((line, lineIndex) => {
-        const lineWidth = finalWidths[lineIndex];
-
-        let currentLetterX = x - lineWidth / 2;
-
-        const lineY = startY + lineIndex * finalLineHeight;
-
-        for (let i = 0; i < line.length; i += 1) {
-          const letter = line[i];
-
-          const letterWidth = ctx.measureText(letter).width;
-
-          ctx.fillText(letter, currentLetterX, lineY);
-
-          currentLetterX += letterWidth + HOVER_LETTER_SPACING;
-        }
-      });
-    }
-
-    function drawProject(
       project: GalleryProject,
       x: number,
       y: number,
-      isHovered: boolean,
     ): void {
-      const displayedSize = IMAGE_SIZE * currentScale;
+      const projectData = (isEnglish ? PROJECTS_DATA_EN : PROJECTS_DATA_FR)[
+        project.index
+      ];
+
+      if (!projectData) {
+        return;
+      }
 
       ctx.save();
 
-      if (project.index === 11 && project.video) {
-        const video = project.video;
+      ctx.font = `${HOVER_FONT_SIZE}px "Anton", sans-serif`;
+      ctx.letterSpacing = `${HOVER_LETTER_SPACING}px`;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillStyle = "#ffffff";
 
-        if (
-          video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA &&
-          video.videoWidth > 0 &&
-          video.videoHeight > 0
-        ) {
-          const sourceSize = Math.min(video.videoWidth, video.videoHeight);
+      ctx.fillText(projectData.title.toUpperCase(), x, y);
 
-          const sourceX = (video.videoWidth - sourceSize) / 2;
+      ctx.restore();
+    }
 
-          const sourceY = (video.videoHeight - sourceSize) / 2;
+    function drawProject(project: GalleryProject, x: number, y: number): void {
+      const imageSize = IMAGE_SIZE * currentScale;
 
-          ctx.drawImage(
-            video,
-            sourceX,
-            sourceY,
-            sourceSize,
-            sourceSize,
-            x - displayedSize / 2,
-            y - displayedSize / 2,
-            displayedSize,
-            displayedSize,
-          );
-        }
-      } else {
+      ctx.save();
+
+      ctx.translate(x, y);
+
+      ctx.beginPath();
+      ctx.rect(-imageSize / 2, -imageSize / 2, imageSize, imageSize);
+
+      ctx.clip();
+
+      if (project.image) {
         const image = project.image;
 
-        if (
-          image !== undefined &&
-          image.complete &&
-          image.naturalWidth > 0 &&
-          image.naturalHeight > 0
-        ) {
-          const sourceSize = Math.min(image.naturalWidth, image.naturalHeight);
+        if (image.complete && image.naturalWidth > 0) {
+          const ratio = Math.max(
+            imageSize / image.naturalWidth,
+            imageSize / image.naturalHeight,
+          );
 
-          const sourceX = (image.naturalWidth - sourceSize) / 2;
-
-          const sourceY = (image.naturalHeight - sourceSize) / 2;
+          const drawWidth = image.naturalWidth * ratio;
+          const drawHeight = image.naturalHeight * ratio;
 
           ctx.drawImage(
             image,
-            sourceX,
-            sourceY,
-            sourceSize,
-            sourceSize,
-            x - displayedSize / 2,
-            y - displayedSize / 2,
-            displayedSize,
-            displayedSize,
+            -drawWidth / 2,
+            -drawHeight / 2,
+            drawWidth,
+            drawHeight,
           );
         }
       }
 
-      if (isHovered && window.innerWidth > 900) {
-        ctx.fillStyle = "rgba(105, 105, 105, 0.92)";
+      if (project.video) {
+        const video = project.video;
 
-        ctx.fillRect(
-          x - displayedSize / 2,
-          y - displayedSize / 2,
-          displayedSize,
-          displayedSize,
-        );
+        if (video.readyState >= 2) {
+          const ratio = Math.max(
+            imageSize / video.videoWidth,
+            imageSize / video.videoHeight,
+          );
 
-        const textPadding = displayedSize * 0.08;
+          const drawWidth = video.videoWidth * ratio;
+          const drawHeight = video.videoHeight * ratio;
 
-        drawHoverText(
-          PROJECTS_DATA[project.index]?.type ?? "",
-          x,
-          y,
-          displayedSize - textPadding * 2,
-          displayedSize - textPadding * 2,
-        );
+          ctx.drawImage(
+            video,
+            -drawWidth / 2,
+            -drawHeight / 2,
+            drawWidth,
+            drawHeight,
+          );
+        }
       }
 
       ctx.restore();
     }
 
     function drawVignette(): void {
-      ctx.save();
-
-      const edgeWidth = Math.min(width, height) * 0.28;
-
-      const leftGradient = ctx.createLinearGradient(0, 0, edgeWidth, 0);
-
-      leftGradient.addColorStop(0, "rgba(0,0,0,0.78)");
-
-      leftGradient.addColorStop(0.35, "rgba(0,0,0,0.42)");
-
-      leftGradient.addColorStop(0.72, "rgba(0,0,0,0.12)");
-
-      leftGradient.addColorStop(1, "rgba(0,0,0,0)");
-
-      ctx.fillStyle = leftGradient;
-
-      ctx.fillRect(0, 0, edgeWidth, height);
-
-      const rightGradient = ctx.createLinearGradient(
-        width,
-        0,
-        width - edgeWidth,
-        0,
-      );
-
-      rightGradient.addColorStop(0, "rgba(0,0,0,0.78)");
-
-      rightGradient.addColorStop(0.35, "rgba(0,0,0,0.42)");
-
-      rightGradient.addColorStop(0.72, "rgba(0,0,0,0.12)");
-
-      rightGradient.addColorStop(1, "rgba(0,0,0,0)");
-
-      ctx.fillStyle = rightGradient;
-
-      ctx.fillRect(width - edgeWidth, 0, edgeWidth, height);
-
-      const topGradient = ctx.createLinearGradient(0, 0, 0, edgeWidth);
-
-      topGradient.addColorStop(0, "rgba(0,0,0,0.72)");
-
-      topGradient.addColorStop(0.35, "rgba(0,0,0,0.38)");
-
-      topGradient.addColorStop(0.72, "rgba(0,0,0,0.10)");
-
-      topGradient.addColorStop(1, "rgba(0,0,0,0)");
-
-      ctx.fillStyle = topGradient;
-
-      ctx.fillRect(0, 0, width, edgeWidth);
-
-      const bottomGradient = ctx.createLinearGradient(
-        0,
-        height,
-        0,
-        height - edgeWidth,
-      );
-
-      bottomGradient.addColorStop(0, "rgba(0,0,0,0.82)");
-
-      bottomGradient.addColorStop(0.35, "rgba(0,0,0,0.44)");
-
-      bottomGradient.addColorStop(0.72, "rgba(0,0,0,0.12)");
-
-      bottomGradient.addColorStop(1, "rgba(0,0,0,0)");
-
-      ctx.fillStyle = bottomGradient;
-
-      ctx.fillRect(0, height - edgeWidth, width, edgeWidth);
-
-      const cornerRadius = Math.max(width, height) * 0.82;
-
-      const cornerGradient = ctx.createRadialGradient(
+      const gradient = ctx.createRadialGradient(
         centerX,
         centerY,
-        Math.min(width, height) * 0.25,
+        Math.min(width, height) * 0.1,
         centerX,
         centerY,
-        cornerRadius,
+        Math.max(width, height) * 0.75,
       );
 
-      cornerGradient.addColorStop(0, "rgba(0,0,0,0)");
+      gradient.addColorStop(0, "rgba(17, 17, 17, 0)");
+      gradient.addColorStop(0.65, "rgba(17, 17, 17, 0)");
+      gradient.addColorStop(1, "rgba(17, 17, 17, 0.72)");
 
-      cornerGradient.addColorStop(0.58, "rgba(0,0,0,0)");
-
-      cornerGradient.addColorStop(0.72, "rgba(0,0,0,0.06)");
-
-      cornerGradient.addColorStop(0.84, "rgba(0,0,0,0.18)");
-
-      cornerGradient.addColorStop(0.93, "rgba(0,0,0,0.34)");
-
-      cornerGradient.addColorStop(1, "rgba(0,0,0,0.62)");
-
-      ctx.fillStyle = cornerGradient;
-
+      ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, width, height);
-
-      ctx.restore();
     }
 
     function generateGrain(): void {
-      const grainWidth = grainCanvas.width;
+      const grainWidth = Math.max(1, Math.floor(width * 0.25));
 
-      const grainHeight = grainCanvas.height;
+      const grainHeight = Math.max(1, Math.floor(height * 0.25));
 
-      if (grainWidth <= 0 || grainHeight <= 0) {
-        return;
-      }
+      grainCanvas.width = grainWidth;
+      grainCanvas.height = grainHeight;
 
       const grainImage = grainCtx.createImageData(grainWidth, grainHeight);
 
       const pixels = grainImage.data;
 
       for (let i = 0; i < pixels.length; i += 4) {
-        let value = 0;
+        const value = Math.floor(Math.random() * 255);
 
-        for (let sample = 0; sample < GRAIN_SAMPLES; sample += 1) {
-          value += Math.random();
-        }
-
-        value /= GRAIN_SAMPLES;
-
-        const centered = (value - 0.5) * 255;
-
-        const luminance = Math.max(
-          0,
-          Math.min(255, Math.round(128 + centered * GRAIN_CONTRAST)),
-        );
-
-        pixels[i] = luminance;
-        pixels[i + 1] = luminance;
-        pixels[i + 2] = luminance;
+        pixels[i] = value;
+        pixels[i + 1] = value;
+        pixels[i + 2] = value;
         pixels[i + 3] = 255;
       }
 
@@ -2530,49 +2668,12 @@ export default function Galerie(): React.JSX.Element {
     }
 
     function drawGrain(): void {
-      if (grainCanvas.width <= 0 || grainCanvas.height <= 0) {
-        return;
-      }
-
-      grainFrame += 1;
-
-      if (grainFrame % 5 === 0) {
-        generateGrain();
-      }
-
       ctx.save();
 
-      ctx.globalCompositeOperation = "multiply";
+      ctx.globalAlpha = 0.08;
+      ctx.imageSmoothingEnabled = false;
 
-      ctx.globalAlpha = 0.085;
-
-      ctx.drawImage(
-        grainCanvas,
-        0,
-        0,
-        grainCanvas.width,
-        grainCanvas.height,
-        0,
-        0,
-        width,
-        height,
-      );
-
-      ctx.globalCompositeOperation = "screen";
-
-      ctx.globalAlpha = 0.085;
-
-      ctx.drawImage(
-        grainCanvas,
-        0,
-        0,
-        grainCanvas.width,
-        grainCanvas.height,
-        0,
-        0,
-        width,
-        height,
-      );
+      ctx.drawImage(grainCanvas, 0, 0, width, height);
 
       ctx.restore();
     }
@@ -2584,36 +2685,25 @@ export default function Galerie(): React.JSX.Element {
       column: number;
       row: number;
     } | null {
-      const columns = Math.ceil(width / STEP_X) + 20;
+      const localX = clientX - centerX - currentX;
 
-      const rows = Math.ceil(height / STEP_Y) + 20;
+      const localY = clientY - centerY - currentY;
 
-      const baseColumn = Math.floor(-currentX / STEP_X);
+      const column = Math.round(localX / STEP_X);
 
-      const baseRow = Math.floor(-currentY / STEP_Y);
+      const row = Math.round(localY / STEP_Y);
 
-      const hitRadius = (IMAGE_SIZE * currentScale) / 2;
+      const position = cellPosition(column, row);
 
-      for (let row = baseRow - rows; row <= baseRow + rows; row += 1) {
-        for (
-          let column = baseColumn - columns;
-          column <= baseColumn + columns;
-          column += 1
-        ) {
-          const position = cellPosition(column, row);
+      const distance = Math.sqrt(
+        Math.pow(clientX - position.x, 2) + Math.pow(clientY - position.y, 2),
+      );
 
-          if (
-            clientX >= position.x - hitRadius &&
-            clientX <= position.x + hitRadius &&
-            clientY >= position.y - hitRadius &&
-            clientY <= position.y + hitRadius
-          ) {
-            return {
-              column,
-              row,
-            };
-          }
-        }
+      if (distance <= IMAGE_SIZE * currentScale * 0.5) {
+        return {
+          column,
+          row,
+        };
       }
 
       return null;
@@ -2629,50 +2719,45 @@ export default function Galerie(): React.JSX.Element {
         return null;
       }
 
-      return projectFor(cell.column, cell.row).index;
+      const project = projectFor(cell.column, cell.row);
+
+      return project.index;
     }
 
     function render(): void {
+      ctx.clearRect(0, 0, width, height);
+
       ctx.fillStyle = BACKGROUND;
 
       ctx.fillRect(0, 0, width, height);
 
-      const columns = Math.ceil(width / STEP_X) + 20;
+      const columns = Math.ceil(width / STEP_X) + 4;
 
-      const rows = Math.ceil(height / STEP_Y) + 20;
+      const rows = Math.ceil(height / STEP_Y) + 4;
 
-      const baseColumn = Math.floor(-currentX / STEP_X);
+      const centerColumn = Math.round(-currentX / STEP_X);
 
-      const baseRow = Math.floor(-currentY / STEP_Y);
+      const centerRow = Math.round(-currentY / STEP_Y);
 
-      for (let row = baseRow - rows; row <= baseRow + rows; row += 1) {
+      for (let row = centerRow - rows; row <= centerRow + rows; row += 1) {
         for (
-          let column = baseColumn - columns;
-          column <= baseColumn + columns;
+          let column = centerColumn - columns;
+          column <= centerColumn + columns;
           column += 1
         ) {
-          const project = projectFor(column, row);
-
           const position = cellPosition(column, row);
 
-          const margin = IMAGE_SIZE * 2;
+          const project = projectFor(column, row);
 
           if (
-            position.x < -margin ||
-            position.x > width + margin ||
-            position.y < -margin ||
-            position.y > height + margin
-          ) {
-            continue;
-          }
-
-          const isHovered =
-            window.innerWidth > 900 &&
             hoveredCell !== null &&
             hoveredCell.column === column &&
-            hoveredCell.row === row;
-
-          drawProject(project, position.x, position.y, isHovered);
+            hoveredCell.row === row
+          ) {
+            drawHoverText(project, position.x, position.y);
+          } else {
+            drawProject(project, position.x, position.y);
+          }
         }
       }
 
@@ -2685,62 +2770,21 @@ export default function Galerie(): React.JSX.Element {
 
       currentY += (targetY - currentY) * FOLLOW;
 
-      if (!dragging) {
-        targetX += velocityX;
-        targetY += velocityY;
+      velocityX *= FRICTION;
+      velocityY *= FRICTION;
 
-        velocityX *= FRICTION;
-        velocityY *= FRICTION;
-      }
+      targetX += velocityX;
+      targetY += velocityY;
 
-      if (Math.abs(velocityX) < 0.01) {
-        velocityX = 0;
-      }
+      zoomVelocity += (targetScale - currentScale) * ZOOM_ELASTICITY;
 
-      if (Math.abs(velocityY) < 0.01) {
-        velocityY = 0;
-      }
+      zoomVelocity = Math.max(
+        -ZOOM_MAX_VELOCITY,
+        Math.min(ZOOM_MAX_VELOCITY, zoomVelocity),
+      );
 
-      if (dragging) {
-        targetScale = HOLD_SCALE;
-
-        const distance = targetScale - currentScale;
-
-        const correction = distance * ZOOM_PRESS_SPEED;
-
-        zoomVelocity = Math.max(
-          -ZOOM_MAX_VELOCITY,
-          Math.min(ZOOM_MAX_VELOCITY, correction),
-        );
-
-        currentScale += zoomVelocity;
-      } else {
-        targetScale = BASE_SCALE;
-
-        const distance = targetScale - currentScale;
-
-        zoomVelocity += distance * ZOOM_RELEASE_SPEED;
-
-        zoomVelocity *= 0.72;
-
-        zoomVelocity += distance * Math.abs(distance) * ZOOM_ELASTICITY;
-
-        zoomVelocity = Math.max(
-          -ZOOM_MAX_VELOCITY,
-          Math.min(ZOOM_MAX_VELOCITY, zoomVelocity),
-        );
-
-        currentScale += zoomVelocity;
-      }
-
-      if (
-        !dragging &&
-        Math.abs(currentScale - BASE_SCALE) < 0.00015 &&
-        Math.abs(zoomVelocity) < 0.00015
-      ) {
-        currentScale = BASE_SCALE;
-        zoomVelocity = 0;
-      }
+      currentScale += zoomVelocity;
+      zoomVelocity *= 0.86;
 
       render();
 
@@ -2763,44 +2807,41 @@ export default function Galerie(): React.JSX.Element {
       velocityX = 0;
       velocityY = 0;
 
+      targetScale = HOLD_SCALE;
+
       canvas.style.cursor = "none";
 
       canvas.setPointerCapture(event.pointerId);
     }
 
     function pointerMove(event: PointerEvent): void {
-      if (!dragging) {
-        hoveredCell =
-          window.innerWidth > 900
-            ? getHoveredCell(event.clientX, event.clientY)
-            : null;
+      if (dragging) {
+        const deltaX = event.clientX - pointerX;
 
+        const deltaY = event.clientY - pointerY;
+
+        targetX += deltaX * DRAG_MULTIPLIER;
+
+        targetY += deltaY * DRAG_MULTIPLIER;
+
+        velocityX = deltaX * DRAG_MULTIPLIER;
+
+        velocityY = deltaY * DRAG_MULTIPLIER;
+
+        pointerX = event.clientX;
+        pointerY = event.clientY;
+
+        hoveredCell = null;
         return;
       }
 
-      const dx = event.clientX - pointerX;
-
-      const dy = event.clientY - pointerY;
-
-      pointerX = event.clientX;
-      pointerY = event.clientY;
-
-      const movementX = dx * DRAG_MULTIPLIER;
-
-      const movementY = dy * DRAG_MULTIPLIER;
-
-      targetX += movementX;
-      targetY += movementY;
-
-      velocityX = movementX * 0.12;
-
-      velocityY = movementY * 0.12;
+      hoveredCell = getHoveredCell(event.clientX, event.clientY);
     }
 
     function pointerUp(event: PointerEvent): void {
       dragging = false;
 
-      canvas.style.cursor = "none";
+      targetScale = BASE_SCALE;
 
       if (canvas.hasPointerCapture(event.pointerId)) {
         canvas.releasePointerCapture(event.pointerId);
@@ -2853,7 +2894,7 @@ export default function Galerie(): React.JSX.Element {
         }
       });
     };
-  }, []);
+  }, [isEnglish]);
 
   return (
     <>
