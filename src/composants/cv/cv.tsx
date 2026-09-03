@@ -498,50 +498,52 @@ export default function CV(): React.JSX.Element {
 
               <section className="sidebar-section languages">
                 <h2>LANGUES</h2>
-
-                <p>
-                  <strong>Français</strong>
-                  <br />
-                  Langue maternelle
-                </p>
-                <p>
-                  <strong>Anglais</strong>
-                  <br />
-                  Courant
-                </p>
+                <div className="small-text">
+                  <p>
+                    <strong>Français</strong>
+                    <br />
+                    Langue maternelle
+                  </p>
+                  <p>
+                    <strong>Anglais</strong>
+                    <br />
+                    Courant
+                  </p>
+                </div>
               </section>
 
               {/* REFERENCES */}
 
               <section className="sidebar-section languages">
                 <h2>RÉFÉRENCES</h2>
+                <div className="small-text">
+                  <p>
+                    <strong>Pierre Ployart</strong>
+                    <br />
+                    Country Manager France, Coros
+                    <br />
+                    <a
+                      href="https://fr.linkedin.com/in/pierre-ployart"
+                      className="contact-item"
+                    >
+                      {" "}
+                      https://fr.linkedin.com/in/pierre-ployart
+                    </a>
+                  </p>
 
-                <p>
-                  <strong>Pierre Ployart</strong>
-                  <br />
-                  Country Manager France, Coros
-                  <br />
-                  <a
-                    href="https://fr.linkedin.com/in/pierre-ployart"
-                    className="contact-item"
-                  >
-                    {" "}
-                    https://fr.linkedin.com/in/pierre-ployart
-                  </a>
-                </p>
-
-                <p>
-                  <strong>Shannon Kierse</strong>
-                  <br />
-                  Marketing Manager, Atlantic Centre of Education <br />
-                  <a
-                    href="https://ie.linkedin.com/in/shannon-kierse-914488113"
-                    className="contact-item"
-                  >
-                    {" "}
-                    https://ie.linkedin.com/in/shannon-kierse-914488113{" "}
-                  </a>
-                </p>
+                  <p>
+                    <strong>Shannon Kierse</strong>
+                    <br />
+                    Marketing Manager, Atlantic Centre of Education <br />
+                    <a
+                      href="https://ie.linkedin.com/in/shannon-kierse-914488113"
+                      className="contact-item"
+                    >
+                      {" "}
+                      https://ie.linkedin.com/in/shannon-kierse-914488113{" "}
+                    </a>
+                  </p>
+                </div>
               </section>
             </aside>
 
@@ -584,18 +586,17 @@ export default function CV(): React.JSX.Element {
                         <strong>Atlantic Centre of Education</strong>
 
                         <span>Galway, Ireland</span>
+                        <p>
+                          <em>
+                            Gestion de la communication et du marketing digital
+                            de deux entités : une école d'anglais (Atlantic
+                            Centre of Education) et quatre complexes de
+                            résidences en location saisonnière (Galway Lakeside
+                            Apartments) accueillant respectivement une clientèle
+                            internationale .{" "}
+                          </em>
+                        </p>
                       </div>
-
-                      <p>
-                        <em>
-                          Gestion de la communication et du marketing digital de
-                          deux entités : une école d'anglais (Atlantic Centre of
-                          Education) et quatre complexes de résidences en
-                          location saisonnière (Galway Lakeside Apartments)
-                          accueillant respectivement une clientèle
-                          internationale .{" "}
-                        </em>
-                      </p>
 
                       <ul className="experience-list">
                         <li>
@@ -669,17 +670,15 @@ export default function CV(): React.JSX.Element {
                         <strong>Meltour</strong>
 
                         <span>Saint-Maur-des-Fossés</span>
+                        <p>
+                          <em>
+                            Contrat d'apprentissage : Gestion de la stratégie
+                            digitale et de la visibilité en ligne d'une agence
+                            spécialisée dans les voyages sur mesure haut de
+                            gamme
+                          </em>
+                        </p>
                       </div>
-
-                      <div className="contract">Contrat d'apprentissage :</div>
-
-                      <p>
-                        <em>
-                          Contrat d'apprentissage : Gestion de la stratégie
-                          digitale et de la visibilité en ligne d'une agence
-                          spécialisée dans les voyages sur mesure haut de gamme
-                        </em>
-                      </p>
 
                       <ul className="experience-list">
                         <li>
@@ -1151,7 +1150,7 @@ export default function CV(): React.JSX.Element {
           gap: 6px;
           color: #111111;
           text-decoration: none;
-          font-size: 12px;
+          font-size: 14px;
           line-height: 1.25;
           font-weight: 400;
         }
@@ -1188,7 +1187,7 @@ export default function CV(): React.JSX.Element {
 
         .strengths li {
           margin-bottom: 8px;
-          font-size: 12.5px;
+          font-size: 14.5px;
           line-height: 1.15;
           font-weight: 700;
         }
@@ -1201,13 +1200,13 @@ export default function CV(): React.JSX.Element {
         .bullet-list li {
           margin: 0 0 5px;
           padding-left: 0;
-          font-size: 11.5px;
+          font-size: 13.5px;
           line-height: 1.15;
           font-weight: 400;
         }
 
         .small-text {
-          font-size: 10.8px;
+          font-size: 12.8px;
           line-height: 1.24;
         }
 
@@ -1221,7 +1220,7 @@ export default function CV(): React.JSX.Element {
 
         .languages p {
           margin: 0;
-          font-size: 11.5px;
+          font-size: 13.5px;
           line-height: 1.35;
         }
 
@@ -1331,7 +1330,7 @@ export default function CV(): React.JSX.Element {
 
         .timeline-item h3 {
           margin: 0 0 5px;
-          font-size: 13.2px;
+          font-size: 15.2px;
           line-height: 1.2;
           font-weight: 700;
         }
@@ -1342,7 +1341,7 @@ export default function CV(): React.JSX.Element {
           align-items: baseline;
           gap: 4px;
           color: #6f6f6f;
-          font-size: 11px;
+          font-size: 13.2px;
           line-height: 1.25;
         }
 
@@ -1354,7 +1353,7 @@ export default function CV(): React.JSX.Element {
         .contract {
           margin-top: 3px;
           color: #555555;
-          font-size: 11px;
+          font-size: 13.2px;
           line-height: 1.2;
         }
 
@@ -1366,7 +1365,7 @@ export default function CV(): React.JSX.Element {
         .experience-list li {
           margin: 0 0 2px;
           padding-left: 0;
-          font-size: 11.2px;
+          font-size: 13.2px;
           line-height: 1.18;
           font-weight: 400;
         }
@@ -1381,7 +1380,7 @@ export default function CV(): React.JSX.Element {
 
         .education-details p {
           margin: 0 0 3px;
-          font-size: 11.2px;
+          font-size: 13.2px;
           line-height: 1.2;
         }
 
