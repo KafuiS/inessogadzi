@@ -195,8 +195,12 @@ const PROJECTS_DATA: Record<number, ProjectData> = {
         navigateurs, les plaisanciers ou les passionnés de la mer, ces
         informations sont essentielles pour comprendre l’état du littoral et
         anticiper les conditions à venir. <br /> <br /> Dans ce contexte, il
-        m’est demandé d’imaginer l’identité visuelle et l’application d’un
-        service dédié aux prévisions maritimes. L’objectif est de créer un
+        m’est demandé d’imaginer l’identité visuelle et l’
+        <a href="https://www.figma.com/proto/EKIgeAA6c8yrB3hf013Pp4/Untitled?type=design&node-id=48-1877&t=SByXnYXE0HErF7nk-1&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A2">
+          {" "}
+          application{" "}
+        </a>{" "}
+        d’un service dédié aux prévisions maritimes. L’objectif est de créer un
         univers graphique capable de traduire visuellement les différents
         phénomènes qui rythment la mer et de rendre ces informations facilement
         accessibles à l’utilisateur.{" "}
