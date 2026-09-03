@@ -32,7 +32,6 @@ const PROJECTS = [
   `${BASE_PATH}/projects/project-8.jpg`,
   `${BASE_PATH}/projects/project-9.jpg`,
   `${BASE_PATH}/projects/project-10.jpg`,
-  `${BASE_PATH}/projects/project-11-1.mp4`,
 ];
 
 /* ============================================================
@@ -1142,7 +1141,7 @@ export default function About(): React.JSX.Element {
     let animationFrame = 0;
     let time = 0;
 
-    const movementSpeed = 0.0011;
+    const movementSpeed = 0.002;
 
     const amplitudeY = 0.2;
     const amplitudeX = 0.12;
@@ -1445,8 +1444,8 @@ export default function About(): React.JSX.Element {
               <br />
               <br />
               Aujourd’hui, j’aime faire le lien entre stratégie et création,
-              avec une même envie : transformer une seconde d’attention en
-              véritable engagement.
+              avec toujours une même envie : transformer une seconde d’attention
+              en véritable engagement.
               <br />
             </p>
           </div>
@@ -1480,7 +1479,7 @@ export default function About(): React.JSX.Element {
           height: 100dvh;
           overflow: hidden;
           background: #111111;
-          color: #ffffff;
+          color: #e8e1d5;
           font-family: ${spaceGrotesk.style.fontFamily};
           font-style: normal;
           isolation: isolate;

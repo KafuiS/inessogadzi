@@ -392,30 +392,11 @@ export default function CV(): React.JSX.Element {
                   <span>ines.sogadzi@hotmail.fr</span>
                 </a>
 
-                <div className="contact-item">
-                  <LocationIcon />
-                  <span>Thionville (57100)</span>
-                </div>
-
                 <a href="tel:+33781603996" className="contact-item">
                   <PhoneIcon />
                   <span>+33 7 81 60 39 96</span>
                 </a>
               </div>
-
-              {/* ATOUTS */}
-
-              <section className="sidebar-section">
-                <h2>ATOUTS</h2>
-
-                <ul className="strengths">
-                  <li>Sens du détail</li>
-                  <li>Autonomie</li>
-                  <li>Adaptabilité</li>
-                  <li>Rigueur</li>
-                  <li>Proactivité</li>
-                </ul>
-              </section>
 
               {/* COMPÉTENCES */}
 
@@ -423,42 +404,40 @@ export default function CV(): React.JSX.Element {
                 <h2>COMPÉTENCES</h2>
 
                 <ul className="bullet-list">
-                  <li>Marketing digital</li>
+                  <li>Marketing digital 360°</li>
 
-                  <li>
-                    Communication de
-                    <br />
-                    marque
-                  </li>
+                  <li>Communication digitale</li>
 
                   <li>
                     Création de contenus
                     <br />
-                    &amp; storytelling
+                    (photo, vidéo, montage){" "}
                   </li>
 
-                  <li>
-                    Community
-                    <br />
-                    management
-                  </li>
+                  <li>Community management</li>
 
                   <li>Direction artistique</li>
 
                   <li>Gestion de projet</li>
 
-                  <li>Photographie &amp; vidéo</li>
-
+                  <li>
+                    Référencement naturel <br /> (SEO)
+                  </li>
+                  <li>Campagnes d'acquisition</li>
                   <li>
                     Email marketing
                     <br />
-                    (HubSpot, Mailchimp)
+                    &amp; newsletter
                   </li>
 
                   <li>
                     Analyse des
                     <br />
                     performances (KPIs)
+                  </li>
+                  <li>
+                    Veille stratégique et <br />
+                    concurrentielle{" "}
                   </li>
                 </ul>
               </section>
@@ -470,8 +449,7 @@ export default function CV(): React.JSX.Element {
 
                 <div className="small-text">
                   <p>
-                    <strong>PAO :</strong> Photoshop, Illustrator, InDesign,
-                    After Effects, Premiere Pro, Figma, Canva
+                    <strong>CMS :</strong> Wordpress, Hubspot, WIX
                   </p>
 
                   <p>
@@ -479,6 +457,11 @@ export default function CV(): React.JSX.Element {
                     <br />
                     Google Marketing Platform (Analytics, Ads), Trello, Miro,
                     Zapier
+                  </p>
+
+                  <p>
+                    <strong>PAO :</strong> Photoshop, Illustrator, InDesign,
+                    After Effects, Premiere Pro, Figma, Canva
                   </p>
 
                   <p>
@@ -491,13 +474,24 @@ export default function CV(): React.JSX.Element {
                   </p>
 
                   <p>
-                    <strong>CMS :</strong> Wordpress, Hubspot, WIX
-                  </p>
-
-                  <p>
                     <strong>CRM :</strong> MailChimp, Odoo
                   </p>
                 </div>
+              </section>
+
+              {/* ATOUTS */}
+
+              <section className="sidebar-section">
+                <h2>ATOUTS</h2>
+
+                <ul className="strengths">
+                  <li>Sens du détail</li>
+                  <li>Autonomie</li>
+                  <li>Adaptabilité</li>
+                  <li>Rigueur</li>
+                  <li>Proactivité</li>
+                  <li>Créativité</li>
+                </ul>
               </section>
 
               {/* LANGUES */}
@@ -506,9 +500,47 @@ export default function CV(): React.JSX.Element {
                 <h2>LANGUES</h2>
 
                 <p>
+                  <strong>Français</strong>
+                  <br />
+                  Langue maternelle
+                </p>
+                <p>
                   <strong>Anglais</strong>
                   <br />
                   Courant
+                </p>
+              </section>
+
+              {/* REFERENCES */}
+
+              <section className="sidebar-section languages">
+                <h2>RÉFÉRENCES</h2>
+
+                <p>
+                  <strong>Pierre Ployart</strong>
+                  <br />
+                  Country Manager France, Coros
+                  <br />
+                  <a
+                    href="https://fr.linkedin.com/in/pierre-ployart"
+                    className="contact-item"
+                  >
+                    {" "}
+                    https://fr.linkedin.com/in/pierre-ployart
+                  </a>
+                </p>
+
+                <p>
+                  <strong>Shannon Kierse</strong>
+                  <br />
+                  Marketing Manager, Atlantic Centre of Education <br />
+                  <a
+                    href="https://ie.linkedin.com/in/shannon-kierse-914488113"
+                    className="contact-item"
+                  >
+                    {" "}
+                    https://ie.linkedin.com/in/shannon-kierse-914488113{" "}
+                  </a>
                 </p>
               </section>
             </aside>
@@ -525,23 +557,8 @@ export default function CV(): React.JSX.Element {
               <section className="intro">
                 <h1>Inès SOGADZI</h1>
 
-                <div className="job-title">COORDINATRICE MARKETING</div>
-
-                <div className="intro-text">
-                  <p>
-                    Mettre en lumière l'identité d'une marque, raconter son
-                    histoire et créer des expériences qui donnent envie d'être
-                    vécues, c'est ce qui guide mon parcours. Formée aux arts
-                    puis au marketing digital, j'ai développé une approche à la
-                    fois créative et stratégique.
-                  </p>
-
-                  <p>
-                    Dans un monde qui s'uniformise, Relais &amp; Châteaux défend
-                    quelque chose de rare : le savoir-faire, l'excellence,
-                    l'exclusivité, des valeurs que mon expérience dans la
-                    valorisation de voyages sur-mesure m'a appris à incarner.
-                  </p>
+                <div className="job-title">
+                  MARKETING DIGITAL | COMMUNICATION | GESTION DE PROJET
                 </div>
               </section>
 
@@ -569,54 +586,70 @@ export default function CV(): React.JSX.Element {
                         <span>Galway, Ireland</span>
                       </div>
 
+                      <p>
+                        <em>
+                          Gestion de la communication et du marketing digital de
+                          deux entités : une école d'anglais (Atlantic Centre of
+                          Education) et quatre complexes de résidences en
+                          location saisonnière (Galway Lakeside Apartments)
+                          accueillant respectivement une clientèle
+                          internationale .{" "}
+                        </em>
+                      </p>
+
                       <ul className="experience-list">
                         <li>
-                          Gestion et optimisation de l'écosystème digital
-                          (WordPress, HubSpot, Cloudbeds), incluant les mises à
-                          jour de contenu, les améliorations UX, les audits de
-                          site web et la gestion de l'e-réputation.
+                          Pilotage de la <strong>présence digitale</strong> des
+                          deux marques (sites web, réseaux sociaux et
+                          e-réputation), incluant les mises à jour de contenu,
+                          les améliorations UX et les audits de sites
                         </li>
 
                         <li>
-                          Développement et fidélisation des communautés web à
-                          travers le community management, l'animation des
-                          réseaux sociaux, les campagnes Meta Ads et Google Ads
-                          ainsi que des actions de prospection ciblées
-                          (LinkedIn, Apollo).
+                          Conception et déploiement des{" "}
+                          <strong>campagnes Meta Ads et Google Ads</strong>{" "}
+                          destinées à promouvoir les formations et les offres
+                          d'hébergement : Spring Courses, Summer Courses,
+                          campagne LinkedIn, Summer Sales des résidences.
                         </li>
 
                         <li>
-                          Gestion des processus de génération et de conversion
-                          de leads, incluant la conception et la rédaction de
-                          campagnes emailing, la création de newsletters
-                          (HubSpot et Mailchimp) ainsi que le suivi des
-                          performances marketing.
+                          Création et publication de{" "}
+                          <strong>80 contenus</strong> sur les réseaux sociaux
+                          (40 pour l'école, 40 pour les résidences).
                         </li>
 
                         <li>
-                          Création de visuels de qualité, conception de supports
-                          de communication digitaux et imprimés dans le respect
-                          de l'identité de marque.
+                          Réalisation de{" "}
+                          <strong>shootings photo hebdomadaires</strong> afin
+                          d'alimenter les supports de communication et
+                          production de <strong>6 interviews vidéo</strong>{" "}
+                          mettant en avant les étudiants et l'établissement.
                         </li>
 
                         <li>
-                          Organisation et pilotage de shootings photo/vidéo :
-                          rédaction des briefs créatifs, storytelling,
-                          coordination des projets et production de contenus
-                          multimédias (photographie, tournage et montage vidéo).
+                          Rédaction, conception et envoi des{" "}
+                          <strong>newsletters et campagnes emailing</strong> via
+                          HubSpot et Mailchimp{" "}
                         </li>
 
                         <li>
-                          Développement de partenariats stratégiques avec des
-                          organisations locales (ex. : This is Galway) afin de
-                          renforcer la visibilité.
+                          Développement de{" "}
+                          <strong>5 partenariats stratégiques</strong> (3 pour
+                          l'école, 2 pour les résidences).
                         </li>
 
                         <li>
-                          Réalisation d'une veille concurrentielle afin
-                          d'identifier les tendances du marché et d'accompagner
-                          les décisions en matière de communication digitale et
-                          d'expérience utilisateur.
+                          Élaboration de <strong>reportings mensuels</strong> et
+                          suivi des performances marketing (Google Analytics,
+                          KPIs).
+                        </li>
+                        <li>
+                          Réalisation d'une{" "}
+                          <strong>veille stratégique et concurrentielle</strong>{" "}
+                          afin d'identifier les tendances du marché et
+                          d'accompagner les décisions en matière de
+                          communication digitale et d'expérience utilisateur.
                         </li>
                       </ul>
                     </div>
@@ -640,34 +673,74 @@ export default function CV(): React.JSX.Element {
 
                       <div className="contract">Contrat d'apprentissage :</div>
 
+                      <p>
+                        <em>
+                          Contrat d'apprentissage : Gestion de la stratégie
+                          digitale et de la visibilité en ligne d'une agence
+                          spécialisée dans les voyages sur mesure haut de gamme
+                        </em>
+                      </p>
+
                       <ul className="experience-list">
                         <li>
-                          Gestion et évolution du site web WordPress :
-                          administration des contenus, maintenance évolutive et
-                          optimisation de l'expérience utilisateur.
+                          Gestion du site web WordPress, incluant l'
+                          <strong>
+                            optimisation de l'expérience utilisateur
+                          </strong>{" "}
+                          (UX), la <strong>gestion des contenus</strong> et le{" "}
+                          <strong>suivi de la maintenance évolutive</strong>{" "}
+                          (TMA) avec un prestataire externe.{" "}
                         </li>
 
                         <li>
-                          Rédaction de contenus web optimisés (SEO) ayant
-                          contribué à une augmentation de 50 % du taux de
-                          conversion et de 30 % du taux de clics.
+                          <strong>
+                            Développement du référencement naturel (SEO)
+                          </strong>{" "}
+                          grâce à la rédaction de{" "}
+                          <strong>38 circuits de voyage</strong>, de{" "}
+                          <strong>22 articles optimisés</strong> et à la
+                          création de <strong>2 nouvelles rubriques</strong>, de
+                          la recherche de mots-clés jusqu'à la mise en ligne,
+                          <strong>
+                            contribuant à une augmentation de 50 % du taux de
+                            conversion et de 30 % du taux de clics.
+                          </strong>{" "}
                         </li>
 
                         <li>
-                          Suivi, analyse et reporting des KPIs marketing afin
-                          d'évaluer les performances des actions digitales.
+                          Rédaction, conception et diffusion de{" "}
+                          <strong>25 newsletters</strong>
+                          ainsi que de <strong>185 publications</strong> sur
+                          Instagram et Facebook, incluant l'élaboration du
+                          calendrier éditorial, la rédaction des contenus et la
+                          conception des visuels, contribuant à une{" "}
+                          <strong>
+                            croissance de 50 % de la communauté Instagram.
+                          </strong>{" "}
                         </li>
 
                         <li>
-                          Développement de la présence digitale de la marque à
-                          travers l'animation des réseaux sociaux, avec une
-                          croissance de 50 % de la communauté Instagram.
+                          Gestion des <strong>campagnes Google Ads</strong>, en
+                          collaboration avec les consultants Google, afin
+                          d'optimiser la visibilité et les performances des
+                          campagnes.{" "}
                         </li>
 
                         <li>
-                          Réalisation d'une veille concurrentielle afin
+                          <strong>
+                            Suivi, analyse et reporting hebdomadaires et
+                            mensuels des KPIs
+                          </strong>{" "}
+                          via Google Analytics afin d'évaluer les performances
+                          des actions digitales et d'identifier les axes
+                          d'optimisation.{" "}
+                        </li>
+
+                        <li>
+                          Réalisation de{" "}
+                          <strong>veilles concurrentielles</strong> afin
                           d'identifier les tendances du secteur et de soutenir
-                          l'évolution de la stratégie digitale.
+                          l'évolution de la stratégie digitale.{" "}
                         </li>
                       </ul>
                     </div>
@@ -698,7 +771,9 @@ export default function CV(): React.JSX.Element {
 
                         <span>Champs-sur-Marne</span>
                       </div>
-
+                      <p>
+                        <strong>Mention :</strong> Bien
+                      </p>
                       <ul className="experience-list">
                         <li>
                           Projets et Création (documentaire interactif, web
@@ -725,11 +800,8 @@ export default function CV(): React.JSX.Element {
                         </p>
 
                         <p>
-                          <strong>
-                            Responsable image et Directrice artistique sur le
-                            set
-                          </strong>{" "}
-                          | réalisé en Corée du Sud
+                          Responsable image et Directrice artistique sur le set
+                          <strong>| réalisé en Corée du Sud</strong>{" "}
                         </p>
 
                         <p>
@@ -738,12 +810,11 @@ export default function CV(): React.JSX.Element {
                         </p>
 
                         <p>
-                          Designer UX/UI et Développeuse web | projet soutenu
-                          auprès de Stéphane Blanchet (Maire de Sevran)
-                        </p>
-
-                        <p>
-                          <strong>Mention :</strong> Bien
+                          Designer UX/UI et Développeuse web{" "}
+                          <strong>
+                            | projet soutenu auprès de Stéphane Blanchet{" "}
+                          </strong>{" "}
+                          (Maire de Sevran)
                         </p>
                       </div>
                     </div>
@@ -1196,21 +1267,6 @@ export default function CV(): React.JSX.Element {
           line-height: 1;
           font-weight: 400;
           letter-spacing: 0.015em;
-        }
-
-        .intro-text {
-          margin-top: 24px;
-        }
-
-        .intro-text p {
-          margin: 0 0 17px;
-          font-size: 12.5px;
-          line-height: 1.25;
-          font-weight: 400;
-        }
-
-        .intro-text p:last-child {
-          margin-bottom: 0;
         }
 
         /* =====================================================
