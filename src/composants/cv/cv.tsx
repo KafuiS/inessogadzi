@@ -511,44 +511,6 @@ export default function CV(): React.JSX.Element {
                   </p>
                 </div>
               </section>
-
-              {/* REFERENCES */}
-
-              <section className="sidebar-section languages">
-                <h2>RÉFÉRENCES</h2>
-                <div className="small-text">
-                  <p>
-                    <strong>Pierre Ployart</strong>
-                    <br />
-                    Country Manager France, Coros
-                    <br />
-                    <a
-                      href="https://fr.linkedin.com/in/pierre-ployart"
-                      className="contact-item"
-                    >
-                      {" "}
-                      https://fr.linkedin.com/in/
-                      <br />
-                      pierre-ployart
-                    </a>
-                  </p>
-
-                  <p>
-                    <strong>Shannon Kierse</strong>
-                    <br />
-                    Marketing Manager, Atlantic Centre of Education <br />
-                    <a
-                      href="https://ie.linkedin.com/in/shannon-kierse-914488113"
-                      className="contact-item"
-                    >
-                      {" "}
-                      https://ie.linkedin.com/in/
-                      <br />
-                      shannon-kierse-914488113{" "}
-                    </a>
-                  </p>
-                </div>
-              </section>
             </aside>
 
             {/* ================================================
@@ -850,6 +812,39 @@ export default function CV(): React.JSX.Element {
                       </div>
                     </div>
                   </article>
+                </div>
+              </section>
+              {/* REFERENCES */}
+
+              <section className="sidebar-section languages">
+                <h2>RÉFÉRENCES</h2>
+                <div className="small-text">
+                  <p>
+                    <strong>Pierre Ployart</strong>
+                    <br />
+                    Country Manager France, Coros
+                    <br />
+                    <a
+                      href="https://fr.linkedin.com/in/pierre-ployart"
+                      className="contact-item"
+                    >
+                      {" "}
+                      https://fr.linkedin.com/in/pierre-ployart
+                    </a>
+                  </p>
+                  <br />
+                  <p>
+                    <strong>Shannon Kierse</strong>
+                    <br />
+                    Marketing Manager, Atlantic Centre of Education <br />
+                    <a
+                      href="https://ie.linkedin.com/in/shannon-kierse-914488113"
+                      className="contact-item"
+                    >
+                      {" "}
+                      https://ie.linkedin.com/in/shannon-kierse-914488113{" "}
+                    </a>
+                  </p>
                 </div>
               </section>
             </div>
