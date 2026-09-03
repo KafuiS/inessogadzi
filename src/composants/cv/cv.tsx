@@ -527,7 +527,9 @@ export default function CV(): React.JSX.Element {
                       className="contact-item"
                     >
                       {" "}
-                      https://fr.linkedin.com/in/pierre-ployart
+                      https://fr.linkedin.com/in/
+                      <br />
+                      pierre-ployart
                     </a>
                   </p>
 
@@ -540,7 +542,9 @@ export default function CV(): React.JSX.Element {
                       className="contact-item"
                     >
                       {" "}
-                      https://ie.linkedin.com/in/shannon-kierse-914488113{" "}
+                      https://ie.linkedin.com/in/
+                      <br />
+                      shannon-kierse-914488113{" "}
                     </a>
                   </p>
                 </div>
@@ -770,9 +774,7 @@ export default function CV(): React.JSX.Element {
 
                         <span>Champs-sur-Marne</span>
                       </div>
-                      <p>
-                        <strong>Mention :</strong> Bien
-                      </p>
+
                       <ul className="experience-list">
                         <li>
                           Projets et Création (documentaire interactif, web
@@ -792,6 +794,9 @@ export default function CV(): React.JSX.Element {
                       </ul>
 
                       <div className="education-details">
+                        <p>
+                          <strong>Mention :</strong> Bien
+                        </p>
                         <p>
                           <strong>Spécialisation:</strong> Réalisation du
                           documentaire interactif{" "}
@@ -1187,7 +1192,7 @@ export default function CV(): React.JSX.Element {
 
         .strengths li {
           margin-bottom: 8px;
-          font-size: 14.5px;
+          font-size: 13.2px;
           line-height: 1.15;
           font-weight: 700;
         }
@@ -1273,7 +1278,7 @@ export default function CV(): React.JSX.Element {
         ===================================================== */
 
         .cv-section {
-          margin-top: 28px;
+          margin-top: 50px;
         }
 
         .education-section {
@@ -1365,7 +1370,7 @@ export default function CV(): React.JSX.Element {
         .experience-list li {
           margin: 0 0 2px;
           padding-left: 0;
-          font-size: 13.2px;
+          font-size: 13.7px;
           line-height: 1.18;
           font-weight: 400;
         }
