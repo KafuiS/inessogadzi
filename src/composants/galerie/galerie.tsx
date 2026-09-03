@@ -696,7 +696,8 @@ function ProjectModal({
 
   const isProject11 = projectIndex === 11;
 
-  const showVisitSite = projectIndex !== 2 && projectIndex !== 11;
+  const showVisitSite =
+    projectIndex !== 1 && projectIndex !== 2 && projectIndex !== 11;
 
   const project11Slides = [
     {

@@ -1586,9 +1586,9 @@ export default function About(): React.JSX.Element {
         .text .description {
           margin-top: 18px;
           font-family: ${spaceGrotesk.style.fontFamily};
-          font-size: 11px;
+          font-size: 12.5px;
           line-height: 1.55;
-          font-weight: 400;
+          font-weight: 470;
           font-style: normal;
           letter-spacing: 0.015em;
         }
