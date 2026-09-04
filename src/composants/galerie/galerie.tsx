@@ -1140,10 +1140,13 @@ function ProjectModal({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="project-visit-site"
-                aria-label={`Visit site — ${project.title}`}
+                aria-label={
+                  isEnglish
+                    ? `Visit site — ${project.title}`
+                    : `Voir le projet — ${project.title}`
+                }
               >
-                <span>Visit site</span>
-
+                <span>{isEnglish ? "Visit site" : "Voir le projet"}</span>
                 <img
                   src={`${BASE_PATH}/projects/carre-fleche.png`}
                   alt=""
@@ -1286,10 +1289,13 @@ function ProjectModal({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="project-visit-site"
-                aria-label={`Visit site — ${project.title}`}
+                aria-label={
+                  isEnglish
+                    ? `Visit site — ${project.title}`
+                    : `Voir le projet — ${project.title}`
+                }
               >
-                <span>Visit site</span>
-
+                <span>{isEnglish ? "Visit site" : "Voir le projet"}</span>
                 <img
                   src={`${BASE_PATH}/projects/carre-fleche.png`}
                   alt=""

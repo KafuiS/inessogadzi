@@ -21,6 +21,11 @@ export default function Header({
   const languageLabel = isEnglish ? "FR" : "EN";
   const langPrefix = isEnglish ? `${BASE_PATH}/en` : BASE_PATH;
 
+  /* ========================================================= LIBELLÉS NAVIGATION ========================================================= */
+  const navLabels = isEnglish
+    ? { about: "ABOUT", work: "WORK", contact: "REACH OUT", cv: "CV" }
+    : { about: "À PROPOS", work: "PROJETS", contact: "CONTACT", cv: "CV" };
+
   function getLanguageTarget(): string {
     if (isEnglish) {
       const frenchPath = pathname.replace(/^\/en/, "");
@@ -136,10 +141,10 @@ export default function Header({
 
         {/* ================================================= NAVIGATION DESKTOP ================================================= */}
         <nav className="site-navigation" aria-label="Navigation principale">
-          <a href={langPrefix}>ABOUT</a>
-          <a href={`${langPrefix}/galerie`}>WORK</a>
-          <a href="mailto:ines.sogadzi@hotmail.fr">REACH OUT</a>
-          <a href={`${langPrefix}/cv`}>CV</a>
+          <a href={langPrefix}>{navLabels.about}</a>
+          <a href={`${langPrefix}/galerie`}>{navLabels.work}</a>
+          <a href="mailto:ines.sogadzi@hotmail.fr">{navLabels.contact}</a>
+          <a href={`${langPrefix}/cv`}>{navLabels.cv}</a>
         </nav>
 
         {/* ================================================= BURGER ================================================= */}
@@ -193,22 +198,22 @@ export default function Header({
           {/* ================================================= NAVIGATION MOBILE ================================================= */}
           <nav className="mobile-navigation" aria-label="Navigation mobile">
             <a href={langPrefix} onClick={() => setMenuOpen(false)}>
-              ABOUT
+              {navLabels.about}
             </a>
             <a
               href={`${langPrefix}/galerie`}
               onClick={() => setMenuOpen(false)}
             >
-              WORK
+              {navLabels.work}
             </a>
             <a
               href="mailto:ines.sogadzi@hotmail.fr"
               onClick={() => setMenuOpen(false)}
             >
-              REACH OUT
+              {navLabels.contact}
             </a>
             <a href={`${langPrefix}/cv`} onClick={() => setMenuOpen(false)}>
-              CV
+              {navLabels.cv}
             </a>
           </nav>
         </div>
@@ -252,8 +257,8 @@ export default function Header({
           position: fixed;
           top: 24px;
           right: 32px;
-          width: 30px;
-          height: 30px;
+          width: 38px;
+          height: 38px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -510,8 +515,8 @@ export default function Header({
           .language-switch {
             top: 18px;
             right: 76px;
-            width: 30px;
-            height: 30px;
+            width: 34px;
+            height: 34px;
             font-size: 9px !important;
           }
           .mobile-burger {
