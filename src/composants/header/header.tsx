@@ -250,8 +250,8 @@ export default function Header({
           position: fixed;
           top: 24px;
           right: 32px;
-          width: 38px;
-          height: 38px;
+          width: 30px;
+          height: 30px;
           display: flex;
           align-items: center;
           justify-content: center;

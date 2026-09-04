@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { usePathname } from "next/navigation";
 import Header from "@/composants/header/header";
 
 const BASE_PATH = "/inessogadzi";
@@ -51,7 +52,7 @@ type ProjectData = {
   description: ReactNode;
 };
 
-const PROJECTS_DATA: Record<number, ProjectData> = {
+const PROJECTS_DATA_FR: Record<number, ProjectData> = {
   1: {
     title: "Arkitekt",
     type: "Typographie",
@@ -276,6 +277,221 @@ const PROJECTS_DATA: Record<number, ProjectData> = {
   },
 };
 
+const PROJECTS_DATA_EN: Record<number, ProjectData> = {
+  1: {
+    title: "Arkitekt",
+    type: "Typography",
+    role: "Art direction",
+    date: "2023",
+    description: (
+      <>
+        {" "}
+        This exercise, created in Illustrator, was dedicated to typographic
+        experimentation. <br /> The brief was open: design a typeface from
+        scratch, work on a few characters, or reinterpret an existing typeface.
+        I chose to design my own alphabet, from A to Z, along with a series of
+        digits from 1 to 9.
+        <br /> <br /> I worked on a strong contrast between bold serifs and very
+        fine lines, aiming to find a balance between strength and delicacy.{" "}
+      </>
+    ),
+  },
+
+  2: {
+    title: "Photography",
+    type: "Photography",
+    role: "Photographer",
+    date: "2020 - present",
+    description: (
+      <>
+        {" "}
+        I've had the opportunity to experiment with photography through various
+        exercises and shooting situations. This selection brings together images
+        with different approaches, chosen for their visual interest and as a
+        testament to my photographic practice. <br /> <br /> These photographs
+        have been kept in their original state, without retouching, to highlight
+        the work done directly during the shoot.{" "}
+      </>
+    ),
+  },
+
+  3: {
+    title: "Zen",
+    type: "Video",
+    role: "Videographer",
+    date: "2024",
+    description: (
+      <>
+        {" "}
+        Poetry. Serenity. Stillness. Slowing down to better contemplate. <br />{" "}
+        <br /> With a romantic approach, we chose to dwell on the sensory: those
+        suspended moments where nature invites us to observe, feel, and simply
+        be. <br /> <br /> Inspired by Goethe's thinking, for whom nature, when
+        seen through the eyes of the mind, reveals what cannot be said, we
+        wanted to give it a central place in our reflection. <br /> <br /> Our
+        approach was thus built around celebrating landscapes as spaces for
+        contemplation, capable of creating an intimate, almost spiritual
+        experience, and reconnecting us with what surrounds us.{" "}
+      </>
+    ),
+  },
+
+  4: {
+    title: "The Resistive Wire",
+    type: "Video",
+    role: "Videographer",
+    date: "2023",
+    description: (
+      <>
+        {" "}
+        As part of my final-year internship at Interface Z, I was tasked with
+        promoting a sensor called "the resistive wire." It's a simple wire that,
+        on contact with a conductive object, triggers a piece of code. <br />{" "}
+        <br /> The question guiding the project was: how can cymatics be
+        recreated digitally? Keeping the idea of an organic material, I created
+        a textile object inspired by the patterns formed by sand under the
+        effect of sound vibrations. The resistive wire, sewn directly into the
+        fabric, becomes the interface of the experience. <br /> <br /> Using Max
+        8 and Jitter, I created a generative visual whose variations simulate
+        different sound frequencies. The visual reacts to contact with the
+        conductive object and evolves in real time. <br /> <br /> The whole was
+        then captured on video, giving rise to an experience at the crossroads
+        of sound, matter and movement.{" "}
+      </>
+    ),
+  },
+
+  5: {
+    title: "Noises",
+    type: "Video",
+    role: "Videographer",
+    date: "2022",
+    description: (
+      <>
+        {" "}
+        It all began when I discovered Chaos Walking, directed by Doug Liman. In
+        that world, men's thoughts become audible to everyone. They call this
+        phenomenon "the Noise." <br /> <br /> What intrigued me was how it's
+        depicted on screen: a hazy emanation that appears around characters when
+        they think. I then wondered: what does noise actually look like? And if
+        sound could be made visible, what shape would it take? <br /> <br />{" "}
+        It's from this question that I sought to make sound waves visible within
+        matter. This approach, called cymatics, reveals acoustic vibrations
+        through different elements such as water or sand. <br /> <br /> From
+        invisible to visible, from sound to matter, Noises seeks to give shape
+        to what usually cannot be seen.{" "}
+      </>
+    ),
+  },
+
+  6: {
+    title: "Virgil Was Here",
+    type: "Fanzine",
+    role: "Graphic designer",
+    date: "2022",
+    description: (
+      <>
+        {" "}
+        The brief was to create a fanzine on a topic of our choice in order to
+        develop our command of InDesign. <br /> <br />
+        At the time, the news was marked by the passing of Virgil Abloh and the
+        presentation of his final collection. I chose to dedicate my fanzine to
+        this last runway show, titled "Virgil Was Here."{" "}
+      </>
+    ),
+  },
+
+  7: {
+    title: "Windmap",
+    type: "Visual identity",
+    role: "Graphic designer",
+    date: "2024",
+    description: (
+      <>
+        {" "}
+        Marine weather is a world where wind, waves, tides and weather
+        conditions are constantly changing. For sailors, boaters and sea
+        enthusiasts, this information is essential to understanding coastal
+        conditions and anticipating what's ahead. <br /> <br /> In this context,
+        I was asked to design the visual identity and{" "}
+        <a href="https://www.figma.com/proto/EKIgeAA6c8yrB3hf013Pp4/Untitled?type=design&node-id=48-1877&t=SByXnYXE0HErF7nk-1&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A2">
+          {" "}
+          app{" "}
+        </a>{" "}
+        for a service dedicated to marine forecasts. The goal was to create a
+        graphic universe able to visually translate the various phenomena that
+        shape the sea and make this information easily accessible to users.{" "}
+      </>
+    ),
+  },
+
+  8: {
+    title: "The Ministry of Time",
+    type: "Visual identity",
+    role: "Graphic designer",
+    date: "2024",
+    description: (
+      <>
+        {" "}
+        The Ministry of Time is a fictional institution that appears in the
+        Spanish TV series "El Ministerio del Tiempo" (The Ministry of Time). Its
+        role is to preserve the integrity of history and ensure that past events
+        are not altered. <br /> <br /> The Ministry of Time is a secret
+        organisation, known only to a few individuals, and its existence is kept
+        hidden from the general public. It is made up of a diverse team of
+        agents from different eras, each bringing their own specific skills and
+        knowledge to maintain the integrity of the time continuum. <br /> <br />{" "}
+        In this context, I was asked to design the new visual identity for the
+        Ministry of Time, highlighting the idea of time travel and the
+        preservation of history.{" "}
+      </>
+    ),
+  },
+
+  9: {
+    title: "Trot: Yesterday's Voices, Today's Echoes",
+    type: "Interactive documentary",
+    role: "Art director",
+    date: "Jan 2025 - Jun 2025",
+    description: (
+      <>
+        {" "}
+        Korean trot, a nationally popular music genre throughout the 20th
+        century, is now seen as outdated and reserved for older generations.
+        This documentary explores older people's attachment to this musical
+        genre by tracing its evolution. <br /> <br /> Head of the visual
+        department for the interactive documentary "Trot: Yesterday's Voices,
+        Today's Echoes" | produced in South Korea{" "}
+      </>
+    ),
+  },
+
+  10: {
+    title: "Sevran en Mouvement",
+    type: "Web project",
+    role: "UX/UI | Developer",
+    date: "Nov 2024 - Apr 2025",
+    description: (
+      <>
+        {" "}
+        Sevran en Mouvement – Together, let's build the future of Sevran! This
+        website is designed to inform, inspire and connect residents around the
+        city's projects. <br /> <br /> Ideation & web development of the
+        homepage for the Sevran en Mouvement project | Interactive 3D map (HTML,
+        CSS, JavaScript, Three.js, Vite){" "}
+      </>
+    ),
+  },
+
+  11: {
+    title: "Marketing & Communication",
+    type: "Digital content",
+    role: "Communications officer",
+    date: "2026",
+    description: <></>,
+  },
+};
+
 /* ========================================================= URLS ========================================================= */
 
 const PROJECT_URLS: Record<number, string> = {
@@ -296,6 +512,8 @@ const PROJECT_URLS: Record<number, string> = {
 type ProjectModalProps = {
   projectIndex: number;
   onClose: () => void;
+  isEnglish: boolean;
+  languageTarget: string;
 };
 
 type GalleryProject = {
@@ -684,6 +902,8 @@ function VolumeIcon({ muted }: { muted: boolean }): React.JSX.Element {
 function ProjectModal({
   projectIndex,
   onClose,
+  isEnglish,
+  languageTarget,
 }: ProjectModalProps): React.JSX.Element {
   const [activeMedia, setActiveMedia] = useState(0);
 
@@ -692,7 +912,9 @@ function ProjectModal({
     [`${BASE_PATH}/projects/project-11-2.mp4`]: true,
   });
 
-  const project = PROJECTS_DATA[projectIndex] ?? PROJECTS_DATA[1];
+  const projectsData = isEnglish ? PROJECTS_DATA_EN : PROJECTS_DATA_FR;
+
+  const project = projectsData[projectIndex] ?? projectsData[1];
 
   const projectUrl = PROJECT_URLS[projectIndex] ?? "#";
 
@@ -703,57 +925,107 @@ function ProjectModal({
   const showVisitSite =
     projectIndex !== 1 && projectIndex !== 2 && projectIndex !== 11;
 
+  const project11SlideTexts = isEnglish
+    ? [
+        {
+          label: "Video",
+          description: (
+            <>
+              {" "}
+              Creating video content for social media, from concept to editing,
+              working on pacing, storytelling and visual identity. Each Reel was
+              designed to be dynamic, spontaneous and consistent with the
+              Atlantic Centre of Education's universe. <br /> <br /> This
+              experience allowed me to explore another way of telling a story
+              and engaging audiences.{" "}
+            </>
+          ),
+        },
+        {
+          label: "Images",
+          description: (
+            <>
+              {" "}
+              Designing content for social media, from editorial thinking to
+              visual creation, adapting each post to the codes and formats of
+              each platform. Working on copywriting, tone, information hierarchy
+              and visual impact to create content that is coherent, readable and
+              engaging. <br /> <br /> This selection of posts created for the
+              ACE reflects my experience in content creation and my ability to
+              turn an idea into content designed to capture attention, convey a
+              message and engage audiences.{" "}
+            </>
+          ),
+        },
+        {
+          label: "Digital communication",
+          description: (
+            <>
+              {" "}
+              Designing digital communication materials by working on layout,
+              information hierarchy and visual identity to make content clear,
+              readable and consistent. <br /> <br /> This factsheet created for
+              the Atlantic Centre of Education illustrates my ability to
+              visually structure information and adapt it to the constraints of
+              a digital medium.{" "}
+            </>
+          ),
+        },
+      ]
+    : [
+        {
+          label: "Vidéo",
+          description: (
+            <>
+              {" "}
+              Créer des contenus vidéo pour les réseaux sociaux, de l’idée au
+              montage, en travaillant le rythme, le storytelling et l’identité
+              visuelle. Chaque Reel était pensé pour être à la fois dynamique,
+              spontané et cohérent avec l’univers de l’Atlantic Centre of
+              Education. <br /> <br /> Cette expérience m’a permis d’explorer
+              une autre manière de raconter une histoire et d'engager les
+              audiences.{" "}
+            </>
+          ),
+        },
+        {
+          label: "Images",
+          description: (
+            <>
+              {" "}
+              Concevoir des contenus pour les réseaux sociaux, de la réflexion
+              éditoriale à la création visuelle, en adaptant chaque publication
+              aux codes et aux formats des plateformes. Travailler le
+              copywriting, le ton, la hiérarchie de l’information et l’impact
+              visuel pour créer des contenus cohérents, lisibles et engageants.{" "}
+              <br /> <br /> Cette sélection de publications réalisées pour l’ACE
+              témoigne de mon expérience en création de contenu et de ma
+              capacité à transformer une idée en contenu pensé pour attirer
+              l’attention, transmettre un message et engager les audiences.{" "}
+            </>
+          ),
+        },
+        {
+          label: "Communication digital",
+          description: (
+            <>
+              {" "}
+              Concevoir des supports de communication digitale en travaillant la
+              mise en page, la hiérarchie de l’information et l’identité
+              visuelle afin de rendre les contenus clairs, lisibles et
+              cohérents. <br /> <br /> Ce factsheet réalisée pour l’Atlantic
+              Centre of Education illustre ma capacité à structurer visuellement
+              une information et à l’adapter aux contraintes d’un support
+              digital.{" "}
+            </>
+          ),
+        },
+      ];
+
   const project11Slides = [
-    {
-      label: "Vidéo",
-      items: media.slice(0, 2),
-      description: (
-        <>
-          {" "}
-          Créer des contenus vidéo pour les réseaux sociaux, de l’idée au
-          montage, en travaillant le rythme, le storytelling et l’identité
-          visuelle. Chaque Reel était pensé pour être à la fois dynamique,
-          spontané et cohérent avec l’univers de l’Atlantic Centre of Education.{" "}
-          <br /> <br /> Cette expérience m’a permis d’explorer une autre manière
-          de raconter une histoire et d'engager les audiences.{" "}
-        </>
-      ),
-    },
-
-    {
-      label: "Images",
-      items: media.slice(2, 4),
-      description: (
-        <>
-          {" "}
-          Concevoir des contenus pour les réseaux sociaux, de la réflexion
-          éditoriale à la création visuelle, en adaptant chaque publication aux
-          codes et aux formats des plateformes. Travailler le copywriting, le
-          ton, la hiérarchie de l’information et l’impact visuel pour créer des
-          contenus cohérents, lisibles et engageants. <br /> <br /> Cette
-          sélection de publications réalisées pour l’ACE témoigne de mon
-          expérience en création de contenu et de ma capacité à transformer une
-          idée en contenu pensé pour attirer l’attention, transmettre un message
-          et engager les audiences.{" "}
-        </>
-      ),
-    },
-
-    {
-      label: "Communication digital",
-      items: media.slice(4, 7),
-      description: (
-        <>
-          {" "}
-          Concevoir des supports de communication digitale en travaillant la
-          mise en page, la hiérarchie de l’information et l’identité visuelle
-          afin de rendre les contenus clairs, lisibles et cohérents. <br />{" "}
-          <br /> Ce factsheet réalisée pour l’Atlantic Centre of Education
-          illustre ma capacité à structurer visuellement une information et à
-          l’adapter aux contraintes d’un support digital.{" "}
-        </>
-      ),
-    },
+    { ...project11SlideTexts[0], items: media.slice(0, 2) },
+    { ...project11SlideTexts[1], items: media.slice(2, 4) },
+    { ...project11SlideTexts[2], items: media.slice(4, 7) },
   ];
 
   const activeProject11Slide = isProject11
@@ -894,7 +1166,7 @@ function ProjectModal({
                   type="button"
                   className="project-carousel-arrow project-carousel-arrow-left"
                   onClick={goToPreviousMedia}
-                  aria-label="Média précédent"
+                  aria-label={isEnglish ? "Previous media" : "Média précédent"}
                 >
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M14.5 4.5L7 12L14.5 19.5" />
@@ -905,7 +1177,7 @@ function ProjectModal({
                   type="button"
                   className="project-carousel-arrow project-carousel-arrow-right"
                   onClick={goToNextMedia}
-                  aria-label="Média suivant"
+                  aria-label={isEnglish ? "Next media" : "Média suivant"}
                 >
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M9.5 4.5L17 12L9.5 19.5" />
@@ -946,8 +1218,12 @@ function ProjectModal({
                         }}
                         aria-label={
                           (videoMuted[item.src] ?? true)
-                            ? "Activer le son"
-                            : "Couper le son"
+                            ? isEnglish
+                              ? "Unmute"
+                              : "Activer le son"
+                            : isEnglish
+                              ? "Mute"
+                              : "Couper le son"
                         }
                       >
                         <span className="project-11-volume-icon">
@@ -1042,7 +1318,11 @@ function ProjectModal({
                       : "project-thumbnail"
                   }
                   onClick={() => setActiveMedia(index)}
-                  aria-label={`Afficher la slide ${index + 1} — ${slide.label}`}
+                  aria-label={
+                    isEnglish
+                      ? `Show slide ${index + 1} — ${slide.label}`
+                      : `Afficher la slide ${index + 1} — ${slide.label}`
+                  }
                 >
                   <div className="project-11-thumbnail-preview">
                     {slide.items.map((item) =>
@@ -1079,7 +1359,11 @@ function ProjectModal({
                       : "project-thumbnail"
                   }
                   onClick={() => setActiveMedia(index)}
-                  aria-label={`Afficher le média ${index + 1}`}
+                  aria-label={
+                    isEnglish
+                      ? `Show media ${index + 1}`
+                      : `Afficher le média ${index + 1}`
+                  }
                 >
                   {item.type === "image" ? (
                     <img
@@ -1100,11 +1384,19 @@ function ProjectModal({
               ))}
         </div>
 
+        <a
+          href={languageTarget}
+          className="project-modal-lang"
+          aria-label={isEnglish ? "Switch to French" : "Passer en anglais"}
+        >
+          {isEnglish ? "FR" : "EN"}
+        </a>
+
         <button
           type="button"
           className="project-modal-close"
           onClick={onClose}
-          aria-label="Fermer le projet"
+          aria-label={isEnglish ? "Close project" : "Fermer le projet"}
         >
           <span />
           <span />
@@ -1115,7 +1407,7 @@ function ProjectModal({
         .project-modal {
           position: fixed;
           inset: 0;
-          z-index: 4000;
+          z-index: 5600;
           width: 100vw;
           height: 100dvh;
           overflow: hidden;
@@ -1125,7 +1417,7 @@ function ProjectModal({
 
         .project-modal-content {
           position: relative;
-          z-index: 5001;
+          z-index: 5601;
           width: 100%;
           height: 100%;
           display: flex;
@@ -1155,7 +1447,8 @@ function ProjectModal({
         .project-modal-meta,
         .project-visit-site,
         .project-thumbnail,
-        .project-modal-close {
+        .project-modal-close,
+        .project-modal-lang {
           font-family: "IBM Plex Mono", monospace;
         }
 
@@ -1168,7 +1461,7 @@ function ProjectModal({
           display: flex;
           align-items: center;
           padding: 0 32px;
-          z-index: 5020;
+          z-index: 5620;
           pointer-events: none;
         }
 
@@ -1196,7 +1489,7 @@ function ProjectModal({
           top: 50%;
           transform: translateY(-50%);
           width: min(250px, 20vw);
-          z-index: 5015;
+          z-index: 5615;
           text-align: left;
         }
 
@@ -1272,7 +1565,7 @@ function ProjectModal({
           background: transparent;
           color: #ffffff;
           cursor: none;
-          z-index: 5030;
+          z-index: 5630;
           transform: translateY(-50%);
           opacity: 0.72;
           transition:
@@ -1472,6 +1765,40 @@ function ProjectModal({
           display: none;
         }
 
+        /* ===================================================== SÉLECTEUR DE LANGUE ===================================================== */
+
+        .project-modal-lang {
+          position: fixed;
+          top: 20px;
+          right: 72px;
+          width: 38px;
+          height: 38px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0;
+          margin: 0;
+          border: 1px solid rgba(255, 255, 255, 0.6);
+          outline: none;
+          background: transparent;
+          color: #ffffff;
+          font-size: 10px;
+          font-weight: 500;
+          letter-spacing: 0.02em;
+          text-decoration: none;
+          cursor: none;
+          z-index: 6000;
+          pointer-events: auto;
+          transition:
+            background 160ms ease,
+            color 160ms ease;
+        }
+
+        .project-modal-lang:hover {
+          background: #ffffff;
+          color: #111111;
+        }
+
         /* ===================================================== FERMETURE ===================================================== */
 
         .project-modal-close {
@@ -1514,7 +1841,7 @@ function ProjectModal({
           left: 50%;
           bottom: 24px;
           transform: translateX(-50%);
-          z-index: 5200;
+          z-index: 5700;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -1576,6 +1903,15 @@ function ProjectModal({
 
           .project-modal-logo {
             height: 23px;
+          }
+
+          .project-modal-lang {
+            z-index: 2147483003 !important;
+            top: 12px;
+            right: 62px;
+            width: 34px;
+            height: 34px;
+            font-size: 9px;
           }
 
           .project-modal-close {
@@ -1788,6 +2124,14 @@ function ProjectModal({
 
           .project-modal-logo {
             height: 21px;
+          }
+
+          .project-modal-lang {
+            top: 8px;
+            right: 54px;
+            width: 32px;
+            height: 32px;
+            font-size: 8.5px;
           }
 
           .project-modal-close {
@@ -2040,6 +2384,12 @@ function ProjectModal({
 export default function Galerie(): React.JSX.Element {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
+
+  const pathname = usePathname();
+  const isEnglish = pathname.startsWith("/en");
+  const languageTarget = isEnglish
+    ? `${BASE_PATH}/galerie`
+    : `${BASE_PATH}/en/galerie`;
 
   useEffect(() => {
     const canvasElement = canvasRef.current;
@@ -2378,8 +2728,12 @@ export default function Galerie(): React.JSX.Element {
 
         const textPadding = displayedSize * 0.08;
 
+        const hoverProjectData = isEnglish
+          ? PROJECTS_DATA_EN
+          : PROJECTS_DATA_FR;
+
         drawHoverText(
-          PROJECTS_DATA[project.index]?.type ?? "",
+          hoverProjectData[project.index]?.type ?? "",
           x,
           y,
           displayedSize - textPadding * 2,
@@ -2853,7 +3207,7 @@ export default function Galerie(): React.JSX.Element {
         }
       });
     };
-  }, []);
+  }, [isEnglish]);
 
   return (
     <>
@@ -2881,6 +3235,8 @@ export default function Galerie(): React.JSX.Element {
         <ProjectModal
           projectIndex={selectedProject}
           onClose={() => setSelectedProject(null)}
+          isEnglish={isEnglish}
+          languageTarget={languageTarget}
         />
       )}
     </>
