@@ -2,7 +2,9 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
+
 const BASE_PATH = "/inessogadzi";
+
 export default function Header({
   textColor = "#fff",
 }: {
@@ -11,10 +13,12 @@ export default function Header({
   const [menuOpen, setMenuOpen] = useState(false);
   const grainCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const pathname = usePathname();
+
   /* ========================================================= LANGUE ========================================================= */
   const isEnglish = pathname.startsWith(`${BASE_PATH}/en`);
   const languageLabel = isEnglish ? "FR" : "EN";
   const langPrefix = isEnglish ? `${BASE_PATH}/en` : BASE_PATH;
+
   function getLanguageTarget(): string {
     const cleanPathname = pathname.replace(BASE_PATH, "");
     if (isEnglish) {
@@ -24,7 +28,9 @@ export default function Header({
     return `${BASE_PATH}/en${cleanPathname || "/"}`;
   }
   const languageTarget = getLanguageTarget();
-  /* ========================================================= GRAIN ========================================================= */ useEffect(() => {
+
+  /* ========================================================= GRAIN ========================================================= */
+  useEffect(() => {
     if (!menuOpen) return;
     const canvasElement = grainCanvasRef.current;
     if (canvasElement === null) return;
@@ -37,6 +43,7 @@ export default function Header({
     let height = 0;
     let pixelRatio = 1;
     const GRAIN_ALPHA = 0.055;
+
     function resize(): void {
       width = window.innerWidth;
       height = window.innerHeight;
@@ -48,6 +55,7 @@ export default function Header({
       ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
       ctx.imageSmoothingEnabled = false;
     }
+
     function renderGrain(): void {
       const imageData = ctx.createImageData(
         Math.floor(width * pixelRatio),
@@ -64,21 +72,27 @@ export default function Header({
       ctx.putImageData(imageData, 0, 0);
       animationFrame = requestAnimationFrame(renderGrain);
     }
+
     resize();
     window.addEventListener("resize", resize);
     renderGrain();
+
     return (): void => {
       cancelAnimationFrame(animationFrame);
       window.removeEventListener("resize", resize);
     };
   }, [menuOpen]);
-  /* ========================================================= BLOQUER LE SCROLL ========================================================= */ useEffect(() => {
+
+  /* ========================================================= BLOQUER LE SCROLL ========================================================= */
+  useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return (): void => {
       document.body.style.overflow = "";
     };
   }, [menuOpen]);
-  /* ========================================================= FERMER LE MENU AVEC ESC ========================================================= */ useEffect(() => {
+
+  /* ========================================================= FERMER LE MENU AVEC ESC ========================================================= */
+  useEffect(() => {
     if (!menuOpen) return;
     function handleKeyDown(event: KeyboardEvent): void {
       if (event.key === "Escape") {
@@ -90,45 +104,44 @@ export default function Header({
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [menuOpen]);
+
   return (
     <>
-      {" "}
-      {/* ===================================================== HEADER ===================================================== */}{" "}
+      {/* ===================================================== HEADER ===================================================== */}
       <header className="site-header">
-        {" "}
-        {/* ================================================= LOGO ================================================= */}{" "}
-        
+        {/* ================================================= LOGO ================================================= */}
+        <a
           href={`${langPrefix}/galerie`}
           className="site-logo"
           aria-label="Galerie"
         >
-          {" "}
           <Image
             src={`${BASE_PATH}/projects/IS.png`}
             alt="Logo"
             width={42}
             height={42}
             priority
-          />{" "}
-        </a>{" "}
-        {/* ================================================= SÉLECTEUR DE LANGUE ================================================= */}{" "}
-        
+          />
+        </a>
+
+        {/* ================================================= SELECTEUR DE LANGUE ================================================= */}
+        <a
           href={languageTarget}
           className="language-switch"
-          aria-label={`Passer en ${isEnglish ? "français" : "anglais"}`}
+          aria-label={`Passer en ${isEnglish ? "francais" : "anglais"}`}
         >
-          {" "}
-          {languageLabel}{" "}
-        </a>{" "}
-        {/* ================================================= NAVIGATION DESKTOP ================================================= */}{" "}
+          {languageLabel}
+        </a>
+
+        {/* ================================================= NAVIGATION DESKTOP ================================================= */}
         <nav className="site-navigation" aria-label="Navigation principale">
-          {" "}
-          <a href={langPrefix}>ABOUT</a>{" "}
-          <a href={`${langPrefix}/galerie`}>WORK</a>{" "}
-          <a href="mailto:ines.sogadzi@hotmail.fr">REACH OUT</a>{" "}
-          <a href={`${langPrefix}/cv`}>CV</a>{" "}
-        </nav>{" "}
-        {/* ================================================= BURGER ================================================= */}{" "}
+          <a href={langPrefix}>ABOUT</a>
+          <a href={`${langPrefix}/galerie`}>WORK</a>
+          <a href="mailto:ines.sogadzi@hotmail.fr">REACH OUT</a>
+          <a href={`${langPrefix}/cv`}>CV</a>
+        </nav>
+
+        {/* ================================================= BURGER ================================================= */}
         <button
           type="button"
           className="mobile-burger"
@@ -136,71 +149,71 @@ export default function Header({
           aria-label="Ouvrir le menu"
           aria-expanded={menuOpen}
         >
-          {" "}
-          <span /> <span /> <span />{" "}
-        </button>{" "}
-      </header>{" "}
-      {/* ===================================================== OVERLAY ===================================================== */}{" "}
+          <span />
+          <span />
+          <span />
+        </button>
+      </header>
+
+      {/* ===================================================== OVERLAY ===================================================== */}
       <div
         className={menuOpen ? "menu-overlay menu-overlay-open" : "menu-overlay"}
         onClick={() => setMenuOpen(false)}
         aria-hidden="true"
-      />{" "}
-      {/* ===================================================== MENU MOBILE / TABLETTE ===================================================== */}{" "}
+      />
+
+      {/* ===================================================== MENU MOBILE / TABLETTE ===================================================== */}
       <div
         className={menuOpen ? "mobile-menu mobile-menu-open" : "mobile-menu"}
         aria-hidden={!menuOpen}
       >
-        {" "}
-        {/* ================================================= GRAIN DU MENU ================================================= */}{" "}
+        {/* ================================================= GRAIN DU MENU ================================================= */}
         <canvas
           ref={grainCanvasRef}
           className="mobile-menu-grain"
           aria-hidden="true"
-        />{" "}
+        />
+
         <div className="mobile-menu-content">
-          {" "}
-          {/* ================================================= TOP BAR ================================================= */}{" "}
+          {/* ================================================= TOP BAR ================================================= */}
           <div className="mobile-menu-top">
-            {" "}
-            {/* ================================================= CROIX ================================================= */}{" "}
+            {/* ================================================= CROIX ================================================= */}
             <button
               type="button"
               className="mobile-close"
               onClick={() => setMenuOpen(false)}
               aria-label="Fermer le menu"
             >
-              {" "}
-              <span /> <span />{" "}
-            </button>{" "}
-          </div>{" "}
-          {/* ================================================= NAVIGATION MOBILE ================================================= */}{" "}
+              <span />
+              <span />
+            </button>
+          </div>
+
+          {/* ================================================= NAVIGATION MOBILE ================================================= */}
           <nav className="mobile-navigation" aria-label="Navigation mobile">
-            {" "}
             <a href={langPrefix} onClick={() => setMenuOpen(false)}>
-              {" "}
-              ABOUT{" "}
-            </a>{" "}
-            <a href={`${langPrefix}/galerie`} onClick={() => setMenuOpen(false)}>
-              {" "}
-              WORK{" "}
-            </a>{" "}
-            
+              ABOUT
+            </a>
+            <a
+              href={`${langPrefix}/galerie`}
+              onClick={() => setMenuOpen(false)}
+            >
+              WORK
+            </a>
+            <a
               href="mailto:ines.sogadzi@hotmail.fr"
               onClick={() => setMenuOpen(false)}
             >
-              {" "}
-              REACH OUT{" "}
-            </a>{" "}
+              REACH OUT
+            </a>
             <a href={`${langPrefix}/cv`} onClick={() => setMenuOpen(false)}>
-              {" "}
-              CV{" "}
-            </a>{" "}
-          </nav>{" "}
-        </div>{" "}
-      </div>{" "}
+              CV
+            </a>
+          </nav>
+        </div>
+      </div>
+
       <style jsx>{`
-        /* ==================================================== HEADER ==================================================== */
         .site-header {
           position: fixed;
           top: 0;
@@ -212,7 +225,7 @@ export default function Header({
           align-items: flex-start;
           z-index: 5000;
           pointer-events: none;
-        } /* ==================================================== LOGO ==================================================== */
+        }
         .site-logo {
           display: block;
           width: 42px;
@@ -233,7 +246,7 @@ export default function Header({
           max-width: 42px !important;
           max-height: 42px !important;
           object-fit: contain;
-        } /* ==================================================== SÉLECTEUR DE LANGUE ==================================================== */
+        }
         .language-switch {
           position: fixed;
           top: 24px;
@@ -262,7 +275,7 @@ export default function Header({
         .language-switch:hover {
           background: ${textColor};
           color: #000 !important;
-        } /* ==================================================== NAVIGATION DESKTOP ==================================================== */
+        }
         .site-navigation {
           position: absolute;
           top: 28px;
@@ -301,7 +314,7 @@ export default function Header({
         }
         .site-navigation a:hover {
           opacity: 0.55;
-        } /* ==================================================== BURGER ==================================================== */
+        }
         .mobile-burger {
           display: none;
           position: fixed;
@@ -333,7 +346,7 @@ export default function Header({
         }
         .mobile-burger span:nth-child(3) {
           top: 26px;
-        } /* ==================================================== OVERLAY ==================================================== */
+        }
         .menu-overlay {
           position: fixed;
           inset: 0;
@@ -350,7 +363,7 @@ export default function Header({
           opacity: 1;
           visibility: visible;
           pointer-events: auto;
-        } /* ==================================================== MENU MOBILE ==================================================== */
+        }
         .mobile-menu {
           position: fixed;
           left: 0;
@@ -378,7 +391,7 @@ export default function Header({
           visibility: visible;
           pointer-events: auto;
           transform: translateY(0);
-        } /* ==================================================== GRAIN ==================================================== */
+        }
         .mobile-menu-grain {
           position: absolute;
           inset: 0;
@@ -389,7 +402,7 @@ export default function Header({
           pointer-events: none;
           opacity: 0.42;
           mix-blend-mode: screen;
-        } /* ==================================================== CONTENU ==================================================== */
+        }
         .mobile-menu-content {
           position: relative;
           width: 100%;
@@ -397,13 +410,13 @@ export default function Header({
           z-index: 20;
           display: flex;
           flex-direction: column;
-        } /* ==================================================== TOP BAR ==================================================== */
+        }
         .mobile-menu-top {
           position: relative;
           width: 100%;
           height: 54px;
           flex: 0 0 54px;
-        } /* ==================================================== CROIX ==================================================== */
+        }
         .mobile-close {
           position: absolute;
           top: 8px;
@@ -430,7 +443,7 @@ export default function Header({
         }
         .mobile-close span:last-child {
           transform: rotate(-45deg);
-        } /* ==================================================== NAVIGATION MOBILE ==================================================== */
+        }
         .mobile-navigation {
           flex: 1;
           width: 100%;
@@ -472,12 +485,12 @@ export default function Header({
           transition:
             background-color 150ms ease,
             color 150ms ease;
-        } /* ==================================================== HOVER — BANDE TRÈS FINE ==================================================== */
+        }
         .mobile-navigation a:hover,
         .mobile-navigation a:focus-visible {
           color: #000 !important;
           background: #fff !important;
-        } /* ==================================================== TABLETTE ==================================================== */
+        }
         @media (max-width: 1024px) {
           .site-header {
             height: 70px;
@@ -513,7 +526,7 @@ export default function Header({
             padding: 3px 18px;
             font-size: 11px !important;
           }
-        } /* ==================================================== MOBILE ==================================================== */
+        }
         @media (max-width: 700px) {
           .mobile-menu {
             height: 44vh;
@@ -530,7 +543,7 @@ export default function Header({
             padding: 3px 18px;
             font-size: 11px !important;
           }
-        } /* ==================================================== PETIT MOBILE ==================================================== */
+        }
         @media (max-width: 480px) {
           .mobile-burger {
             right: 12px;
@@ -553,7 +566,7 @@ export default function Header({
             font-size: 10px !important;
           }
         }
-      `}</style>{" "}
+      `}</style>
     </>
   );
 }
