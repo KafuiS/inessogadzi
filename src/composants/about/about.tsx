@@ -882,7 +882,7 @@ export default function About(): React.JSX.Element {
 
   const pathname = usePathname();
 
-  const isEnglish = pathname.startsWith(`${BASE_PATH}/en`);
+  const isEnglish = pathname.startsWith("/en");
 
   /* ==========================================================
      ROUTES
