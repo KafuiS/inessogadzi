@@ -15,17 +15,16 @@ export default function Header({
   const pathname = usePathname();
 
   /* ========================================================= LANGUE ========================================================= */
-  const isEnglish = pathname.startsWith(`${BASE_PATH}/en`);
+  const isEnglish = pathname.startsWith("/en");
   const languageLabel = isEnglish ? "FR" : "EN";
   const langPrefix = isEnglish ? `${BASE_PATH}/en` : BASE_PATH;
 
   function getLanguageTarget(): string {
-    const cleanPathname = pathname.replace(BASE_PATH, "");
     if (isEnglish) {
-      const frenchPath = cleanPathname.replace(/^\/en/, "");
+      const frenchPath = pathname.replace(/^\/en/, "");
       return `${BASE_PATH}${frenchPath || "/"}`;
     }
-    return `${BASE_PATH}/en${cleanPathname || "/"}`;
+    return `${BASE_PATH}/en${pathname === "/" ? "" : pathname}`;
   }
   const languageTarget = getLanguageTarget();
 
