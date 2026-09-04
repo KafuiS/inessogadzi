@@ -1743,8 +1743,9 @@ export default function About(): React.JSX.Element {
           font-weight: 700;
           font-style: normal;
           letter-spacing: 0.01em;
-              0 1px 3px rgba(0, 0, 0, 0.85),
-    0 4px 14px rgba(0, 0, 0, 0.55);
+          text-shadow:
+            0 1px 3px rgba(0, 0, 0, 0.85),
+            0 4px 14px rgba(0, 0, 0, 0.55);
         }
 
         /* ==================================================
@@ -1761,8 +1762,9 @@ export default function About(): React.JSX.Element {
           font-weight: 470;
           font-style: normal;
           letter-spacing: 0.015em;
-              0 1px 3px rgba(0, 0, 0, 0.85),
-    0 4px 14px rgba(0, 0, 0, 0.55);
+          text-shadow:
+            0 1px 3px rgba(0, 0, 0, 0.85),
+            0 4px 14px rgba(0, 0, 0, 0.55);
         }
 
         /* ==================================================
