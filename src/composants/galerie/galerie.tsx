@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { usePathname } from "next/navigation";
 import Header from "@/composants/header/header";
 
 const BASE_PATH = "/inessogadzi";
@@ -72,6 +71,7 @@ const PROJECTS_DATA: Record<number, ProjectData> = {
       </>
     ),
   },
+
   2: {
     title: "Photographie",
     type: "Photographie",
@@ -90,6 +90,7 @@ const PROJECTS_DATA: Record<number, ProjectData> = {
       </>
     ),
   },
+
   3: {
     title: "Zen",
     type: "Vidéo",
@@ -112,6 +113,7 @@ const PROJECTS_DATA: Record<number, ProjectData> = {
       </>
     ),
   },
+
   4: {
     title: "Le fil résistif",
     type: "Vidéo",
@@ -137,6 +139,7 @@ const PROJECTS_DATA: Record<number, ProjectData> = {
       </>
     ),
   },
+
   5: {
     title: "Noises",
     type: "Vidéo",
@@ -161,6 +164,7 @@ const PROJECTS_DATA: Record<number, ProjectData> = {
       </>
     ),
   },
+
   6: {
     title: "Virgil Was Here",
     type: "Fanzine",
@@ -177,6 +181,7 @@ const PROJECTS_DATA: Record<number, ProjectData> = {
       </>
     ),
   },
+
   7: {
     title: "Windmap",
     type: "Charte graphique",
@@ -202,6 +207,7 @@ const PROJECTS_DATA: Record<number, ProjectData> = {
       </>
     ),
   },
+
   8: {
     title: "Le Ministère du Temps",
     type: "Charte graphique",
@@ -225,6 +231,7 @@ const PROJECTS_DATA: Record<number, ProjectData> = {
       </>
     ),
   },
+
   9: {
     title: "Le Trot: les voix d'hier, échos d'aujourd'hui",
     type: "Documentaire interactif",
@@ -242,6 +249,7 @@ const PROJECTS_DATA: Record<number, ProjectData> = {
       </>
     ),
   },
+
   10: {
     title: "Sevran en Mouvement",
     type: "Projet Web",
@@ -258,218 +266,11 @@ const PROJECTS_DATA: Record<number, ProjectData> = {
       </>
     ),
   },
+
   11: {
     title: "Marketing & Communication",
     type: "Contenus digitaux",
     role: "Chargée de communication",
-    date: "2026",
-    description: <></>,
-  },
-};
-
-/* ========================================================= DONNÉES ANGLAISES ========================================================= */
-
-const PROJECTS_DATA_EN: Record<number, ProjectData> = {
-  1: {
-    title: "Arkitekt",
-    type: "Typography",
-    role: "Art direction",
-    date: "2023",
-    description: (
-      <>
-        {" "}
-        This exercise, created in Illustrator, focused on typographic
-        experimentation. <br /> The brief was open: create a typeface from
-        scratch, work on a few characters, or reinterpret an existing typeface.
-        I chose to design my own alphabet, from A to Z, as well as a series of
-        numbers from 1 to 9. <br /> <br /> I worked on a strong contrast between
-        imposing serifs and very fine lines, looking for a balance between
-        strength and delicacy.{" "}
-      </>
-    ),
-  },
-  2: {
-    title: "Photography",
-    type: "Photography",
-    role: "Photographer",
-    date: "2020 - present",
-    description: (
-      <>
-        {" "}
-        I had the opportunity to experiment with photography through different
-        exercises and shooting situations. This selection brings together images
-        with varied approaches, chosen for their visual interest and to reflect
-        my photographic practice. <br /> <br /> These photographs have been kept
-        in their original state, without retouching, in order to highlight the
-        work done directly during the shoot.{" "}
-      </>
-    ),
-  },
-  3: {
-    title: "Zen",
-    type: "Video",
-    role: "Videographer",
-    date: "2024",
-    description: (
-      <>
-        {" "}
-        Poetry. Serenity. Calm. Slowing down in order to contemplate more
-        deeply. <br /> <br /> In a romantic approach, we chose to focus on the
-        sensitive: suspended moments when nature invites us to observe, feel and
-        simply be. <br /> <br /> Inspired by Goethe's idea that nature, when
-        passed through the gaze of the mind, reveals what cannot be said, we
-        wanted to give it a central place in our reflection. <br /> <br /> Our
-        approach was thus built around valuing landscapes as spaces of
-        contemplation, capable of creating an intimate, almost spiritual
-        experience and reconnecting us with our surroundings.{" "}
-      </>
-    ),
-  },
-  4: {
-    title: "The Resistive Thread",
-    type: "Video",
-    role: "Videographer",
-    date: "2023",
-    description: (
-      <>
-        {" "}
-        As part of my final-year bachelor's internship at Interface Z, I was
-        responsible for promoting a sensor called "the resistive thread". It is
-        a simple thread that, when in contact with a conductive object, can
-        trigger code. <br /> <br /> The question guiding the project was: how
-        can cymatics be created digitally? Keeping the idea of organic matter, I
-        created a textile object inspired by the patterns formed by sand under
-        the effect of sound vibrations. The resistive thread, sewn directly into
-        the fabric, becomes the interface of the experience. <br /> <br /> Using
-        Max 8 and Jitter, I created a generative visual whose variations
-        simulate different sound frequencies. The visual reacts to contact with
-        the conductive object and evolves in real time. <br /> <br /> The whole
-        process was then captured on video, giving rise to an experience at the
-        intersection of sound, matter and movement.{" "}
-      </>
-    ),
-  },
-  5: {
-    title: "Noises",
-    type: "Video",
-    role: "Videographer",
-    date: "2022",
-    description: (
-      <>
-        {" "}
-        It all started when I discovered Chaos Walking, directed by Doug Liman.
-        In this universe, men's thoughts become audible to everyone. They call
-        this phenomenon "the Noise". <br /> <br /> What intrigued me was its
-        on-screen representation: a misty emanation that appears around
-        characters when they think. I then wondered: what does noise really look
-        like? And if sound could be made visible, what form would it take?{" "}
-        <br /> <br /> From this question, I sought to make sound waves visible
-        in matter. This approach, known as cymatics, reveals acoustic vibrations
-        through different materials such as water or sand. <br /> <br /> From
-        invisible to visible, from sound to matter, Noises seeks to give form to
-        what normally cannot be seen.{" "}
-      </>
-    ),
-  },
-  6: {
-    title: "Virgil Was Here",
-    type: "Fanzine",
-    role: "Graphic designer",
-    date: "2022",
-    description: (
-      <>
-        {" "}
-        The brief was to create a fanzine on a subject of our choice in order to
-        develop our mastery of InDesign. <br /> <br /> At that time, the news
-        was marked by the death of Virgil Abloh and the presentation of his
-        final collection. I chose to dedicate my fanzine to this final show,
-        entitled "Virgil Was Here".{" "}
-      </>
-    ),
-  },
-  7: {
-    title: "Windmap",
-    type: "Brand identity",
-    role: "Graphic designer",
-    date: "2024",
-    description: (
-      <>
-        {" "}
-        Maritime weather is a world where wind, waves, tides and weather
-        conditions are constantly changing. For sailors, boaters and sea
-        enthusiasts, this information is essential to understand the state of
-        the coastline and anticipate upcoming conditions. <br /> <br /> In this
-        context, I was asked to imagine the visual identity and
-        <a href="https://www.figma.com/proto/EKIgeAA6c8yrB3hf013Pp4/Untitled?type=design&node-id=48-1877&t=SByXnYXE0HErF7nk-1&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A2">
-          {" "}
-          application{" "}
-        </a>{" "}
-        of a service dedicated to marine forecasts. The objective was to create
-        a graphic universe capable of visually translating the different
-        phenomena that shape the sea and making this information easily
-        accessible to the user.{" "}
-      </>
-    ),
-  },
-  8: {
-    title: "The Ministry of Time",
-    type: "Brand identity",
-    role: "Graphic designer",
-    date: "2024",
-    description: (
-      <>
-        {" "}
-        The Ministry of Time is a fictional institution that appears in the
-        Spanish television series "El Ministerio del Tiempo" (The Ministry of
-        Time). Its role is to preserve the integrity of history and ensure that
-        events in the past are not altered. <br /> <br /> The Ministry of Time
-        is a secret organization, known only to a few individuals, and its
-        existence is kept secret from the general public. It is made up of a
-        diverse team of agents from different eras, each bringing specific
-        skills and knowledge to maintain the integrity of the time continuum.{" "}
-        <br /> <br /> In this context, I was asked to imagine a new visual
-        identity for the Ministry of Time, highlighting the idea of time travel
-        and the preservation of history.{" "}
-      </>
-    ),
-  },
-  9: {
-    title: "The Trot: Voices of Yesterday, Echoes of Today",
-    type: "Interactive documentary",
-    role: "Art director",
-    date: "Jan. 2025 - Jun. 2025",
-    description: (
-      <>
-        {" "}
-        Trot, a Korean musical genre that was popular nationwide throughout the
-        20th century, is now perceived as outdated and associated with older
-        generations. This documentary explores older people's attachment to this
-        musical genre by tracing its evolution. <br /> <br /> Art direction for
-        the image department of the interactive documentary "The Trot: Voices of
-        Yesterday, Echoes of Today" | produced in South Korea.{" "}
-      </>
-    ),
-  },
-  10: {
-    title: "Sevran in Motion",
-    type: "Web project",
-    role: "UX/UI | Developer",
-    date: "Nov. 2024 - Apr. 2025",
-    description: (
-      <>
-        {" "}
-        Sevran en Mouvement – Together, let's build the future of Sevran! This
-        website is designed to inform, inspire and connect residents around the
-        city's projects. <br /> <br /> Ideation & web development of the
-        homepage for the Sevran en mouvement project | Interactive 3D map (HTML,
-        CSS, JAVASCRIPT, Three.js, Vite){" "}
-      </>
-    ),
-  },
-  11: {
-    title: "Marketing & Communication",
-    type: "Digital content",
-    role: "Communications officer",
     date: "2026",
     description: <></>,
   },
@@ -512,27 +313,63 @@ type ProjectMedia =
 function getProjectMedia(projectIndex: number): ProjectMedia[] {
   if (projectIndex === 2) {
     return [
-      { type: "image", src: `${BASE_PATH}/projects/project-2.jpg` },
-      { type: "image", src: `${BASE_PATH}/projects/project-2-2.jpg` },
-      { type: "image", src: `${BASE_PATH}/projects/project-2-3.jpg` },
-      { type: "image", src: `${BASE_PATH}/projects/project-2-4.jpg` },
+      {
+        type: "image",
+        src: `${BASE_PATH}/projects/project-2.jpg`,
+      },
+      {
+        type: "image",
+        src: `${BASE_PATH}/projects/project-2-2.jpg`,
+      },
+      {
+        type: "image",
+        src: `${BASE_PATH}/projects/project-2-3.jpg`,
+      },
+      {
+        type: "image",
+        src: `${BASE_PATH}/projects/project-2-4.jpg`,
+      },
     ];
   }
 
   if (projectIndex === 11) {
     return [
-      { type: "video", src: `${BASE_PATH}/projects/project-11-1.mp4` },
-      { type: "video", src: `${BASE_PATH}/projects/project-11-2.mp4` },
-      { type: "image", src: `${BASE_PATH}/projects/project-11-1.jpg` },
-      { type: "image", src: `${BASE_PATH}/projects/project-11-2.jpg` },
-      { type: "image", src: `${BASE_PATH}/projects/project-11-digital-1.jpg` },
-      { type: "image", src: `${BASE_PATH}/projects/project-11-digital-2.jpg` },
-      { type: "image", src: `${BASE_PATH}/projects/project-11-digital-3.jpg` },
+      {
+        type: "video",
+        src: `${BASE_PATH}/projects/project-11-1.mp4`,
+      },
+      {
+        type: "video",
+        src: `${BASE_PATH}/projects/project-11-2.mp4`,
+      },
+      {
+        type: "image",
+        src: `${BASE_PATH}/projects/project-11-1.jpg`,
+      },
+      {
+        type: "image",
+        src: `${BASE_PATH}/projects/project-11-2.jpg`,
+      },
+      {
+        type: "image",
+        src: `${BASE_PATH}/projects/project-11-digital-1.jpg`,
+      },
+      {
+        type: "image",
+        src: `${BASE_PATH}/projects/project-11-digital-2.jpg`,
+      },
+      {
+        type: "image",
+        src: `${BASE_PATH}/projects/project-11-digital-3.jpg`,
+      },
     ];
   }
 
   return [
-    { type: "image", src: `${BASE_PATH}/projects/project-${projectIndex}.jpg` },
+    {
+      type: "image",
+      src: `${BASE_PATH}/projects/project-${projectIndex}.jpg`,
+    },
     {
       type: "image",
       src: `${BASE_PATH}/projects/project-${projectIndex}-2.jpg`,
@@ -553,10 +390,13 @@ function CursorTrail(): React.JSX.Element {
   useEffect(() => {
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
+
     let cursorX = mouseX;
     let cursorY = mouseY;
+
     let trailX = mouseX;
     let trailY = mouseY;
+
     let animationFrame = 0;
 
     function handlePointerMove(event: PointerEvent): void {
@@ -567,6 +407,7 @@ function CursorTrail(): React.JSX.Element {
     function animate(): void {
       cursorX += (mouseX - cursorX) * 0.42;
       cursorY += (mouseY - cursorY) * 0.42;
+
       trailX += (mouseX - trailX) * 0.16;
       trailY += (mouseY - trailY) * 0.16;
 
@@ -585,6 +426,7 @@ function CursorTrail(): React.JSX.Element {
     }
 
     window.addEventListener("pointermove", handlePointerMove);
+
     animate();
 
     return () => {
@@ -596,6 +438,7 @@ function CursorTrail(): React.JSX.Element {
   return (
     <>
       <div ref={trailRef} className="custom-cursor-trail" aria-hidden="true" />
+
       <div ref={cursorRef} className="custom-cursor" aria-hidden="true" />
 
       <style jsx global>{`
@@ -667,10 +510,16 @@ function PopupGrain(): React.JSX.Element {
 
   useEffect(() => {
     const canvasElement = grainCanvasRef.current;
-    if (canvasElement === null) return;
+
+    if (canvasElement === null) {
+      return;
+    }
 
     const context = canvasElement.getContext("2d");
-    if (context === null) return;
+
+    if (context === null) {
+      return;
+    }
 
     const canvas = canvasElement;
     const ctx = context;
@@ -684,6 +533,7 @@ function PopupGrain(): React.JSX.Element {
     function resize(): void {
       width = window.innerWidth;
       height = window.innerHeight;
+
       pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
 
       canvas.width = Math.floor(width * pixelRatio);
@@ -697,9 +547,12 @@ function PopupGrain(): React.JSX.Element {
     }
 
     function generateGrain(): void {
-      if (canvas.width <= 0 || canvas.height <= 0) return;
+      if (canvas.width <= 0 || canvas.height <= 0) {
+        return;
+      }
 
       const grainImage = ctx.createImageData(canvas.width, canvas.height);
+
       const pixels = grainImage.data;
 
       for (let i = 0; i < pixels.length; i += 4) {
@@ -741,6 +594,7 @@ function PopupGrain(): React.JSX.Element {
     generateGrain();
 
     window.addEventListener("resize", resize);
+
     animate();
 
     return () => {
@@ -833,26 +687,17 @@ function ProjectModal({
 }: ProjectModalProps): React.JSX.Element {
   const [activeMedia, setActiveMedia] = useState(0);
 
-  const pathname = usePathname();
-  const isEnglish = pathname.startsWith(`${BASE_PATH}/en`);
-
-  const languagePath = isEnglish
-    ? `${BASE_PATH}/galerie`
-    : `${BASE_PATH}/en/galerie`;
-
-  const languageLabel = isEnglish ? "FR" : "EN";
-
-  const currentProjectsData = isEnglish ? PROJECTS_DATA_EN : PROJECTS_DATA;
-
   const [videoMuted, setVideoMuted] = useState<Record<string, boolean>>({
     [`${BASE_PATH}/projects/project-11-1.mp4`]: true,
     [`${BASE_PATH}/projects/project-11-2.mp4`]: true,
   });
 
-  const project = currentProjectsData[projectIndex] ?? currentProjectsData[1];
+  const project = PROJECTS_DATA[projectIndex] ?? PROJECTS_DATA[1];
 
   const projectUrl = PROJECT_URLS[projectIndex] ?? "#";
+
   const media = getProjectMedia(projectIndex);
+
   const isProject11 = projectIndex === 11;
 
   const showVisitSite =
@@ -860,19 +705,9 @@ function ProjectModal({
 
   const project11Slides = [
     {
-      label: isEnglish ? "Video" : "Vidéo",
+      label: "Vidéo",
       items: media.slice(0, 2),
-      description: isEnglish ? (
-        <>
-          {" "}
-          Creating video content for social media, from concept to editing,
-          working on pacing, storytelling and visual identity. Each Reel was
-          designed to be dynamic, spontaneous and consistent with the Atlantic
-          Centre of Education's universe. <br /> <br /> This experience allowed
-          me to explore another way of telling a story and engaging
-          audiences.{" "}
-        </>
-      ) : (
+      description: (
         <>
           {" "}
           Créer des contenus vidéo pour les réseaux sociaux, de l’idée au
@@ -884,21 +719,11 @@ function ProjectModal({
         </>
       ),
     },
+
     {
-      label: isEnglish ? "Images" : "Images",
+      label: "Images",
       items: media.slice(2, 4),
-      description: isEnglish ? (
-        <>
-          {" "}
-          Creating social media content, from editorial thinking to visual
-          creation, adapting each post to platform codes and formats. Working on
-          copywriting, tone, information hierarchy and visual impact to create
-          coherent, readable and engaging content. <br /> <br /> This selection
-          of publications created for ACE reflects my experience in content
-          creation and my ability to turn an idea into content designed to
-          capture attention, convey a message and engage audiences.{" "}
-        </>
-      ) : (
+      description: (
         <>
           {" "}
           Concevoir des contenus pour les réseaux sociaux, de la réflexion
@@ -913,20 +738,11 @@ function ProjectModal({
         </>
       ),
     },
+
     {
-      label: isEnglish ? "Digital communication" : "Communication digital",
+      label: "Communication digital",
       items: media.slice(4, 7),
-      description: isEnglish ? (
-        <>
-          {" "}
-          Designing digital communication materials by working on layout,
-          information hierarchy and visual identity to make content clear,
-          readable and coherent. <br /> <br /> This factsheet created for the
-          Atlantic Centre of Education illustrates my ability to structure
-          information visually and adapt it to the constraints of a digital
-          medium.{" "}
-        </>
-      ) : (
+      description: (
         <>
           {" "}
           Concevoir des supports de communication digitale en travaillant la
@@ -994,7 +810,9 @@ function ProjectModal({
   const carouselLength = isProject11 ? project11Slides.length : media.length;
 
   function goToPreviousMedia(): void {
-    if (carouselLength <= 1) return;
+    if (carouselLength <= 1) {
+      return;
+    }
 
     setActiveMedia((current) =>
       current <= 0 ? carouselLength - 1 : current - 1,
@@ -1002,7 +820,9 @@ function ProjectModal({
   }
 
   function goToNextMedia(): void {
-    if (carouselLength <= 1) return;
+    if (carouselLength <= 1) {
+      return;
+    }
 
     setActiveMedia((current) =>
       current >= carouselLength - 1 ? 0 : current + 1,
@@ -1048,13 +868,9 @@ function ProjectModal({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="project-visit-site"
-                aria-label={
-                  isEnglish
-                    ? `Visit site — ${project.title}`
-                    : `Voir le site — ${project.title}`
-                }
+                aria-label={`Visit site — ${project.title}`}
               >
-                <span>{isEnglish ? "Visit site" : "Voir le site"}</span>
+                <span>Visit site</span>
 
                 <img
                   src={`${BASE_PATH}/projects/carre-fleche.png`}
@@ -1078,7 +894,7 @@ function ProjectModal({
                   type="button"
                   className="project-carousel-arrow project-carousel-arrow-left"
                   onClick={goToPreviousMedia}
-                  aria-label={isEnglish ? "Previous media" : "Média précédent"}
+                  aria-label="Média précédent"
                 >
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M14.5 4.5L7 12L14.5 19.5" />
@@ -1089,7 +905,7 @@ function ProjectModal({
                   type="button"
                   className="project-carousel-arrow project-carousel-arrow-right"
                   onClick={goToNextMedia}
-                  aria-label={isEnglish ? "Next media" : "Média suivant"}
+                  aria-label="Média suivant"
                 >
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M9.5 4.5L17 12L9.5 19.5" />
@@ -1130,12 +946,8 @@ function ProjectModal({
                         }}
                         aria-label={
                           (videoMuted[item.src] ?? true)
-                            ? isEnglish
-                              ? "Unmute"
-                              : "Activer le son"
-                            : isEnglish
-                              ? "Mute"
-                              : "Couper le son"
+                            ? "Activer le son"
+                            : "Couper le son"
                         }
                       >
                         <span className="project-11-volume-icon">
@@ -1154,11 +966,7 @@ function ProjectModal({
                   <img
                     key={`${projectIndex}-${activeMedia}`}
                     src={activeItem.src}
-                    alt={
-                      isEnglish
-                        ? `Project ${projectIndex} — image ${activeMedia + 1}`
-                        : `Projet ${projectIndex} — image ${activeMedia + 1}`
-                    }
+                    alt={`Projet ${projectIndex} — image ${activeMedia + 1}`}
                     className="project-modal-image"
                   />
                 ) : (
@@ -1202,13 +1010,9 @@ function ProjectModal({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="project-visit-site"
-                aria-label={
-                  isEnglish
-                    ? `Visit site — ${project.title}`
-                    : `Voir le site — ${project.title}`
-                }
+                aria-label={`Visit site — ${project.title}`}
               >
-                <span>{isEnglish ? "Visit site" : "Voir le site"}</span>
+                <span>Visit site</span>
 
                 <img
                   src={`${BASE_PATH}/projects/carre-fleche.png`}
@@ -1238,11 +1042,7 @@ function ProjectModal({
                       : "project-thumbnail"
                   }
                   onClick={() => setActiveMedia(index)}
-                  aria-label={
-                    isEnglish
-                      ? `Show slide ${index + 1} — ${slide.label}`
-                      : `Afficher la slide ${index + 1} — ${slide.label}`
-                  }
+                  aria-label={`Afficher la slide ${index + 1} — ${slide.label}`}
                 >
                   <div className="project-11-thumbnail-preview">
                     {slide.items.map((item) =>
@@ -1279,11 +1079,7 @@ function ProjectModal({
                       : "project-thumbnail"
                   }
                   onClick={() => setActiveMedia(index)}
-                  aria-label={
-                    isEnglish
-                      ? `Show media ${index + 1}`
-                      : `Afficher le média ${index + 1}`
-                  }
+                  aria-label={`Afficher le média ${index + 1}`}
                 >
                   {item.type === "image" ? (
                     <img
@@ -1304,19 +1100,11 @@ function ProjectModal({
               ))}
         </div>
 
-        <a
-          href={languagePath}
-          className="project-modal-language"
-          aria-label={isEnglish ? "Passer au français" : "Switch to English"}
-        >
-          {languageLabel}
-        </a>
-
         <button
           type="button"
           className="project-modal-close"
           onClick={onClose}
-          aria-label={isEnglish ? "Close project" : "Fermer le projet"}
+          aria-label="Fermer le projet"
         >
           <span />
           <span />
@@ -1367,8 +1155,7 @@ function ProjectModal({
         .project-modal-meta,
         .project-visit-site,
         .project-thumbnail,
-        .project-modal-close,
-        .project-modal-language {
+        .project-modal-close {
           font-family: "IBM Plex Mono", monospace;
         }
 
@@ -1555,6 +1342,8 @@ function ProjectModal({
           background: transparent;
         }
 
+        /* ===================================================== PROJET 11 ===================================================== */
+
         .project-modal-project-11-media {
           width: min(64vw, 900px);
           height: min(68vh, 720px);
@@ -1683,37 +1472,7 @@ function ProjectModal({
           display: none;
         }
 
-        .project-modal-language {
-          position: fixed;
-          top: 20px;
-          right: 72px;
-          width: 40px;
-          height: 40px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-sizing: border-box;
-          border: 1px solid rgba(255, 255, 255, 0.85);
-          color: #ffffff;
-          background: transparent;
-          font-size: 9px;
-          font-weight: 400;
-          text-decoration: none;
-          z-index: 6000;
-          pointer-events: auto;
-          transition:
-            background 180ms ease,
-            color 180ms ease,
-            border-color 180ms ease,
-            transform 180ms ease;
-        }
-
-        .project-modal-language:hover {
-          background: #e8e1d5;
-          color: #111111;
-          border-color: #e8e1d5;
-          transform: translateY(-1px);
-        }
+        /* ===================================================== FERMETURE ===================================================== */
 
         .project-modal-close {
           position: fixed;
@@ -1747,6 +1506,8 @@ function ProjectModal({
         .project-modal-close span:last-child {
           transform: translate(-50%, -50%) rotate(-45deg);
         }
+
+        /* ===================================================== MINIATURES ===================================================== */
 
         .project-thumbnails {
           position: fixed;
@@ -1794,6 +1555,9 @@ function ProjectModal({
           user-select: none;
           -webkit-user-drag: none;
         }
+
+        /* ===================================================== TABLET ===================================================== */
+
         @media (max-width: 900px) {
           .project-modal {
             z-index: 2147483000 !important;
@@ -1812,14 +1576,6 @@ function ProjectModal({
 
           .project-modal-logo {
             height: 23px;
-          }
-
-          .project-modal-language {
-            top: 12px;
-            right: 62px;
-            width: 40px;
-            height: 40px;
-            z-index: 2147483003 !important;
           }
 
           .project-modal-close {
@@ -1939,6 +1695,8 @@ function ProjectModal({
             font-size: 9px;
           }
 
+          /* =================================================== PROJET 11 — TABLET =================================================== */
+
           .project-modal-project-11-media {
             width: min(82vw, 720px);
             height: min(55vh, 520px);
@@ -2014,6 +1772,8 @@ function ProjectModal({
           }
         }
 
+        /* ===================================================== MOBILE ===================================================== */
+
         @media (max-width: 600px) {
           .project-modal-main {
             padding: 62px 18px 118px;
@@ -2028,14 +1788,6 @@ function ProjectModal({
 
           .project-modal-logo {
             height: 21px;
-          }
-
-          .project-modal-language {
-            top: 8px;
-            right: 54px;
-            width: 38px;
-            height: 38px;
-            z-index: 2147483003 !important;
           }
 
           .project-modal-close {
@@ -2140,6 +1892,8 @@ function ProjectModal({
             height: 14px;
           }
 
+          /* =================================================== PROJET 11 — MOBILE =================================================== */
+
           .project-modal-project-11-media {
             width: calc(100vw - 76px);
             height: auto;
@@ -2200,6 +1954,8 @@ function ProjectModal({
             height: 14px;
           }
 
+          /* =================================================== MINIATURES MOBILE =================================================== */
+
           .project-thumbnails {
             left: 50%;
             bottom: 10px;
@@ -2222,6 +1978,8 @@ function ProjectModal({
             height: 46px;
           }
         }
+
+        /* ===================================================== TRÈS PETITS ÉCRANS ===================================================== */
 
         @media (max-width: 380px) {
           .project-modal-main {
@@ -2277,25 +2035,24 @@ function ProjectModal({
       `}</style>
     </div>
   );
-}
-
-/* ========================================================= GALERIE ========================================================= */
+} /* ========================================================= GALERIE ========================================================= */
 
 export default function Galerie(): React.JSX.Element {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
 
-  const pathname = usePathname();
-  const isEnglish = pathname.startsWith(`${BASE_PATH}/en`);
-
-  const currentProjectsData = isEnglish ? PROJECTS_DATA_EN : PROJECTS_DATA;
-
   useEffect(() => {
     const canvasElement = canvasRef.current;
-    if (canvasElement === null) return;
+
+    if (canvasElement === null) {
+      return;
+    }
 
     const context = canvasElement.getContext("2d", { alpha: false });
-    if (context === null) return;
+
+    if (context === null) {
+      return;
+    }
 
     const canvas = canvasElement;
     const ctx = context;
@@ -2378,7 +2135,9 @@ export default function Galerie(): React.JSX.Element {
     const grainCanvas = document.createElement("canvas");
     const grainContext = grainCanvas.getContext("2d");
 
-    if (grainContext === null) return;
+    if (grainContext === null) {
+      return;
+    }
 
     const grainCtx = grainContext;
 
@@ -2413,6 +2172,7 @@ export default function Galerie(): React.JSX.Element {
 
     function projectFor(column: number, row: number): GalleryProject {
       const index = modulo(column - row * 3, PROJECTS);
+
       return images[index];
     }
 
@@ -2455,7 +2215,9 @@ export default function Galerie(): React.JSX.Element {
     ): void {
       const words = text.trim().toUpperCase().split(/\s+/).filter(Boolean);
 
-      if (words.length === 0) return;
+      if (words.length === 0) {
+        return;
+      }
 
       ctx.font = `700 ${HOVER_FONT_SIZE}px "Anton", Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Narrow", sans-serif`;
 
@@ -2464,6 +2226,7 @@ export default function Galerie(): React.JSX.Element {
       ctx.fillStyle = "rgba(255, 255, 255, 0.96)";
 
       const lines = words;
+
       const lineHeight = HOVER_FONT_SIZE * 0.95;
 
       const maxLines = Math.max(
@@ -2488,6 +2251,7 @@ export default function Galerie(): React.JSX.Element {
       });
 
       let fontSize = HOVER_FONT_SIZE;
+
       const widestLine = Math.max(...lineWidths);
 
       if (widestLine > maxWidth) {
@@ -2527,6 +2291,7 @@ export default function Galerie(): React.JSX.Element {
 
         for (let i = 0; i < line.length; i += 1) {
           const letter = line[i];
+
           const letterWidth = ctx.measureText(letter).width;
 
           ctx.fillText(letter, currentLetterX, lineY);
@@ -2614,7 +2379,7 @@ export default function Galerie(): React.JSX.Element {
         const textPadding = displayedSize * 0.08;
 
         drawHoverText(
-          currentProjectsData[project.index]?.type ?? "",
+          PROJECTS_DATA[project.index]?.type ?? "",
           x,
           y,
           displayedSize - textPadding * 2,
@@ -2756,11 +2521,8 @@ export default function Galerie(): React.JSX.Element {
         );
 
         pixels[i] = luminance;
-
         pixels[i + 1] = luminance;
-
         pixels[i + 2] = luminance;
-
         pixels[i + 3] = 255;
       }
 
@@ -2977,7 +2739,6 @@ export default function Galerie(): React.JSX.Element {
         Math.abs(zoomVelocity) < 0.00015
       ) {
         currentScale = BASE_SCALE;
-
         zoomVelocity = 0;
       }
 
@@ -2997,7 +2758,6 @@ export default function Galerie(): React.JSX.Element {
       dragging = true;
 
       pointerX = event.clientX;
-
       pointerY = event.clientY;
 
       velocityX = 0;
@@ -3023,7 +2783,6 @@ export default function Galerie(): React.JSX.Element {
       const dy = event.clientY - pointerY;
 
       pointerX = event.clientX;
-
       pointerY = event.clientY;
 
       const movementX = dx * DRAG_MULTIPLIER;
@@ -3031,7 +2790,6 @@ export default function Galerie(): React.JSX.Element {
       const movementY = dy * DRAG_MULTIPLIER;
 
       targetX += movementX;
-
       targetY += movementY;
 
       velocityX = movementX * 0.12;
@@ -3095,11 +2853,12 @@ export default function Galerie(): React.JSX.Element {
         }
       });
     };
-  }, [isEnglish, currentProjectsData]);
+  }, []);
 
   return (
     <>
       <Header />
+
       <CursorTrail />
 
       <canvas
