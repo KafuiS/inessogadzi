@@ -1450,6 +1450,14 @@ function ProjectModal({
           text-justify: inter-word;
         }
 
+        .project-modal-copy p a,
+        .project-modal-copy-mobile p a {
+          color: inherit;
+          text-decoration: underline;
+          text-decoration-color: currentColor;
+          text-underline-offset: 2px;
+        }
+
         .project-modal-meta,
         .project-visit-site,
         .project-thumbnail,
