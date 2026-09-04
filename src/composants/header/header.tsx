@@ -7,8 +7,10 @@ const BASE_PATH = "/inessogadzi";
 
 export default function Header({
   textColor = "#fff",
+  hoverTextColor = "#111111",
 }: {
   textColor?: string;
+  hoverTextColor?: string;
 }): React.JSX.Element {
   const [menuOpen, setMenuOpen] = useState(false);
   const grainCanvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -273,7 +275,7 @@ export default function Header({
         }
         .language-switch:hover {
           background: ${textColor};
-          color: #000 !important;
+          color: ${hoverTextColor} !important;
         }
         .site-navigation {
           position: absolute;
@@ -508,8 +510,8 @@ export default function Header({
           .language-switch {
             top: 18px;
             right: 76px;
-            width: 34px;
-            height: 34px;
+            width: 30px;
+            height: 30px;
             font-size: 9px !important;
           }
           .mobile-burger {

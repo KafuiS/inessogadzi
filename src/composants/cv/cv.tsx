@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Space_Grotesk } from "next/font/google";
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import Header from "@/composants/header/header";
 
 const spaceGrotesk = Space_Grotesk({
@@ -342,9 +343,20 @@ function PhoneIcon(): React.JSX.Element {
 ============================================================ */
 
 export default function CV(): React.JSX.Element {
+  const pathname = usePathname();
+  const isEnglish = pathname.startsWith("/en");
+
+  const cvFile = isEnglish
+    ? `${BASE_PATH}/projects/cv_en.pdf`
+    : `${BASE_PATH}/projects/cv.pdf`;
+
+  const cvDownloadName = isEnglish
+    ? "cv-ines-sogadzi-en.pdf"
+    : "cv-ines-sogadzi.pdf";
+
   return (
     <>
-      <Header textColor="#111111" />
+      <Header textColor="#111111" hoverTextColor="#ffffff" />
 
       <CursorTrail />
 
@@ -401,114 +413,221 @@ export default function CV(): React.JSX.Element {
               {/* COMPÉTENCES */}
 
               <section className="sidebar-section">
-                <h2>COMPÉTENCES</h2>
+                <h2>{isEnglish ? "SKILLS" : "COMPÉTENCES"}</h2>
 
                 <ul className="bullet-list">
-                  <li>Marketing digital 360°</li>
+                  {isEnglish ? (
+                    <>
+                      <li>360° digital marketing</li>
 
-                  <li>Communication digitale</li>
+                      <li>Digital communication</li>
 
-                  <li>
-                    Création de contenus
-                    <br />
-                    (photo, vidéo, montage){" "}
-                  </li>
+                      <li>
+                        Content creation
+                        <br />
+                        (photo, video, editing){" "}
+                      </li>
 
-                  <li>Community management</li>
+                      <li>Community management</li>
 
-                  <li>Direction artistique</li>
+                      <li>Art direction</li>
 
-                  <li>Gestion de projet</li>
+                      <li>Project management</li>
 
-                  <li>
-                    Référencement naturel <br /> (SEO)
-                  </li>
-                  <li>Campagnes d'acquisition</li>
-                  <li>
-                    Email marketing
-                    <br />
-                    &amp; newsletter
-                  </li>
+                      <li>
+                        Search engine optimisation <br /> (SEO)
+                      </li>
+                      <li>Acquisition campaigns</li>
+                      <li>
+                        Email marketing
+                        <br />
+                        &amp; newsletter
+                      </li>
 
-                  <li>
-                    Analyse des
-                    <br />
-                    performances (KPIs)
-                  </li>
-                  <li>
-                    Veille stratégique et <br />
-                    concurrentielle{" "}
-                  </li>
+                      <li>
+                        Performance
+                        <br />
+                        analysis (KPIs)
+                      </li>
+                      <li>
+                        Strategic and <br />
+                        competitive watch{" "}
+                      </li>
+                    </>
+                  ) : (
+                    <>
+                      <li>Marketing digital 360°</li>
+
+                      <li>Communication digitale</li>
+
+                      <li>
+                        Création de contenus
+                        <br />
+                        (photo, vidéo, montage){" "}
+                      </li>
+
+                      <li>Community management</li>
+
+                      <li>Direction artistique</li>
+
+                      <li>Gestion de projet</li>
+
+                      <li>
+                        Référencement naturel <br /> (SEO)
+                      </li>
+                      <li>Campagnes d'acquisition</li>
+                      <li>
+                        Email marketing
+                        <br />
+                        &amp; newsletter
+                      </li>
+
+                      <li>
+                        Analyse des
+                        <br />
+                        performances (KPIs)
+                      </li>
+                      <li>
+                        Veille stratégique et <br />
+                        concurrentielle{" "}
+                      </li>
+                    </>
+                  )}
                 </ul>
               </section>
 
               {/* INFORMATIQUE */}
 
               <section className="sidebar-section computer-section">
-                <h2>INFORMATIQUE</h2>
+                <h2>{isEnglish ? "IT SKILLS" : "INFORMATIQUE"}</h2>
 
                 <div className="small-text">
-                  <p>
-                    <strong>CMS :</strong> Wordpress, Hubspot, WIX
-                  </p>
+                  {isEnglish ? (
+                    <>
+                      <p>
+                        <strong>CMS:</strong> Wordpress, Hubspot, WIX
+                      </p>
 
-                  <p>
-                    <strong>Gestion de projet :</strong>
-                    <br />
-                    Google Marketing Platform (Analytics, Ads), Trello, Miro,
-                    Zapier
-                  </p>
+                      <p>
+                        <strong>Project management:</strong>
+                        <br />
+                        Google Marketing Platform (Analytics, Ads), Trello,
+                        Miro, Zapier
+                      </p>
 
-                  <p>
-                    <strong>PAO :</strong> Photoshop, Illustrator, InDesign,
-                    After Effects, Premiere Pro, Figma, Canva
-                  </p>
+                      <p>
+                        <strong>Design tools:</strong> Photoshop, Illustrator,
+                        InDesign, After Effects, Premiere Pro, Figma, Canva
+                      </p>
 
-                  <p>
-                    <strong>Pack Office :</strong> Excel, PowerPoint, Word
-                  </p>
+                      <p>
+                        <strong>Office Suite:</strong> Excel, PowerPoint, Word
+                      </p>
 
-                  <p>
-                    <strong>Programmation :</strong> HTML, CSS, JavaScript,
-                    MySQL, PHP
-                  </p>
+                      <p>
+                        <strong>Programming:</strong> HTML, CSS, JavaScript,
+                        MySQL, PHP
+                      </p>
 
-                  <p>
-                    <strong>CRM :</strong> MailChimp, Odoo
-                  </p>
+                      <p>
+                        <strong>CRM:</strong> MailChimp, Odoo
+                      </p>
+                    </>
+                  ) : (
+                    <>
+                      <p>
+                        <strong>CMS :</strong> Wordpress, Hubspot, WIX
+                      </p>
+
+                      <p>
+                        <strong>Gestion de projet :</strong>
+                        <br />
+                        Google Marketing Platform (Analytics, Ads), Trello,
+                        Miro, Zapier
+                      </p>
+
+                      <p>
+                        <strong>PAO :</strong> Photoshop, Illustrator, InDesign,
+                        After Effects, Premiere Pro, Figma, Canva
+                      </p>
+
+                      <p>
+                        <strong>Pack Office :</strong> Excel, PowerPoint, Word
+                      </p>
+
+                      <p>
+                        <strong>Programmation :</strong> HTML, CSS, JavaScript,
+                        MySQL, PHP
+                      </p>
+
+                      <p>
+                        <strong>CRM :</strong> MailChimp, Odoo
+                      </p>
+                    </>
+                  )}
                 </div>
               </section>
 
               {/* ATOUTS */}
 
               <section className="sidebar-section">
-                <h2>ATOUTS</h2>
+                <h2>{isEnglish ? "STRENGTHS" : "ATOUTS"}</h2>
 
                 <ul className="strengths">
-                  <li>Sens du détail</li>
-                  <li>Autonomie</li>
-                  <li>Adaptabilité</li>
-                  <li>Rigueur</li>
-                  <li>Proactivité</li>
-                  <li>Créativité</li>
+                  {isEnglish ? (
+                    <>
+                      <li>Attention to detail</li>
+                      <li>Autonomy</li>
+                      <li>Adaptability</li>
+                      <li>Rigour</li>
+                      <li>Proactivity</li>
+                      <li>Creativity</li>
+                    </>
+                  ) : (
+                    <>
+                      <li>Sens du détail</li>
+                      <li>Autonomie</li>
+                      <li>Adaptabilité</li>
+                      <li>Rigueur</li>
+                      <li>Proactivité</li>
+                      <li>Créativité</li>
+                    </>
+                  )}
                 </ul>
               </section>
 
               {/* LANGUES */}
 
               <section className="sidebar-section languages">
-                <h2>LANGUES</h2>
+                <h2>{isEnglish ? "LANGUAGES" : "LANGUES"}</h2>
                 <div className="small-text">
-                  <p>
-                    <strong>Français</strong>
-                    <br />
-                    Langue maternelle
-                  </p>
-                  <p>
-                    <strong>Anglais</strong>
-                    <br />
-                    Courant
-                  </p>
+                  {isEnglish ? (
+                    <>
+                      <p>
+                        <strong>French</strong>
+                        <br />
+                        Native language
+                      </p>
+                      <p>
+                        <strong>English</strong>
+                        <br />
+                        Fluent
+                      </p>
+                    </>
+                  ) : (
+                    <>
+                      <p>
+                        <strong>Français</strong>
+                        <br />
+                        Langue maternelle
+                      </p>
+                      <p>
+                        <strong>Anglais</strong>
+                        <br />
+                        Courant
+                      </p>
+                    </>
+                  )}
                 </div>
               </section>
             </aside>
@@ -526,7 +645,9 @@ export default function CV(): React.JSX.Element {
                 <h1>Inès SOGADZI</h1>
 
                 <div className="job-title">
-                  MARKETING DIGITAL | COMMUNICATION | GESTION DE PROJET
+                  {isEnglish
+                    ? "DIGITAL MARKETING | COMMUNICATIONS | PROJECT MANAGEMENT"
+                    : "MARKETING DIGITAL | COMMUNICATION | GESTION DE PROJET"}
                 </div>
               </section>
 
@@ -535,7 +656,11 @@ export default function CV(): React.JSX.Element {
               ============================================ */}
 
               <section className="cv-section">
-                <h2 className="section-title">EXPÉRIENCES PROFESSIONNELLES</h2>
+                <h2 className="section-title">
+                  {isEnglish
+                    ? "PROFESSIONAL EXPERIENCE"
+                    : "EXPÉRIENCES PROFESSIONNELLES"}
+                </h2>
 
                 <div className="timeline">
                   {/* EXPERIENCE 1 */}
@@ -543,83 +668,163 @@ export default function CV(): React.JSX.Element {
                   <article className="timeline-item">
                     <div className="timeline-dot" />
 
-                    <div className="experience">
-                      <h3>Erasmus + | Assistante Marketing</h3>
+                    {isEnglish ? (
+                      <div className="experience">
+                        <h3>Erasmus+ | Marketing Assistant</h3>
 
-                      <div className="meta">
-                        <span>De jan. 2026 à juin 2026</span>
+                        <div className="meta">
+                          <span>From Jan 2026 to Jun 2026</span>
 
-                        <strong>Atlantic Centre of Education</strong>
+                          <strong>Atlantic Centre of Education</strong>
 
-                        <span>Galway, Ireland</span>
-                        <p>
-                          <em>
-                            Gestion de la communication et du marketing digital
-                            de deux entités : une école d'anglais (Atlantic
-                            Centre of Education) et quatre complexes de
-                            résidences en location saisonnière (Galway Lakeside
-                            Apartments) accueillant respectivement une clientèle
-                            internationale .{" "}
-                          </em>
-                        </p>
+                          <span>Galway, Ireland</span>
+                          <p>
+                            <em>
+                              Managed communication and digital marketing for
+                              two entities: an English language school (Atlantic
+                              Centre of Education) and four seasonal rental
+                              residence complexes (Galway Lakeside Apartments),
+                              both catering to an international clientele.{" "}
+                            </em>
+                          </p>
+                        </div>
+
+                        <ul className="experience-list">
+                          <li>
+                            Managed the <strong>digital presence</strong> of
+                            both brands (websites, social media and online
+                            reputation), including content updates, UX
+                            improvements and website audits
+                          </li>
+
+                          <li>
+                            Designed and ran{" "}
+                            <strong>Meta Ads and Google Ads</strong> campaigns
+                            to promote courses and accommodation offers: Spring
+                            Courses, Summer Courses, a LinkedIn campaign, and
+                            the residences' Summer Sales.
+                          </li>
+
+                          <li>
+                            Created and published{" "}
+                            <strong>80 pieces of social media content</strong>{" "}
+                            (40 for the school, 40 for the residences).
+                          </li>
+
+                          <li>
+                            Ran <strong>weekly photo shoots</strong> to supply
+                            communication materials and produced{" "}
+                            <strong>6 video interviews</strong> featuring
+                            students and the school.
+                          </li>
+
+                          <li>
+                            Wrote, designed and sent{" "}
+                            <strong>newsletters and email campaigns</strong> via
+                            HubSpot and Mailchimp{" "}
+                          </li>
+
+                          <li>
+                            Developed <strong>5 strategic partnerships</strong>{" "}
+                            (3 for the school, 2 for the residences).
+                          </li>
+
+                          <li>
+                            Produced <strong>monthly reports</strong> and
+                            tracked marketing performance (Google Analytics,
+                            KPIs).
+                          </li>
+                          <li>
+                            Carried out{" "}
+                            <strong>
+                              strategic and competitive monitoring
+                            </strong>{" "}
+                            to identify market trends and support decisions on
+                            digital communication and user experience.
+                          </li>
+                        </ul>
                       </div>
+                    ) : (
+                      <div className="experience">
+                        <h3>Erasmus + | Assistante Marketing</h3>
 
-                      <ul className="experience-list">
-                        <li>
-                          Pilotage de la <strong>présence digitale</strong> des
-                          deux marques (sites web, réseaux sociaux et
-                          e-réputation), incluant les mises à jour de contenu,
-                          les améliorations UX et les audits de sites
-                        </li>
+                        <div className="meta">
+                          <span>De jan. 2026 à juin 2026</span>
 
-                        <li>
-                          Conception et déploiement des{" "}
-                          <strong>campagnes Meta Ads et Google Ads</strong>{" "}
-                          destinées à promouvoir les formations et les offres
-                          d'hébergement : Spring Courses, Summer Courses,
-                          campagne LinkedIn, Summer Sales des résidences.
-                        </li>
+                          <strong>Atlantic Centre of Education</strong>
 
-                        <li>
-                          Création et publication de{" "}
-                          <strong>80 contenus</strong> sur les réseaux sociaux
-                          (40 pour l'école, 40 pour les résidences).
-                        </li>
+                          <span>Galway, Ireland</span>
+                          <p>
+                            <em>
+                              Gestion de la communication et du marketing
+                              digital de deux entités : une école d'anglais
+                              (Atlantic Centre of Education) et quatre complexes
+                              de résidences en location saisonnière (Galway
+                              Lakeside Apartments) accueillant respectivement
+                              une clientèle internationale .{" "}
+                            </em>
+                          </p>
+                        </div>
 
-                        <li>
-                          Réalisation de{" "}
-                          <strong>shootings photo hebdomadaires</strong> afin
-                          d'alimenter les supports de communication et
-                          production de <strong>6 interviews vidéo</strong>{" "}
-                          mettant en avant les étudiants et l'établissement.
-                        </li>
+                        <ul className="experience-list">
+                          <li>
+                            Pilotage de la <strong>présence digitale</strong>{" "}
+                            des deux marques (sites web, réseaux sociaux et
+                            e-réputation), incluant les mises à jour de contenu,
+                            les améliorations UX et les audits de sites
+                          </li>
 
-                        <li>
-                          Rédaction, conception et envoi des{" "}
-                          <strong>newsletters et campagnes emailing</strong> via
-                          HubSpot et Mailchimp{" "}
-                        </li>
+                          <li>
+                            Conception et déploiement des{" "}
+                            <strong>campagnes Meta Ads et Google Ads</strong>{" "}
+                            destinées à promouvoir les formations et les offres
+                            d'hébergement : Spring Courses, Summer Courses,
+                            campagne LinkedIn, Summer Sales des résidences.
+                          </li>
 
-                        <li>
-                          Développement de{" "}
-                          <strong>5 partenariats stratégiques</strong> (3 pour
-                          l'école, 2 pour les résidences).
-                        </li>
+                          <li>
+                            Création et publication de{" "}
+                            <strong>80 contenus</strong> sur les réseaux sociaux
+                            (40 pour l'école, 40 pour les résidences).
+                          </li>
 
-                        <li>
-                          Élaboration de <strong>reportings mensuels</strong> et
-                          suivi des performances marketing (Google Analytics,
-                          KPIs).
-                        </li>
-                        <li>
-                          Réalisation d'une{" "}
-                          <strong>veille stratégique et concurrentielle</strong>{" "}
-                          afin d'identifier les tendances du marché et
-                          d'accompagner les décisions en matière de
-                          communication digitale et d'expérience utilisateur.
-                        </li>
-                      </ul>
-                    </div>
+                          <li>
+                            Réalisation de{" "}
+                            <strong>shootings photo hebdomadaires</strong> afin
+                            d'alimenter les supports de communication et
+                            production de <strong>6 interviews vidéo</strong>{" "}
+                            mettant en avant les étudiants et l'établissement.
+                          </li>
+
+                          <li>
+                            Rédaction, conception et envoi des{" "}
+                            <strong>newsletters et campagnes emailing</strong>{" "}
+                            via HubSpot et Mailchimp{" "}
+                          </li>
+
+                          <li>
+                            Développement de{" "}
+                            <strong>5 partenariats stratégiques</strong> (3 pour
+                            l'école, 2 pour les résidences).
+                          </li>
+
+                          <li>
+                            Élaboration de <strong>reportings mensuels</strong>{" "}
+                            et suivi des performances marketing (Google
+                            Analytics, KPIs).
+                          </li>
+                          <li>
+                            Réalisation d'une{" "}
+                            <strong>
+                              veille stratégique et concurrentielle
+                            </strong>{" "}
+                            afin d'identifier les tendances du marché et
+                            d'accompagner les décisions en matière de
+                            communication digitale et d'expérience utilisateur.
+                          </li>
+                        </ul>
+                      </div>
+                    )}
                   </article>
 
                   {/* EXPERIENCE 2 */}
@@ -627,88 +832,168 @@ export default function CV(): React.JSX.Element {
                   <article className="timeline-item">
                     <div className="timeline-dot" />
 
-                    <div className="experience">
-                      <h3>Cheffe de Projet Digital</h3>
+                    {isEnglish ? (
+                      <div className="experience">
+                        <h3>Digital Project Manager</h3>
 
-                      <div className="meta">
-                        <span>De sept. 2023 à août 2025</span>
+                        <div className="meta">
+                          <span>From Sep 2023 to Aug 2025</span>
 
-                        <strong>Meltour</strong>
+                          <strong>Meltour</strong>
 
-                        <span>Saint-Maur-des-Fossés</span>
-                        <p>
-                          <em>
-                            Contrat d'apprentissage : Gestion de la stratégie
-                            digitale et de la visibilité en ligne d'une agence
-                            spécialisée dans les voyages sur mesure haut de
-                            gamme
-                          </em>
-                        </p>
+                          <span>Saint-Maur-des-Fossés</span>
+                          <p>
+                            <em>
+                              Apprenticeship contract: Managed the digital
+                              strategy and online visibility for an agency
+                              specialising in high-end tailor-made travel
+                            </em>
+                          </p>
+                        </div>
+
+                        <ul className="experience-list">
+                          <li>
+                            Managed the WordPress website, including{" "}
+                            <strong>user experience (UX) optimisation</strong>,{" "}
+                            <strong>content management</strong> and oversight of{" "}
+                            <strong>ongoing maintenance (TMA)</strong> with an
+                            external provider.{" "}
+                          </li>
+
+                          <li>
+                            Grew{" "}
+                            <strong>organic search visibility (SEO)</strong> by
+                            writing <strong>38 travel itineraries</strong> and{" "}
+                            <strong>22 optimised articles</strong> and creating{" "}
+                            <strong>2 new sections</strong>, from keyword
+                            research through to publication,
+                            <strong>
+                              {" "}
+                              contributing to a 50% increase in conversion rate
+                              and a 30% increase in click-through rate.
+                            </strong>{" "}
+                          </li>
+
+                          <li>
+                            Wrote, designed and distributed{" "}
+                            <strong>25 newsletters</strong> as well as{" "}
+                            <strong>185 Instagram and Facebook posts</strong>,
+                            including building the editorial calendar, writing
+                            content and designing visuals, contributing to a{" "}
+                            <strong>
+                              50% growth in the Instagram community.
+                            </strong>{" "}
+                          </li>
+
+                          <li>
+                            Managed <strong>Google Ads campaigns</strong> in
+                            collaboration with Google consultants to optimise
+                            campaign visibility and performance.{" "}
+                          </li>
+
+                          <li>
+                            <strong>
+                              Tracked, analysed and reported on weekly and
+                              monthly KPIs
+                            </strong>{" "}
+                            via Google Analytics to assess the performance of
+                            digital actions and identify areas for
+                            optimisation.{" "}
+                          </li>
+
+                          <li>
+                            Conducted <strong>competitive monitoring</strong> to
+                            identify industry trends and support the evolution
+                            of the digital strategy.{" "}
+                          </li>
+                        </ul>
                       </div>
+                    ) : (
+                      <div className="experience">
+                        <h3>Cheffe de Projet Digital</h3>
 
-                      <ul className="experience-list">
-                        <li>
-                          Gestion du site web WordPress, incluant l'
-                          <strong>
-                            optimisation de l'expérience utilisateur
-                          </strong>{" "}
-                          (UX), la <strong>gestion des contenus</strong> et le{" "}
-                          <strong>suivi de la maintenance évolutive</strong>{" "}
-                          (TMA) avec un prestataire externe.{" "}
-                        </li>
+                        <div className="meta">
+                          <span>De sept. 2023 à août 2025</span>
 
-                        <li>
-                          <strong>
-                            Développement du référencement naturel (SEO)
-                          </strong>{" "}
-                          grâce à la rédaction de{" "}
-                          <strong>38 circuits de voyage</strong>, de{" "}
-                          <strong>22 articles optimisés</strong> et à la
-                          création de <strong>2 nouvelles rubriques</strong>, de
-                          la recherche de mots-clés jusqu'à la mise en ligne,
-                          <strong>
-                            contribuant à une augmentation de 50 % du taux de
-                            conversion et de 30 % du taux de clics.
-                          </strong>{" "}
-                        </li>
+                          <strong>Meltour</strong>
 
-                        <li>
-                          Rédaction, conception et diffusion de{" "}
-                          <strong>25 newsletters</strong>
-                          ainsi que de <strong>185 publications</strong> sur
-                          Instagram et Facebook, incluant l'élaboration du
-                          calendrier éditorial, la rédaction des contenus et la
-                          conception des visuels, contribuant à une{" "}
-                          <strong>
-                            croissance de 50 % de la communauté Instagram.
-                          </strong>{" "}
-                        </li>
+                          <span>Saint-Maur-des-Fossés</span>
+                          <p>
+                            <em>
+                              Contrat d'apprentissage : Gestion de la stratégie
+                              digitale et de la visibilité en ligne d'une agence
+                              spécialisée dans les voyages sur mesure haut de
+                              gamme
+                            </em>
+                          </p>
+                        </div>
 
-                        <li>
-                          Gestion des <strong>campagnes Google Ads</strong>, en
-                          collaboration avec les consultants Google, afin
-                          d'optimiser la visibilité et les performances des
-                          campagnes.{" "}
-                        </li>
+                        <ul className="experience-list">
+                          <li>
+                            Gestion du site web WordPress, incluant l'
+                            <strong>
+                              optimisation de l'expérience utilisateur
+                            </strong>{" "}
+                            (UX), la <strong>gestion des contenus</strong> et le{" "}
+                            <strong>suivi de la maintenance évolutive</strong>{" "}
+                            (TMA) avec un prestataire externe.{" "}
+                          </li>
 
-                        <li>
-                          <strong>
-                            Suivi, analyse et reporting hebdomadaires et
-                            mensuels des KPIs
-                          </strong>{" "}
-                          via Google Analytics afin d'évaluer les performances
-                          des actions digitales et d'identifier les axes
-                          d'optimisation.{" "}
-                        </li>
+                          <li>
+                            <strong>
+                              Développement du référencement naturel (SEO)
+                            </strong>{" "}
+                            grâce à la rédaction de{" "}
+                            <strong>38 circuits de voyage</strong>, de{" "}
+                            <strong>22 articles optimisés</strong> et à la
+                            création de <strong>2 nouvelles rubriques</strong>,
+                            de la recherche de mots-clés jusqu'à la mise en
+                            ligne,
+                            <strong>
+                              {" "}
+                              contribuant à une augmentation de 50 % du taux de
+                              conversion et de 30 % du taux de clics.
+                            </strong>{" "}
+                          </li>
 
-                        <li>
-                          Réalisation de{" "}
-                          <strong>veilles concurrentielles</strong> afin
-                          d'identifier les tendances du secteur et de soutenir
-                          l'évolution de la stratégie digitale.{" "}
-                        </li>
-                      </ul>
-                    </div>
+                          <li>
+                            Rédaction, conception et diffusion de{" "}
+                            <strong>25 newsletters</strong>
+                            ainsi que de <strong>185 publications</strong> sur
+                            Instagram et Facebook, incluant l'élaboration du
+                            calendrier éditorial, la rédaction des contenus et
+                            la conception des visuels, contribuant à une{" "}
+                            <strong>
+                              croissance de 50 % de la communauté Instagram.
+                            </strong>{" "}
+                          </li>
+
+                          <li>
+                            Gestion des <strong>campagnes Google Ads</strong>,
+                            en collaboration avec les consultants Google, afin
+                            d'optimiser la visibilité et les performances des
+                            campagnes.{" "}
+                          </li>
+
+                          <li>
+                            <strong>
+                              Suivi, analyse et reporting hebdomadaires et
+                              mensuels des KPIs
+                            </strong>{" "}
+                            via Google Analytics afin d'évaluer les performances
+                            des actions digitales et d'identifier les axes
+                            d'optimisation.{" "}
+                          </li>
+
+                          <li>
+                            Réalisation de{" "}
+                            <strong>veilles concurrentielles</strong> afin
+                            d'identifier les tendances du secteur et de soutenir
+                            l'évolution de la stratégie digitale.{" "}
+                          </li>
+                        </ul>
+                      </div>
+                    )}
                   </article>
                 </div>
               </section>
@@ -718,7 +1003,9 @@ export default function CV(): React.JSX.Element {
               ============================================ */}
 
               <section className="cv-section education-section">
-                <h2 className="section-title">DIPLÔMES ET FORMATIONS</h2>
+                <h2 className="section-title">
+                  {isEnglish ? "EDUCATION" : "DIPLÔMES ET FORMATIONS"}
+                </h2>
 
                 <div className="timeline">
                   {/* MASTER */}
@@ -726,64 +1013,126 @@ export default function CV(): React.JSX.Element {
                   <article className="timeline-item">
                     <div className="timeline-dot" />
 
-                    <div className="education">
-                      <h3>Master Cultures et Métiers du Web</h3>
+                    {isEnglish ? (
+                      <div className="education">
+                        <h3>Master's Degree in Web Cultures and Careers</h3>
 
-                      <div className="meta">
-                        <span>De sept. 2023 à août 2025</span>
+                        <div className="meta">
+                          <span>From Sep 2023 to Aug 2025</span>
 
-                        <strong>Université Gustave Eiffel</strong>
+                          <strong>Université Gustave Eiffel</strong>
 
-                        <span>Champs-sur-Marne</span>
+                          <span>Champs-sur-Marne</span>
+                        </div>
+
+                        <ul className="experience-list">
+                          <li>
+                            Projects & Creation (interactive documentary, web
+                            design, web project)
+                          </li>
+
+                          <li>Social sciences & digital</li>
+
+                          <li>Visual cultures (photography, neo-geography)</li>
+
+                          <li>
+                            Coding (databases, HTML/CSS, PHP/SQL, CMS,
+                            JavaScript)
+                          </li>
+                        </ul>
+
+                        <div className="education-details">
+                          <p>
+                            <strong>Grade:</strong> Merit
+                          </p>
+                          <p>
+                            <strong>Specialisation:</strong> Production of the
+                            interactive documentary{" "}
+                            <em>Trot: Yesterday's Voices, Today's Echoes</em>
+                          </p>
+
+                          <p>
+                            Head of Image and Art Director on set{" "}
+                            <strong>| filmed in South Korea</strong>{" "}
+                          </p>
+
+                          <p>
+                            <strong>Elective:</strong> Project management and
+                            launch of the <em>Sevran en Mouvement</em> website
+                          </p>
+
+                          <p>
+                            UX/UI Designer and Web Developer{" "}
+                            <strong>
+                              | project presented to Stéphane Blanchet{" "}
+                            </strong>{" "}
+                            (Mayor of Sevran)
+                          </p>
+                        </div>
                       </div>
+                    ) : (
+                      <div className="education">
+                        <h3>Master Cultures et Métiers du Web</h3>
 
-                      <ul className="experience-list">
-                        <li>
-                          Projets et Création (documentaire interactif, web
-                          design, projet web)
-                        </li>
+                        <div className="meta">
+                          <span>De sept. 2023 à août 2025</span>
 
-                        <li>Sciences sociales et numérique</li>
+                          <strong>Université Gustave Eiffel</strong>
 
-                        <li>
-                          Cultures visuelles (photographie, néo-géographie)
-                        </li>
+                          <span>Champs-sur-Marne</span>
+                        </div>
 
-                        <li>
-                          Codage (base de données, HTML/CSS, PHP/SQL, CMS,
-                          JAVASCRIPT)
-                        </li>
-                      </ul>
+                        <ul className="experience-list">
+                          <li>
+                            Projets et Création (documentaire interactif, web
+                            design, projet web)
+                          </li>
 
-                      <div className="education-details">
-                        <p>
-                          <strong>Mention :</strong> Bien
-                        </p>
-                        <p>
-                          <strong>Spécialisation:</strong> Réalisation du
-                          documentaire interactif{" "}
-                          <em>Le Trot : les voix d'hier échos d'aujourd'hui</em>
-                        </p>
+                          <li>Sciences sociales et numérique</li>
 
-                        <p>
-                          Responsable image et Directrice artistique sur le set
-                          <strong>| réalisé en Corée du Sud</strong>{" "}
-                        </p>
+                          <li>
+                            Cultures visuelles (photographie, néo-géographie)
+                          </li>
 
-                        <p>
-                          <strong>Option :</strong> Gestion de projet et
-                          lancement du site web <em>Sevran en mouvement</em>
-                        </p>
+                          <li>
+                            Codage (base de données, HTML/CSS, PHP/SQL, CMS,
+                            JAVASCRIPT)
+                          </li>
+                        </ul>
 
-                        <p>
-                          Designer UX/UI et Développeuse web{" "}
-                          <strong>
-                            | projet soutenu auprès de Stéphane Blanchet{" "}
-                          </strong>{" "}
-                          (Maire de Sevran)
-                        </p>
+                        <div className="education-details">
+                          <p>
+                            <strong>Mention :</strong> Bien
+                          </p>
+                          <p>
+                            <strong>Spécialisation:</strong> Réalisation du
+                            documentaire interactif{" "}
+                            <em>
+                              Le Trot : les voix d'hier échos d'aujourd'hui
+                            </em>
+                          </p>
+
+                          <p>
+                            Responsable image et Directrice artistique sur le
+                            set
+                            <strong>| réalisé en Corée du Sud</strong>{" "}
+                          </p>
+
+                          <p>
+                            <strong>Option :</strong> Gestion de projet et
+                            lancement du site web <em>Sevran en mouvement</em>
+                          </p>
+
+                          <p>
+                            Designer UX/UI et Développeuse web{" "}
+                            <strong>
+                              | projet soutenu auprès de Stéphane Blanchet{" "}
+                            </strong>{" "}
+                            (Maire de Sevran)
+                          </p>
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </article>
 
                   {/* LICENCE */}
@@ -791,33 +1140,56 @@ export default function CV(): React.JSX.Element {
                   <article className="timeline-item">
                     <div className="timeline-dot" />
 
-                    <div className="education">
-                      <h3>
-                        Licence d'Arts - études visuelles, médias et arts
-                        numériques
-                      </h3>
+                    {isEnglish ? (
+                      <div className="education">
+                        <h3>
+                          Bachelor's Degree in Arts - Visual Studies, Media and
+                          Digital Arts
+                        </h3>
 
-                      <div className="meta">
-                        <span>De sept. 2020 à mai 2023</span>
+                        <div className="meta">
+                          <span>From Sep 2020 to May 2023</span>
 
-                        <strong>Université Gustave Eiffel</strong>
+                          <strong>Université Gustave Eiffel</strong>
 
-                        <span>Champs-sur-Marne</span>
+                          <span>Champs-sur-Marne</span>
+                        </div>
+
+                        <div className="education-details">
+                          <p>
+                            <strong>Elective:</strong> Visual and sound arts
+                          </p>
+                        </div>
                       </div>
+                    ) : (
+                      <div className="education">
+                        <h3>
+                          Licence d'Arts - études visuelles, médias et arts
+                          numériques
+                        </h3>
 
-                      <div className="education-details">
-                        <p>
-                          <strong>Option :</strong> arts visuels et sonores
-                        </p>
+                        <div className="meta">
+                          <span>De sept. 2020 à mai 2023</span>
+
+                          <strong>Université Gustave Eiffel</strong>
+
+                          <span>Champs-sur-Marne</span>
+                        </div>
+
+                        <div className="education-details">
+                          <p>
+                            <strong>Option :</strong> arts visuels et sonores
+                          </p>
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </article>
                 </div>
               </section>
               {/* REFERENCES */}
 
               <section className="sidebar-section languages">
-                <h2>RÉFÉRENCES</h2>
+                <h2>{isEnglish ? "REFERENCES" : "RÉFÉRENCES"}</h2>
                 <div className="small-text">
                   <p>
                     <strong>Pierre Ployart</strong>
@@ -856,11 +1228,11 @@ export default function CV(): React.JSX.Element {
 
           <div className="download-zone">
             <a
-              href={`${BASE_PATH}/projects/cv.pdf`}
-              download="cv-ines-sogadzi.pdf"
+              href={cvFile}
+              download={cvDownloadName}
               className="download-button"
             >
-              <span>TÉLÉCHARGER LE CV</span>
+              <span>{isEnglish ? "DOWNLOAD CV" : "TÉLÉCHARGER LE CV"}</span>
 
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path
