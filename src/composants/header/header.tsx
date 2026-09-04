@@ -257,8 +257,8 @@ export default function Header({
           position: fixed;
           top: 24px;
           right: 32px;
-          width: 38px;
-          height: 38px;
+          width: 30px;
+          height: 30px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -515,8 +515,8 @@ export default function Header({
           .language-switch {
             top: 18px;
             right: 76px;
-            width: 34px;
-            height: 34px;
+            width: 30px;
+            height: 30px;
             font-size: 9px !important;
           }
           .mobile-burger {
